@@ -5,21 +5,27 @@
 				<div class="img-cont">
 					<img alt="Flitter logo" src="../assets/img/logo_flitter.svg" />
 					<h2 class="text-center text-lg-start">
-                        Welcome to Flitter
+						Welcome to Flitter
 					</h2>
 				</div>
 			</div>
 			<div class="col-lg-6">
-			<custom-card :btns="btnArray" class="mx-auto custom-card">
-				<h4 class="text-center">
-				Login in
-				</h4>
+				<custom-card :btns="btnArray" class="mx-auto custom-card">
+          <h4 class="text-center">
+            Join us!
+					</h4>
         <form>
           <div class="mb-3 mt-2">
             <input
               type="email"
               class="form-control"
               placeholder="✉️ E-mail"/>
+          </div>
+          <div class="mb-3 mt-2">
+            <input
+              type="username"
+              class="form-control"
+              placeholder="👤 Username" />
           </div>
           <div class="mb-3 mt-2">
             <input
@@ -39,7 +45,7 @@
 	// @ is an alias to /src
 	import CustomCard from '../components/CustomCard.vue'
 	export default {
-		name: 'LoginView',
+		name: 'SignupView',
 		components: {
 			CustomCard,
 		},
@@ -47,7 +53,7 @@
 			return {
 				btnArray: [
 					{
-						txt: 'Login',
+						txt: 'Sign up',
 						class: 'btn-secondary',
 					}
 				],
@@ -85,14 +91,14 @@
 			margin-top: 6.9em;
 		}
     .custom-card {
-		margin: 0;
-		margin-top: 7.6em;
+      margin: 0;
+			margin-top: 6.2em;
     }
-	h2 {
-		color: #545454;
-		margin: 0;
-		margin-top: 0.8em;
-		margin-left: 1.4em;
-	}
+		h2 {
+      color: #545454;
+			margin: 0;
+			margin-top: 0.8em;
+			margin-left: 1.4em;
+		}
 	}
 </style>

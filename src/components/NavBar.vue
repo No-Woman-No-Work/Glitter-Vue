@@ -1,17 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-light">
        <div class="container justify-content-evenly d-flex align-items-center text-center">
-
            <router-link to="/" class="nav-link active" aria-current="page">
-            <span class="material-icons">how_to_reg</span>
-           </router-link>
-       
-           <router-link to="/login" class="nav-link active" aria-current="page">
-            <span class="material-icons">login</span>
-           </router-link>
-       
-           <router-link to="/profile" class="nav-link active" aria-current="page">
-             <span class="material-icons">person</span>
+            <span class="material-icons">home</span>
            </router-link>
        </div>
    </nav>
