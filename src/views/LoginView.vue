@@ -12,7 +12,7 @@
 			<div class="col-lg-6">
 			<custom-card :btns="btnArray" class="mx-auto custom-card">
 				<h4 class="text-center">
-				Login in
+				Sign in
 				</h4>
         <form>
           <div class="mb-3 mt-2">

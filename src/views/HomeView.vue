@@ -21,7 +21,7 @@
 					</router-link>
 					<router-link to="/signup" class="nav-link active" aria-current="page">
 						<div class="signup d-grid">
-							<button class="btn btn-secondary" type="button">Sing up</button>
+							<button class="btn btn-secondary" type="button">Registrer</button>
 						</div>
 					</router-link>
 				</custom-card>			
@@ -62,6 +62,9 @@
 	h2 {
     color: #545454;
 	}
+	.signup {
+			margin-top: 1em;
+		}
 	@media (min-width: 992px) {
 		.home {
 			margin: 4em auto;
