@@ -14,6 +14,13 @@
 					:class="btn.class">
 					{{ btn.txt }}
 				</button>
+				<router-link to="/signup"
+                    v-for="link in link"
+                    :key="link.txt"
+                    class="link"
+                    :class="link.class">
+                    {{ link.txt }}
+                </router-link>
 			</div>
 		</div>
 	</div>
@@ -22,7 +29,7 @@
 <script>
 	export default {
 		name: 'CustomCard',
-		props: ['title', 'parrafo', 'btns'],
+		props: ['title', 'parrafo', 'btns', 'link'],
 	}
 </script>
 

@@ -10,7 +10,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-			<custom-card :btns="btnArray" class="mx-auto custom-card">
+			<custom-card :btns="btnArray" :link="linkArray" class="mx-auto custom-card">
 				<h4 class="text-center">
 				Sign in
 				</h4>
@@ -25,7 +25,7 @@
             <input
               type="password"
               class="form-control"
-              placeholder="🔒 Password" />
+              placeholder="🔒 Password"/>
           </div>
         </form>
 				</custom-card>
@@ -48,6 +48,12 @@
 		},
 		data() {
 			return {
+				linkArray: [
+					{
+						txt: 'Forgot password?',
+						class: 'd-flex justify-content-end text-decoration-none',
+					}
+				],
 				btnArray: [
 					{
 						txt: 'Login',
@@ -87,15 +93,15 @@
 			margin: 1em;
 			margin-top: 6.9em;
 		}
-    .custom-card {
-		margin: 0;
-		margin-top: 7.6em;
-    }
-	h2 {
-		color: #545454;
-		margin: 0;
-		margin-top: 0.8em;
-		margin-left: 1.4em;
-	}
-	}
+		.custom-card {
+			margin: 0;
+			margin-top: 7.6em;
+		}
+		h2 {
+			color: #545454;
+			margin: 0;
+			margin-top: 0.8em;
+			margin-left: 1.4em;
+		}
+		}
 </style>
