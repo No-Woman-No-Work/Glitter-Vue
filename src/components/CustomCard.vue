@@ -14,7 +14,7 @@
 					:class="btn.class">
 					{{ btn.txt }}
 				</button>
-				<router-link to="/signup"
+				<router-link to="/new-password"
                     v-for="link in link"
                     :key="link.txt"
                     class="link"
