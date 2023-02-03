@@ -1,16 +1,16 @@
 <template>
     <!-- Footer -->
-    <MDBFooter class="footer">
+    <MDBFooter class="footer bg-light">
       <!-- Section: Social media -->
       <section class="d-flex
           justify-content-center justify-content-lg-between
-          p-4
+          p-2
         ">
       </section>
       <!-- Section: Links  -->
       <!-- Copyright -->
-      <div class="text-center p-4 bg-light">
-        © 2023 Copyright:
+      <div class="text-center p-2 bg-light">
+        <p>© 2023 Copyright:</p>
         <p>No-Woman-No-API</p>
       </div>
       <!-- Copyright -->
@@ -20,8 +20,8 @@
 
 <style>
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 </style>

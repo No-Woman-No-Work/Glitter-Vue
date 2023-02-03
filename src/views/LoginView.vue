@@ -32,16 +32,19 @@
 			</div>
 		</div>
 	</div>
+	<FooterSection/>
 </template>
 
 
 <script>
 	// @ is an alias to /src
 	import CustomCard from '../components/CustomCard.vue'
+	import FooterSection from "@/components/FooterSection.vue"
 	export default {
 		name: 'LoginView',
 		components: {
 			CustomCard,
+			FooterSection,
 		},
 		data() {
 			return {
