@@ -56,39 +56,45 @@ export default {
 		CustomCard,
 		FooterSection,
 	},
-	data() {
-		return {
-			linkArray: [
-				{
-					txt: "Forgot password?",
-					class: "d-flex justify-content-end text-decoration-none",
-				},
-			],
-			btnArray: [
-				{
-					txt: "Login",
-					class: "btn-secondary",
-				},
-			],
-			username: "",
-			password: "",
-			errorMessage: "",
-		};
-	},
-	methods: {
-		async login() {
+	setup() {
+		const linkArray = [
+			{
+				txt: "Forgot password?",
+				class: "d-flex justify-content-end text-decoration-none",
+			},
+		];
+		const btnArray = [
+			{
+				txt: "Login",
+				class: "btn-secondary",
+			},
+		];
+		const username = ref("");
+		const password = ref("");
+		const errorMessage = ref("");
+
+		async function login() {
 			try {
 				const response = await flitterApi.post("/login", {
-					username: this.username,
-					password: this.password,
+					username: username.value,
+					password: password.value,
 				});
 
 				localStorage.setItem("accessToken", response.data.acessToken);
 				this.$router.push("/zonaprivada-aqui-poner-nombre-ruta-feed-usuario-logueado");
 			} catch (error) {
-				this.errorMessage = error.response.data.message;
+				errorMessage.value = error.response.data.message;
 			}
-		},
+		}
+
+		return {
+			linkArray,
+			btnArray,
+			username,
+			password,
+			errorMessage,
+			login,
+		};
 	},
 };
 </script>
