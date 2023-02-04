@@ -1,5 +1,5 @@
 # FLITTER
-Link: [Flitter design doc](https://github.com/nelaruizc/Flitter/blob/main/README.md)
+Link: [Flitter design doc](https://github.com/No-Woman-No-Work/flitter/blob/main/README.md)
 
 Author(s): Andrea Ares Fernandez, Belén Jiménez Sánchez, Emma Alonso McCoy, Nelanyi Ruiz Contreras, Silvia Pescador López, Mariana Antoniol.
 
