@@ -84,7 +84,7 @@ export default {
 				});
 
 				localStorage.setItem("accessToken", response.data.acessToken);
-				this.$router.push("/dashboard");
+				this.$router.push("/zonaprivada-aqui-poner-nombre-ruta-feed-usuario-logueado");
 			} catch (error) {
 				this.errorMessage = error.response.data.message;
 			}
