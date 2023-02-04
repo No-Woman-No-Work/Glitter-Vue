@@ -11,29 +11,29 @@
 			</div>
 			<div class="col-lg-6">
 				<custom-card :btns="btnArray" class="mx-auto custom-card">
-          <h4 class="text-center">
-            Sign up
+					<h4 class="text-center">
+						Sign up
 					</h4>
-        <form>
-          <div class="mb-3 mt-2">
-            <input
-              type="email"
-              class="form-control"
-              placeholder="✉️ E-mail"/>
-          </div>
-          <div class="mb-3 mt-2">
-            <input
-              type="username"
-              class="form-control"
-              placeholder="👤 Username" />
-          </div>
-          <div class="mb-3 mt-2">
-            <input
-              type="password"
-              class="form-control"
-              placeholder="🔒 Password" />
-          </div>
-        </form>
+					<form>
+						<div class="mb-3 mt-2">
+							<input
+								type="email"
+								class="form-control"
+								placeholder="✉️ E-mail"/>
+						</div>
+						<div class="mb-3 mt-2">
+							<input
+								type="username"
+								class="form-control"
+								placeholder="👤 Username" />
+						</div>
+						<div class="mb-3 mt-2">
+							<input
+								type="password"
+								class="form-control"
+								placeholder="🔒 Password" />
+						</div>
+					</form>
 				</custom-card>
 			</div>
 		</div>
@@ -41,28 +41,29 @@
   <FooterSection/>
 </template>
 
-
 <script>
-	// @ is an alias to /src
-	import CustomCard from '../components/CustomCard.vue'
-  import FooterSection from "@/components/FooterSection.vue"
-	export default {
-		name: 'SignupView',
-		components: {
-			CustomCard,
-      FooterSection,
-		},
-		data() {
-			return {
-				btnArray: [
-					{
-						txt: 'Registrer',
-						class: 'btn-secondary',
-					}
-				],
-			}
-		},
-	}
+import flitterApi from '@/api/flitterApi'
+import { ref } from 'vue'
+import CustomCard from '../components/CustomCard.vue'
+import FooterSection from "@/components/FooterSection.vue"
+
+export default {
+	name: 'SignupView',
+	components: {
+		CustomCard,
+		FooterSection,
+	},
+	setup() {
+		const btnArray = ref([{
+			txt: 'Registrer',
+			class: 'btn-secondary',
+		}])
+
+		return {
+			btnArray
+		}
+	},
+}
 </script>
 
 <style scoped>

@@ -45,7 +45,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
+//RECORDATORIO: para llamar a la api, import flitterApi from ../api/flitterApi 
+// en vez de importar axios, y usar axios.post(...) se usa flitterApi.post(...)
 import flitterApi from "../api/flitterApi"
 import CustomCard from "../components/CustomCard.vue";
 import FooterSection from "@/components/FooterSection.vue";
