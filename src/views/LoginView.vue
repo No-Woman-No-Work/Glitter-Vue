@@ -18,10 +18,10 @@
 					<form @submit.prevent="login">
 						<div class="mb-3 mt-2">
 							<input
-								type="email"
+								type="username"
 								class="form-control"
-								v-model="email"
-								placeholder="✉️ E-mail"
+								v-model="username"
+								placeholder="✉️ Username"
 							/>
 						</div>
 						<div class="mb-3 mt-2">
@@ -70,7 +70,7 @@ export default {
 					class: "btn-secondary",
 				},
 			],
-			email: "",
+			username: "",
 			password: "",
 			errorMessage: "",
 		};
@@ -79,7 +79,7 @@ export default {
 		async login() {
 			try {
 				const response = await flitterApi.post("/login", {
-					email: this.email,
+					username: this.username,
 					password: this.password,
 				});
 
