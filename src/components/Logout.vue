@@ -1,6 +1,30 @@
 <!-- COMPONENTE para inyectar en el botón de logout -->
 
 <template>
+	<button @click="handleLogout">Logout</button>
+</template>
+
+<script>
+export default {
+	setup() {
+		function handleLogout() {
+			const token = localStorage.getItem("token");
+			if (token) {
+				localStorage.removeItem("token");
+				this.$router.push({ name: "home" });
+			}
+		}
+
+		return {
+			handleLogout,
+		};
+	},
+};
+</script>
+
+
+<!-- COMO SERÍA EN OPTIONS API -->
+<!-- <template>
       <button @click="handleLogout">Logout</button>
     </template>
     
@@ -17,4 +41,4 @@
             },
       },
 };
-</script>
+</script> -->
