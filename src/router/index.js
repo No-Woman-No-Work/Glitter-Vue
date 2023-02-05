@@ -24,9 +24,15 @@ const routes = [
   },
   {
     path: '/private',
-    name: 'private',
-    component: () => import(/* webpackChunkName: "new-password" */ '../views/AreaPrivada.vue')
+    name: 'public',
+    component: () => import(/* webpackChunkName: "new-password" */ '../views/PublicView.vue')
+},
+{
+  path: '/public',
+  name: 'private',
+  component: () => import(/* webpackChunkName: "new-password" */ '../views/AreaPrivada.vue')
 }
+
 ]
 
 const router = createRouter({
