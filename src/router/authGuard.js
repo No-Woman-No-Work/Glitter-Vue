@@ -1,6 +1,6 @@
 // import axios, { AxiosResponse } from 'axios';
 import flitterApi from '../api/flitterApi.js';
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent } from '@vue/composition-api';
 import { useRouter } from 'vue-router';
 
 // el quivalente en nuestro codigo es flitterApi?
