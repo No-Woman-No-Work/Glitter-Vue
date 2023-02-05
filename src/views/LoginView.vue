@@ -47,6 +47,7 @@
 <script>
 //RECORDATORIO: para llamar a la api, import flitterApi from ../api/flitterApi 
 // en vez de importar axios, y usar axios.post(...) se usa flitterApi.post(...)
+import { ref } from 'vue'
 import flitterApi from "../api/flitterApi"
 import CustomCard from "../components/CustomCard.vue";
 import FooterSection from "@/components/FooterSection.vue";

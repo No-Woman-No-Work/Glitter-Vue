@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import flitterApi from '@/api/flitterApi'
+// import flitterApi from '@/api/flitterApi'
 import { ref } from 'vue'
 import CustomCard from '../components/CustomCard.vue'
 import FooterSection from "@/components/FooterSection.vue"
