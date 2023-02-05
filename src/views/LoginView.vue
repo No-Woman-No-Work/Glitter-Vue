@@ -82,7 +82,7 @@ export default {
 					password: password.value,
 				});
 
-				localStorage.setItem("accessToken", response.data.acessToken);
+				localStorage.setItem("access_token", response.data.access_token);
 				this.$router.push("/zonaprivada-aqui-poner-nombre-ruta-feed-usuario-logueado");
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
