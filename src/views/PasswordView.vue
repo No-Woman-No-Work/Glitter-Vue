@@ -40,6 +40,7 @@ import flitterApi from "../api/flitterApi"
 import { ref } from 'vue'
 import CustomCard from '../components/CustomCard.vue'
 import FooterSection from "@/components/FooterSection.vue"
+import emailRegex from "@/utils/emailRegex.js"
 
 export default {
 	name: "PasswordView",
@@ -53,25 +54,24 @@ export default {
 			{ txt: "Reset Password", class: "btn-primary", action: "resetPassword" },
 		];
 		const error = ref(null);
-		const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-		function isEmailValid() {
-			if (emailRegex.test(email.value)) {
-				alert("Check your mailbox :)");
-				return true;
-			} else {
-				alert("Invalid email address");
-				return false;
-			}
+
+		function isEmailValid(emailValue) {
+			return emailRegex.test(emailValue);
 		}
+
 		const resetPassword = async function sendEmail() {
-			if (!isEmailValid()) {
+			if (!isEmailValid(email.value)) {
 				error.value = "Please enter a valid email address";
 				return;
 			}
 
 			try {
-				await flitterApi.sendEmail(email.value);
+				const response = await flitterApi.sendEmail(email.value);
+				if (response.error) {
+					error.value = "This email isn't attached to any existent account";
+					return;
+				}
 				error.value = null;
 			} catch (err) {
 				error.value = "An error occurred while sending the email. Please try again later";
