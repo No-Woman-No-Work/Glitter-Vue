@@ -10,7 +10,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<custom-card :error="error" :btns="btnArray" class="mx-auto custom-card" @click="resetPassword">
+				<custom-card :error="error" :btns="btnArray" class="mx-auto custom-card" @reset-password="resetPassword">
 					<h4 class="text-center">
 						Forgot password
 					</h4>
