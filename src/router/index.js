@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import guard from './authGuard.js'
+// beforeEnter: [haveAuthGuard] --> should be used in those routes that require authentication
 
 const routes = [
   {
