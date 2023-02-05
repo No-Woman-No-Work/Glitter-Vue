@@ -3,21 +3,6 @@ import flitterApi from '../api/flitterApi.js';
 import { defineComponent } from '@vue/composition-api';
 import { useRouter } from 'vue-router';
 
-// el quivalente en nuestro codigo es flitterApi?
-
-// const axiosInstance = axios.create({
-//   baseURL: 'http://your-api-endpoint.com'
-// });
-
-// axiosInstance.interceptors.request.use(config => {
-//   const token = localStorage.getItem('token');
-
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
-
-//   return config;
-// });
 
 const guard = async function () {
   const token = localStorage.getItem('token'); //hay que cambiar token con el nombre de la clave que utilizamos para almacenar el token JWT en el almacenamiento del navegador
