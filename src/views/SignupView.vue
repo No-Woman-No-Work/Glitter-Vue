@@ -10,42 +10,34 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<custom-card :btns="btnArray" class="mx-auto custom-card">
+				<custom-card :btns="btnArray" :link="linkArray" class="mx-auto custom-card">
 					<h4 class="text-center">
 						Sign up
 					</h4>
-					<form>
+					<form @submit.prevent="signup">
 						<div class="mb-3 mt-2">
-							<input
-								type="email"
-								class="form-control"
-								placeholder="✉️ E-mail"/>
+							<input type="email" class="form-control" placeholder="✉️ E-mail" />
 						</div>
 						<div class="mb-3 mt-2">
-							<input
-								type="username"
-								class="form-control"
-								placeholder="👤 Username" />
+							<input type="username" class="form-control" placeholder="👤 Username" />
 						</div>
 						<div class="mb-3 mt-2">
-							<input
-								type="password"
-								class="form-control"
-								placeholder="🔒 Password" />
+							<input type="password" class="form-control" placeholder="🔒 Password" />
 						</div>
 					</form>
 				</custom-card>
 			</div>
 		</div>
 	</div>
-  <FooterSection/>
+	<FooterSection />
 </template>
 
 <script>
 // import flitterApi from '@/api/flitterApi'
 import { ref } from 'vue'
-import CustomCard from '../components/CustomCard.vue'
-import FooterSection from "@/components/FooterSection.vue"
+import flitterApi from "../api/flitterApi"
+import CustomCard from "../components/CustomCard.vue";
+import FooterSection from "@/components/FooterSection.vue";
 
 export default {
 	name: 'SignupView',
@@ -54,55 +46,93 @@ export default {
 		FooterSection,
 	},
 	setup() {
+		const linkArray = [
+			{
+				txt: "Already a member?",
+				class: "d-flex justify-content-end text-decoration-none",
+				route: "/login"
+			}
+		];
 		const btnArray = ref([{
-			txt: 'Registrer',
+			txt: 'Sign Up',
 			class: 'btn-secondary',
-		}])
+		}]);
 
+		const email = ref("");
+		const username = ref("");
+		const password = ref("");
+		const errorMessage = ref("");
+
+		async function signup() {
+			try {
+				await flitterApi.post("/signup", {
+					email: email.value,
+					username: username.value,
+					password: password.value,
+				});
+				this.$router.push("/login"); //
+			} catch (error) {
+				errorMessage.value = error.response.data.message;
+			}
+		}
 		return {
-			btnArray
+			linkArray,
+			btnArray,
+			email,
+			username,
+			password,
+			errorMessage,
+			signup
 		}
 	},
 }
 </script>
 
 <style scoped>
+.home {
+	max-width: 895px;
+	margin: auto;
+}
+
+.img-cont {
+	display: flex;
+	flex-direction: column;
+}
+
+img {
+	max-width: 315px;
+	margin: 1em auto 0 auto;
+}
+
+.custom-card {
+	max-width: 398px;
+	margin-top: 1.6em;
+}
+
+h2 {
+	color: #545454;
+}
+
+@media (min-width: 992px) {
 	.home {
-		max-width: 895px;
-		margin: auto;
+		margin: 4em auto;
 	}
-	.img-cont {
-		display: flex;
-		flex-direction: column;
-	}
+
 	img {
-		max-width: 315px;
-		margin: 1em auto 0 auto;
+		margin: 1em;
+		margin-top: 6.9em;
 	}
+
 	.custom-card {
-		max-width: 398px;
-		margin-top: 1.6em;
+		margin: 0;
+		margin-top: 6.2em;
 	}
-  h2 {
-    color: #545454;
-  }
-	@media (min-width: 992px) {
-		.home {
-			margin: 4em auto;
-		}
-		img {
-			margin: 1em;
-			margin-top: 6.9em;
-		}
-    .custom-card {
-      margin: 0;
-			margin-top: 6.2em;
-    }
-		h2 {
-      color: #545454;
-			margin: 0;
-			margin-top: 0.8em;
-			margin-left: 1.4em;
-		}
+
+	h2 {
+		color: #545454;
+		margin: 0;
+		margin-top: 0.8em;
+		margin-left: 1.4em;
 	}
+}
 </style>

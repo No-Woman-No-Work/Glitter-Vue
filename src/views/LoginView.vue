@@ -8,29 +8,15 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<custom-card
-					:btns="btnArray"
-					:link="linkArray"
-					class="mx-auto custom-card"
-				>
+				<custom-card :btns="btnArray" :link="linkArray" class="mx-auto custom-card">
 					<h4 class="text-center">Sign in</h4>
 
 					<form @submit.prevent="login">
 						<div class="mb-3 mt-2">
-							<input
-								type="username"
-								class="form-control"
-								v-model="username"
-								placeholder="✉️ Username"
-							/>
+							<input type="username" class="form-control" v-model="username" placeholder="✉️ Username" />
 						</div>
 						<div class="mb-3 mt-2">
-							<input
-								type="password"
-								class="form-control"
-								v-model="password"
-								placeholder="🔒 Password"
-							/>
+							<input type="password" class="form-control" v-model="password" placeholder="🔒 Password" />
 						</div>
 						<!-- <div class="text-danger">{{ errorMessage }}</div>
 						<div class="text-center mt-2">
@@ -61,8 +47,9 @@ export default {
 	setup() {
 		const linkArray = [
 			{
-				txt: "Forgot password?",
+				txt: "Forgot your password?",
 				class: "d-flex justify-content-end text-decoration-none",
+				route: "/new-password"
 			},
 		];
 		const btnArray = [
@@ -83,7 +70,7 @@ export default {
 				});
 
 				localStorage.setItem("access_token", response.data.access_token);
-				this.$router.push("/zonaprivada-aqui-poner-nombre-ruta-feed-usuario-logueado");
+				this.$router.push("/private"); //cambiar a ruta zona privada
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
 			}
@@ -106,33 +93,41 @@ export default {
 	max-width: 895px;
 	margin: auto;
 }
+
 .img-cont {
 	display: flex;
 	flex-direction: column;
 }
+
 img {
 	max-width: 315px;
 	margin: 1em auto 0 auto;
 }
+
 .custom-card {
 	max-width: 398px;
 	margin-top: 1.6em;
 }
+
 h2 {
 	color: #545454;
 }
+
 @media (min-width: 992px) {
 	.home {
 		margin: 4em auto;
 	}
+
 	img {
 		margin: 1em;
 		margin-top: 6.9em;
 	}
+
 	.custom-card {
 		margin: 0;
 		margin-top: 7.6em;
 	}
+
 	h2 {
 		color: #545454;
 		margin: 0;
