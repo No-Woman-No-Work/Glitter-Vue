@@ -7,8 +7,7 @@
 			</p>
 			<slot></slot>
 			<div class="d-grid gap-2">
-				<button v-for="btn in btns" :key="btn.txt" class="btn" :class="btn.class"
-					@click.prevent="btn.action ? resetPassword : null">
+				<button v-for="btn in btns" :key="btn.txt" class="btn" :class="btn.class" @click.prevent="btn.action">
 					{{ btn.txt }}
 				</button>
 				<router-link :to="link.route" v-for="link in link" :key="link.txt" class="link" :class="link.class">
