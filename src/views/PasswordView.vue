@@ -48,11 +48,20 @@ export default {
 		FooterSection
 	},
 	setup() {
-		const email = ref('')
-		const btnArray = [{ txt: 'Reset Password', class: 'btn-primary', action: "resetPassword" }]
-		const error = ref(null)
+		const email = ref('');
+		const btnArray = [{ txt: 'Reset Password', class: 'btn-primary', action: "resetPassword" }];
+		const error = ref(null);
+		const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+		function isEmailValid() {
+			return emailRegex.test(email.value)
+		}
 
 		const resetPassword = async function sendEmail() {
+			if (!isEmailValid()) {
+				error.value = 'Please enter a valid email address';
+				return
+			}
 			try {
 				await flitterApi.sendEmail(email.value)
 				error.value = null
