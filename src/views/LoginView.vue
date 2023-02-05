@@ -70,7 +70,7 @@ export default {
 				});
 
 				localStorage.setItem("access_token", response.data.access_token);
-				this.$router.push("/private"); //cambiar a ruta zona privada
+				this.$router.push("/private"); 
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
 			}
