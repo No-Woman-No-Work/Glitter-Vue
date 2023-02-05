@@ -65,6 +65,11 @@ export default {
 
 		async function signup() {
 			try {
+				const result = await checkEmailAndUsername(email.value, username.value);
+				if (result === "This email already exists" || result === "This username already exists") {
+					errorMessage.value = result;
+					return;
+				}
 				await flitterApi.post("/signup", {
 					email: email.value,
 					username: username.value,
@@ -75,6 +80,29 @@ export default {
 				errorMessage.value = error.response.data.message;
 			}
 		}
+
+		async function checkEmailAndUsername(email, username) {
+			try {
+				const emailResponse = await flitterApi.post('/register', {
+					email: email
+				});
+				if (emailResponse.status === 500) {
+					return "This email already exists";
+				}
+
+				const usernameResponse = await flitterApi.post('/register', {
+					username: username
+				});
+				if (usernameResponse.status === 500) {
+					return "This username already exists";
+				}
+
+				return "ok";
+			} catch (error) {
+				return "Something went wrong";
+			}
+		}
+
 		return {
 			linkArray,
 			btnArray,
