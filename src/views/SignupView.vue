@@ -64,6 +64,11 @@ export default {
 		const errorMessage = ref("");
 
 		async function signup() {
+			const usernameRegex = /^[a-zA-Z0-9_]+$/;
+			if (!usernameRegex.test(username.value)) {
+				errorMessage.value = "Username can only contain letters, numbers or the character _";
+				return;
+			}
 			try {
 				const result = await checkEmailAndUsername(email.value, username.value);
 				if (result === "This email already exists" || result === "This username already exists") {
