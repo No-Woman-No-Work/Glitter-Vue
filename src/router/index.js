@@ -23,14 +23,14 @@ const routes = [
       component: () => import(/* webpackChunkName: "new-password" */ '../views/PasswordView.vue')
   },
   {
-    path: '/private',
+    path: '/public',
     name: 'public',
-    component: () => import(/* webpackChunkName: "new-password" */ '../views/PublicView.vue')
+    component: () => import(/* webpackChunkName: "public" */ '../views/PublicView.vue')
 },
 {
-  path: '/public',
+  path: '/private',
   name: 'private',
-  component: () => import(/* webpackChunkName: "new-password" */ '../views/AreaPrivada.vue')
+  component: () => import(/* webpackChunkName: "private" */ '../views/AreaPrivada.vue')
 }
 
 ]
