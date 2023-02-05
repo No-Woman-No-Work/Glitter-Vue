@@ -10,7 +10,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<custom-card :btns="btnArray" class="mx-auto custom-card">
+				<custom-card :error="error" :btns="btnArray" class="mx-auto custom-card" @reset-password="resetPassword">
 					<h4 class="text-center">
 						Forgot password
 					</h4>
@@ -42,31 +42,39 @@ import CustomCard from '../components/CustomCard.vue'
 import FooterSection from "@/components/FooterSection.vue"
 
 export default {
-	name: 'PasswordView',
+	name: "PasswordView",
 	components: {
 		CustomCard,
-		FooterSection
+		FooterSection,
 	},
 	setup() {
-		const email = ref('');
-		const btnArray = [{ txt: 'Reset Password', class: 'btn-primary', action: "resetPassword" }];
+		const email = ref("");
+		const btnArray = [
+			{ txt: "Reset Password", class: "btn-primary", action: "resetPassword" },
+		];
 		const error = ref(null);
 		const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 		function isEmailValid() {
-			return emailRegex.test(email.value)
+			if (emailRegex.test(email.value)) {
+				alert("Check your mailbox :)");
+				return true;
+			} else {
+				alert("Invalid email address");
+				return false;
+			}
 		}
-
 		const resetPassword = async function sendEmail() {
 			if (!isEmailValid()) {
-				error.value = 'Please enter a valid email address';
-				return
+				error.value = "Please enter a valid email address";
+				return;
 			}
+
 			try {
-				await flitterApi.sendEmail(email.value)
-				error.value = null
+				await flitterApi.sendEmail(email.value);
+				error.value = null;
 			} catch (err) {
-				error.value = err.message
+				error.value = "An error occurred while sending the email. Please try again later";
 			}
 		}
 
@@ -74,10 +82,10 @@ export default {
 			email,
 			btnArray,
 			error,
-			resetPassword
-		}
-	}
-}
+			resetPassword,
+		};
+	},
+};
 </script>
 
 <style scoped>
