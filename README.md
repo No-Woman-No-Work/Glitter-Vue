@@ -1,5 +1,5 @@
 # FLITTER
-Link: [Flitter design doc](https://github.com/nelaruizc/Flitter/blob/main/README.md)
+Link: [Flitter design doc](https://github.com/No-Woman-No-Work/flitter/blob/main/README.md)
 
 Author(s): Andrea Ares Fernandez, Belén Jiménez Sánchez, Emma Alonso McCoy, Nelanyi Ruiz Contreras, Silvia Pescador López, Mariana Antoniol.
 
@@ -63,9 +63,27 @@ _Pon detalles en la siguiente sección_
 
 // Hay que desarrollarlo pero la idea inicial es:
 
-Backend con Node y Express, que tenga un APIrest.
+//incluyo esto para que nos ayude a luego redactarlo (sil)
 
-Javascript y VUE para el frontend, que se conecte con el backend.
+STACK TECNOLÓGICO:
+Backend - API 
+Intérprete de Js = Nodejs
+Framework =  Express (express-generator)
+Base de datos noSQL = MongoDb
+Conexión api con base de datos = Mongoose 
+Sistema de autenticación = Json Web Token
+Sistema de mailing = MailJet
+Pruebas internas de desarrollo = Postman
+
+Frontend:
+Lenguaje = Javascript
+Framework = Vue 3 (vue-CLI)
+Estilo = Vue Composition API
+Framework CSS = Boostrap
+Conexión con backend = Axios
+Manejador de estados = Vuex
+Adaptación (transpiladores) a motores más antigüos de Js = Babel | WebPack
+
 
 ## Detailed Design
 _Usa diagramas donde veas necesario_
