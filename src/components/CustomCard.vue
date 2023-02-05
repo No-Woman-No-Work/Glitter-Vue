@@ -7,35 +7,27 @@
 			</p>
 			<slot></slot>
 			<div class="d-grid gap-2">
-				<button
-					v-for="btn in btns"
-					:key="btn.txt"
-					class="btn"
-					:class="btn.class">
+				<button v-for="btn in btns" :key="btn.txt" class="btn" :class="btn.class">
 					{{ btn.txt }}
 				</button>
-				<router-link to="/new-password"
-                    v-for="link in link"
-                    :key="link.txt"
-                    class="link"
-                    :class="link.class">
-                    {{ link.txt }}
-                </router-link>
+				<router-link :to="link.route" v-for="link in link" :key="link.txt" class="link" :class="link.class">
+					{{ link.txt }}
+				</router-link>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-	export default {
-		name: 'CustomCard',
-		props: ['title', 'parrafo', 'btns', 'link'],
-	}
+export default {
+	name: 'CustomCard',
+	props: ['title', 'parrafo', 'btns', 'link'],
+}
 </script>
 
 <style scoped>
-	.card {
-		border: none;
-		box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-	}
+.card {
+	border: none;
+	box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+}
 </style>
