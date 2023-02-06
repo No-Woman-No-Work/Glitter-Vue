@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 
 
 const guard = async function () {
-  const token = localStorage.getItem('token'); //hay que cambiar token con el nombre de la clave que utilizamos para almacenar el token JWT en el almacenamiento del navegador
+  const token = localStorage.getItem('acess_token'); //hay que cambiar token con el nombre de la clave que utilizamos para almacenar el token JWT en el almacenamiento del navegador
 
   if (!token) {
     return false;
@@ -27,7 +27,7 @@ export default defineComponent({
       const authenticated = await guard();
 
       if (!authenticated) {
-        next('/loquesea'); // nos dirige a x si el usuario no esta autenticado: home o login?
+        next('/home'); // nos dirige a x si el usuario no esta autenticado: home o login?
       } else {
         next();
       }

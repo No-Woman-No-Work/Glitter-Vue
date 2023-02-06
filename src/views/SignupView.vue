@@ -16,13 +16,13 @@
 					</h4>
 					<form @submit.prevent="signup">
 						<div class="mb-3 mt-2">
-							<input type="email" class="form-control" placeholder="✉️ E-mail" />
+							<input type="email" class="form-control" placeholder="✉️ E-mail" v-model="email" />
 						</div>
 						<div class="mb-3 mt-2">
-							<input type="username" class="form-control" placeholder="👤 Username" />
+							<input type="username" class="form-control" placeholder="👤 Username" v-model="username"/>
 						</div>
 						<div class="mb-3 mt-2">
-							<input type="password" class="form-control" placeholder="🔒 Password" />
+							<input type="password" class="form-control" placeholder="🔒 Password" v-model="password"/>
 						</div>
 					</form>
 				</custom-card>
@@ -75,12 +75,12 @@ export default {
 					errorMessage.value = result;
 					return;
 				}
-				await flitterApi.post("/signup", {
+				await flitterApi.post("/register", {
 					email: email.value,
 					username: username.value,
 					password: password.value,
 				});
-				this.$router.push("/login"); //
+				this.$router.push("/private");  // verificar que esto sea correcto
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
 			}
