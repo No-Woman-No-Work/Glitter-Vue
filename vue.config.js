@@ -1,9 +1,17 @@
-const { defineConfig } = require('@vue/cli-service')
+const webpack = require('webpack');
+const { defineConfig } = require('@vue/cli-service');
+
 module.exports = defineConfig({
   transpileDependencies: true,
   configureWebpack: {
-    compilerOptions: {
-      isCustomElement: true
-    }
+    plugins: [
+      new webpack.LoaderOptionsPlugin({
+        options: {
+          compilerOptions: {
+            isCustomElement: true
+          }
+        }
+      })
+    ]
   }
 })

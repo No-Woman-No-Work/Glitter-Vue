@@ -18,6 +18,20 @@
     <!-- Footer -->
 </template>
 
+<script>
+import { MDBFooter } from 'mdbvue'
+
+export default {
+  components: {
+    MDBFooter
+  },
+  data () {
+    return {
+    }
+  }
+}
+</script>
+
 <style>
 .footer {
     position: absolute;
