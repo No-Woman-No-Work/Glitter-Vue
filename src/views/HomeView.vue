@@ -27,6 +27,15 @@
 				</custom-card>			
 			</div>
 		</div>
+		<div class="jumbotron">
+			<hr class="my-4">
+			<p class="copy">Connect with friends, make new ones, and soar to new heights. 🛫 Don't be left behind, join the #FlitterFlock today and start flittering! #SpreadYourWings 🌪️</p>
+			<p class="lead">
+				<router-link to="/public">
+				<a class="btn btn-primary" href="#" role="button">Explore</a>
+				</router-link>
+			</p>
+		</div>
 	</div>
 	<FooterSection/>
 </template>
@@ -68,6 +77,14 @@
 	.signup {
 			margin-top: 1em;
 		}
+	.jumbotron {
+		margin-top: 5em;
+		max-width: 855px;
+		margin: 5.7em;
+	}
+	.copy{
+		text-align: justify;
+	}
 	@media (min-width: 992px) {
 		.home {
 			margin: 4em auto;
@@ -91,6 +108,9 @@
 		}
 		.signup {
 			margin-top: 1em;
+		}
+		.jumbotron {
+			margin: 5em auto;
 		}
 	}
 </style>
