@@ -33,8 +33,12 @@ const routes = [
   path: '/private',
   name: 'private',
   component: () => import(/* webpackChunkName: "private" */ '../views/AreaPrivada.vue')
+},
+{
+  path: '/unsubscribe',
+  name: 'unsubscribe',
+  component: () => import(/* webpackChunkName: "unsubscribe" */ '../views/Unsubscribe.vue')
 }
-
 ]
 
 const router = createRouter({
