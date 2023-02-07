@@ -1,12 +1,4 @@
-import axios, { } from "axios"
-
-/*
-
-
-Base URL pendiente de añadir
-
-
-*/
+import axios from "axios"
 
 // creamos La conexión con la api (backend)
 const flitterApi = axios.create({
