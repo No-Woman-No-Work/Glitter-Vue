@@ -10,20 +10,29 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<custom-card :btns="btnArray" :link="linkArray" class="mx-auto custom-card">
+
+				<custom-card 
+				:btns="btnArray" 
+				:link="linkArray" 
+				class="mx-auto custom-card"
+				>
 					<h4 class="text-center">
 						Sign up
 					</h4>
 					<form @submit.prevent="signup">
 						<div class="mb-3 mt-2">
-							<input type="email" class="form-control" placeholder="✉️ E-mail" v-model="email" />
+							<input 
+							type="email" class="form-control" placeholder="✉️ E-mail" v-model="email" />
 						</div>
 						<div class="mb-3 mt-2">
-							<input type="username" class="form-control" placeholder="👤 Username" v-model="username"/>
+							<input 
+							type="username" class="form-control" placeholder="👤 Username" v-model="username"/>
 						</div>
 						<div class="mb-3 mt-2">
-							<input type="password" class="form-control" placeholder="🔒 Password" v-model="password"/>
+							<input 
+							type="password" class="form-control" placeholder="🔒 Password" v-model="password"/>
 						</div>
+						<button @clic.prevent="signup"></button>
 					</form>
 				</custom-card>
 			</div>
@@ -53,9 +62,11 @@ export default {
 				route: "/login"
 			}
 		];
+
 		const btnArray = ref([{
 			txt: 'Sign Up',
 			class: 'btn-secondary',
+			action: 'signup'
 		}]);
 
 		const email = ref("");
@@ -80,9 +91,11 @@ export default {
 					username: username.value,
 					password: password.value,
 				});
-				this.$router.push("/private");  // verificar que esto sea correcto
+				this.$router.push("/login"); 
+				
 			} catch (error) {
-				errorMessage.value = error.response.data.message;
+				// errorMessage.value = error.response.data.message;
+				console.log('email o username repes 500') //cambiar
 			}
 		}
 
