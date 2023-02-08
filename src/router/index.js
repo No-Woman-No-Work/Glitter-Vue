@@ -37,7 +37,7 @@ const routes = [
 {
   path: '/unsubscribe',
   name: 'unsubscribe',
-  component: () => import(/* webpackChunkName: "unsubscribe" */ '../views/Unsubscribe.vue')
+  component: () => import(/* webpackChunkName: "unsubscribe" */ '../views/UnsubscribeView.vue')
 }
 ]
 

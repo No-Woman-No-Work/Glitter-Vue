@@ -59,7 +59,7 @@ export default {
 			{
 				txt: "Already a member?",
 				class: "d-flex justify-content-end text-decoration-none",
-				route: "/login"
+				route: "/login" // si eres miembro te enviamos al login
 			}
 		];
 
@@ -86,7 +86,7 @@ export default {
 					errorMessage.value = result;
 					return;
 				}
-				await flitterApi.post("/register", {
+				await flitterApi.post("/auth/register", {
 					email: email.value,
 					username: username.value,
 					password: password.value,
@@ -101,14 +101,14 @@ export default {
 
 		async function checkEmailAndUsername(email, username) {
 			try {
-				const emailResponse = await flitterApi.post('/register', {
+				const emailResponse = await flitterApi.post('/auth/register', {
 					email: email
 				});
 				if (emailResponse.status === 500) {
 					return "This email already exists";
 				}
 
-				const usernameResponse = await flitterApi.post('/register', {
+				const usernameResponse = await flitterApi.post('/auth/register', {
 					username: username
 				});
 				if (usernameResponse.status === 500) {
