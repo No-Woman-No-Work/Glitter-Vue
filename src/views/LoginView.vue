@@ -22,9 +22,9 @@
 						<div class="mb-3 mt-2">
 							<input type="password" class="form-control" v-model="password" placeholder="🔒 Password" />
 						</div>
-						<div class="text-danger">{{ errorMessage }}</div>
+						<!-- <div class="text-danger">{{ errorMessage }}</div>
 						<div class="text-center mt-2">
-						</div>
+						</div> -->
 					</form>
 				</custom-card>
 			</div>
@@ -62,7 +62,7 @@ export default {
 				action: () => login()
 			},
 		]);
-		
+
 		const username = ref("");
 		const password = ref("");
 		const errorMessage = ref("");
