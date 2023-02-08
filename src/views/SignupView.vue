@@ -32,7 +32,7 @@
 							<input 
 							type="password" class="form-control" placeholder="🔒 Password" v-model="password"/>
 						</div>
-						<button @clic.prevent="signup"></button>
+						
 					</form>
 				</custom-card>
 			</div>
@@ -63,22 +63,26 @@ export default {
 			}
 		];
 
-		const btnArray = ref([{
-			txt: 'Sign Up',
-			class: 'btn-secondary',
-			action: 'signup'
-		}]);
+		const btnArray = ref([
+			{
+				txt: 'Sign Up',
+				class: 'btn-secondary',
+				action: () => signup()
+			}
+		]);
 
 		const email = ref("");
 		const username = ref("");
 		const password = ref("");
 		const errorMessage = ref("");
 
+
 		async function signup() {
 			const usernameRegex = /^[a-zA-Z0-9_]+$/;
 			if (!usernameRegex.test(username.value)) {
+				console.log('username can only contain letters, numbers or the character _')
 				errorMessage.value = "Username can only contain letters, numbers or the character _";
-				return;
+				return; // ESTO LO HACE BIEN 
 			}
 			try {
 				const result = await checkEmailAndUsername(email.value, username.value);
@@ -91,11 +95,13 @@ export default {
 					username: username.value,
 					password: password.value,
 				});
+
+				// if everything´s fine, redirect to loginView
 				this.$router.push("/login"); 
 				
 			} catch (error) {
+				console.log('Error interno del servidor 500') //cambiar
 				// errorMessage.value = error.response.data.message;
-				console.log('email o username repes 500') //cambiar
 			}
 		}
 
@@ -105,6 +111,7 @@ export default {
 					email: email
 				});
 				if (emailResponse.status === 500) {
+					console.log('this email already exists')
 					return "This email already exists";
 				}
 
@@ -112,11 +119,16 @@ export default {
 					username: username
 				});
 				if (usernameResponse.status === 500) {
+					console.log("This username already exists") 
 					return "This username already exists";
+
 				}
 
+				console.log('ok')
 				return "ok";
 			} catch (error) {
+				console.log('Something went wrong')
+				// errorMessage.value = error.response.data.message;
 				return "Something went wrong";
 			}
 		}

@@ -8,7 +8,11 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<custom-card :btns="btnArray" :link="linkArray" class="mx-auto custom-card">
+				<custom-card 
+				:btns="btnArray" 
+				:link="linkArray" 
+				class="mx-auto custom-card"
+				>
 					<h4 class="text-center">Sign in</h4>
 
 					<form @submit.prevent="login">
@@ -18,10 +22,9 @@
 						<div class="mb-3 mt-2">
 							<input type="password" class="form-control" v-model="password" placeholder="🔒 Password" />
 						</div>
-						<!-- <div class="text-danger">{{ errorMessage }}</div>
+						<div class="text-danger">{{ errorMessage }}</div>
 						<div class="text-center mt-2">
-						<button class="btn-secondary">Login</button> -->
-						<!-- </div> -->
+						</div>
 					</form>
 				</custom-card>
 			</div>
@@ -52,19 +55,21 @@ export default {
 				route: "/new-password"
 			},
 		];
-		const btnArray = [
+		const btnArray = ref([
 			{
 				txt: "Login",
 				class: "btn-secondary",
+				action: () => login()
 			},
-		];
+		]);
+		
 		const username = ref("");
 		const password = ref("");
 		const errorMessage = ref("");
 
 		async function login() {
 			try {
-				const response = await flitterApi.post("/login", {
+				const response = await flitterApi.post("/auth/login", {
 					username: username.value,
 					password: password.value,
 				});
