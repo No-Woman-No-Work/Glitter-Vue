@@ -37,6 +37,7 @@
 //RECORDATORIO: para llamar a la api, import flitterApi from ../api/flitterApi 
 // en vez de importar axios, y usar axios.post(...) se usa flitterApi.post(...)
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import flitterApi from "../api/flitterApi"
 import CustomCard from "../components/CustomCard.vue";
 import FooterSection from "@/components/FooterSection.vue";
@@ -66,6 +67,7 @@ export default {
 		const username = ref("");
 		const password = ref("");
 		const errorMessage = ref("");
+		const router = useRouter()
 
 		async function login() {
 			try {
@@ -75,7 +77,7 @@ export default {
 				});
 
 				localStorage.setItem("access_token", response.data.access_token);
-				this.$router.push("/private"); 
+				router.push("/private"); 
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
 			}
