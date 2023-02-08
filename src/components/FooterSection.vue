@@ -1,6 +1,6 @@
 <template>
     <!-- Footer -->
-    <MDBFooter class="footer bg-light">
+    <footer class="footer bg-light">
       <!-- Section: Social media -->
       <section class="d-flex
           justify-content-center justify-content-lg-between
@@ -14,21 +14,13 @@
         <p>No-Woman-No-API</p>
       </div>
       <!-- Copyright -->
-    </MDBFooter>
+    </footer>
     <!-- Footer -->
 </template>
 
 <script>
-import { MDBFooter } from 'mdbvue'
-
 export default {
-  components: {
-    MDBFooter
-  },
-  data () {
-    return {
-    }
-  }
+	name: 'FooterSection',
 }
 </script>
 
