@@ -1,17 +1,15 @@
 <template>
-    <div class = "container">
-      <SearchBar @searched="onSearch($event)" />
-      <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+  <div class="container">
+    <SearchBar @searched="onSearch($event)" />
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
       <div class="col" v-for="tweet in tweets" :key="tweet._id">
-        <TweetItem 
-          :tweet="tweet"
-        />
+        <TweetItem :tweet="tweet" />
       </div>
     </div>
   </div>
   <FooterSection />
 </template>
-  
+
 <script>
 import flitterApi from "../api/flitterApi";
 import { ref, onMounted } from "vue";
@@ -20,15 +18,15 @@ import FooterSection from "@/components/FooterSection.vue"
 
 
 export default {
-    name: 'PublicView',
-    components: {
+  name: 'PublicView',
+  components: {
     TweetItem,
     FooterSection
-    },
+  },
   setup() {
     const Tweets = ref("");
     const getTweets = async () => {
-      const response = await flitterApi.get("/api/Tweets");
+      const response = await flitterApi.get("/tweet/");
       Tweets.value = response.data;
     };
 
@@ -38,8 +36,7 @@ export default {
 
     return {
       Tweets,
-      };
-    },
-  }
-  </script>
-  
+    };
+  },
+}
+</script>

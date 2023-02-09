@@ -19,7 +19,7 @@ export default {
 
     const createTweet = async () => {
       if (text.value.length > 0 && text.value.length <= 256) {
-        const response = await flitterApi.post('/api/tweets', {
+        const response = await flitterApi.post('/tweet/', {
           text: text.value,
           publishDate: Date.now(),
           author: req.jwtInfo.user_id,
