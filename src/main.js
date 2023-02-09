@@ -5,4 +5,5 @@ import store from "./store";
 import "material-icons/iconfont/material-icons.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 
+
 createApp(App).use(store).use(router).mount("#app");

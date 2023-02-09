@@ -1,204 +1,42 @@
 <template>
-   
-    <div class="row">
-        <div class="col-auto text-center flex-column d-none d-sm-flex">
-            <div class="row h-50">
-                <div class="col">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-            <h5 class="m-2">
-                <span class="badge rounded-circle bg-light border">&nbsp;</span>
-            </h5>
-            <div class="row h-50">
-                <div class="col border-end">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-        </div>
-
-        <div class="col py-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="float-end">Saturday, Feb 4th 2023</div>
-                    <h4 class="card-title text-muted">Fleet 1</h4>
-                    <p class="card-text text-muted">Oh my God! Life is hard...and overall with the Bootcamp</p>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <SearchBar @searched="onSearch($event)" />
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+      <div class="col" v-for="tweet in tweets" :key="tweet._id">
+        <TweetItem :tweet="tweet" />
+      </div>
     </div>
-
-
-    <div class="row">
-        <div class="col-auto text-center flex-column d-none d-sm-flex">
-            <div class="row h-50">
-                <div class="col">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-            <h5 class="m-2">
-                <span class="badge rounded-circle bg-light border">&nbsp;</span>
-            </h5>
-            <div class="row h-50">
-                <div class="col border-end">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-        </div>
-        <div class="col py-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="float-end">Saturday, Feb 4th 2023</div>
-                    <h4 class="card-title text-muted">Fleet 2</h4>
-                    <p class="card-text text-muted">Where is the Sil queen when we need her?</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-auto text-center flex-column d-none d-sm-flex">
-            <div class="row h-50">
-                <div class="col">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-            <h5 class="m-2">
-                <span class="badge rounded-circle bg-light border">&nbsp;</span>
-            </h5>
-            <div class="row h-50">
-                <div class="col border-end">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-        </div>
-
-        <div class="col py-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="float-end">Saturday, Feb 4th 2023</div>
-                    <h4 class="card-title text-muted">Fleet 3</h4>
-                    <p class="card-text text-muted">David deserves a several beers from all of us</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-auto text-center flex-column d-none d-sm-flex">
-            <div class="row h-50">
-                <div class="col">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-            <h5 class="m-2">
-                <span class="badge rounded-circle bg-light border">&nbsp;</span>
-            </h5>
-            <div class="row h-50">
-                <div class="col border-end">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-        </div>
-
-        <div class="col py-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="float-end">Saturday, Feb 4th 2023</div>
-                    <h4 class="card-title text-muted">Fleet 4</h4>
-                    <p class="card-text text-muted">Andrea is the cobaya </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-auto text-center flex-column d-none d-sm-flex">
-            <div class="row h-50">
-                <div class="col">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-            <h5 class="m-2">
-                <span class="badge rounded-circle bg-light border">&nbsp;</span>
-            </h5>
-            <div class="row h-50">
-                <div class="col border-end">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-        </div>
-
-        <div class="col py-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="float-end">Saturday, Feb 4th 2023</div>
-                    <h4 class="card-title text-muted">Fleet 5</h4>
-                    <p class="card-text text-muted">Nela has pelassssso</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-auto text-center flex-column d-none d-sm-flex">
-            <div class="row h-50">
-                <div class="col">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-            <h5 class="m-2">
-                <span class="badge rounded-circle bg-light border">&nbsp;</span>
-            </h5>
-            <div class="row h-50">
-                <div class="col border-end">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-        </div>
-
-        <div class="col py-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="float-end">Saturday, Feb 4th 2023</div>
-                    <h4 class="card-title text-muted">Fleet 6</h4>
-                    <p class="card-text text-muted">Don't worry Mariana, backend waits</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-auto text-center flex-column d-none d-sm-flex">
-            <div class="row h-50">
-                <div class="col">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-            <h5 class="m-2">
-                <span class="badge rounded-circle bg-light border">&nbsp;</span>
-            </h5>
-            <div class="row h-50">
-                <div class="col border-end">&nbsp;</div>
-                <div class="col">&nbsp;</div>
-            </div>
-        </div>
-
-        <div class="col py-2">
-            <div class="card">
-                <div class="card-body">
-                    <div class="float-end">Saturday, Feb 4th 2023</div>
-                    <h4 class="card-title text-muted">Fleet 7</h4>
-                    <p class="card-text text-muted">Emma is waiting for the next chap of The Last of Us</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
+  </div>
+  <FooterSection />
 </template>
 
-
 <script>
-   
+import flitterApi from "../api/flitterApi";
+import { ref, onMounted } from "vue";
+import TweetItem from "../components/TweetItem.vue";
+import FooterSection from "@/components/FooterSection.vue"
 
+
+export default {
+  name: 'PublicView',
+  components: {
+    TweetItem,
+    FooterSection
+  },
+  setup() {
+    const Tweets = ref("");
+    const getTweets = async () => {
+      const response = await flitterApi.get("/tweet/");
+      Tweets.value = response.data;
+    };
+
+    onMounted(() => {
+      getTweets();
+    });
+
+    return {
+      Tweets,
+    };
+  },
+}
 </script>
-
-
-<style scooped>
-    
-   
-
-</style>
-
-

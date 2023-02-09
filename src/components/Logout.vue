@@ -1,5 +1,4 @@
 <!-- COMPONENTE para inyectar en el botón de logout -->
-
 <template>
 	<button @click='handleLogout'>Logout</button>
 </template>
