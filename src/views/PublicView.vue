@@ -1,36 +1,45 @@
 <template>
-<div class="public">
-    <div>
-        <h3 class="text-center">See what’s happening in the world right now</h3>
-        <tweet-item>
-        </tweet-item>
+    <div class = "container">
+      <SearchBar @searched="onSearch($event)" />
+      <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+      <div class="col" v-for="tweet in tweets" :key="tweet._id">
+        <TweetItem 
+          :tweet="tweet"
+        />
+      </div>
     </div>
-</div>
+  </div>
+  <FooterSection />
 </template>
-
-
+  
 <script>
-import TweetItem from '../components/TweetItem.vue'
+import flitterApi from "../api/flitterApi";
+import { ref, onMounted } from "vue";
+import TweetItem from "../components/TweetItem.vue";
+import FooterSection from "@/components/FooterSection.vue"
+
 
 export default {
     name: 'PublicView',
     components: {
-        TweetItem,
-    }
-}
-</script>
-    
-<style scooped>
-   /*.public {
-		max-width: 895px;
-		margin: auto;
-	}
-    @media (min-width: 992px) {
-		.public {
-			margin: 4em auto;
-		}
-    }
-    */
-</style>
+    TweetItem,
+    FooterSection
+    },
+  setup() {
+    const Tweets = ref("");
+    const getTweets = async () => {
+      const response = await flitterApi.get("/api/Tweets");
+      Tweets.value = response.data;
+    };
 
+    onMounted(() => {
+      getTweets();
+    });
 
+    return {
+      Tweets,
+      };
+    },
+  }
+  </script>
+  
