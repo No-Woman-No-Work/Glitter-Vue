@@ -1,17 +1,20 @@
 <!-- COMPONENTE para inyectar en el botón de logout -->
 
 <template>
-	<button @click="handleLogout">Logout</button>
+	<button @click='handleLogout'>Logout</button>
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 export default {
 	setup() {
+            const router = useRouter()
+
 		function handleLogout() {
-			const token = localStorage.getItem("token");
+			const token = localStorage.getItem('token');
 			if (token) {
-				localStorage.removeItem("token");
-				this.$router.push({ name: "home" });
+				localStorage.removeItem('token');
+				router.push('/home');
 			}
 		}
 
@@ -23,22 +26,3 @@ export default {
 </script>
 
 
-<!-- COMO SERÍA EN OPTIONS API -->
-<!-- <template>
-      <button @click="handleLogout">Logout</button>
-    </template>
-    
-<script>
-      export default {
-      methods: {
-            handleLogout() {
-            const token = localStorage.getItem("token");
-            if (token) {
-            localStorage.removeItem("token");
-            // Aquí puedes redirigir a la página de inicio de sesión o hacer otras acciones necesarias después de cerrar la sesión
-            this.$router.push({ name: "home" })
-            }
-            },
-      },
-};
-</script> -->
