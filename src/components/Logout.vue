@@ -11,9 +11,9 @@ export default {
             const router = useRouter()
 
 		function handleLogout() {
-			const token = localStorage.getItem('token');
+			const token = localStorage.getItem('access_token');
 			if (token) {
-				localStorage.removeItem('token');
+				localStorage.removeItem('access_token');
 				router.push('/home');
 			}
 		}

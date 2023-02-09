@@ -5,15 +5,21 @@ import { useRouter } from 'vue-router';
 
 
 const guard = async function () {
-  const token = localStorage.getItem('acess_token'); //hay que cambiar token con el nombre de la clave que utilizamos para almacenar el token JWT en el almacenamiento del navegador
+  const token = localStorage.getItem('access_token'); 
 
   if (!token) {
     return false;
   }
 
   try {
-    const response = await flitterApi.get('/verify-token'); //reemplaza "/verify-token" con la ruta específica que el servidor de backend utiliza para verificar el token JWT
-    return response.data.authenticated;
+    const response = await flitterApi.get('/verify-token');
+    if (response.data.authenticated) {
+      // Almacenar la información adicional del usuario en localStorage o en algún otro lugar
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      return true;
+    } else {
+      return false;
+    }
   } catch (error) {
     return false;
   }
@@ -33,12 +39,12 @@ export default defineComponent({
       }
     });
 
-    const handleGoToFeed = () => {
-      router.push({ name: 'loquesea' }); // nos dirige a x si el usuario esta autenticado: feed?
+    const isAuthenticated = () => {
+      router.push({ name: '' }); // nos dirige a x si el usuario esta autenticado: feed?
     };
 
     return {
-      handleGoToFeed,
+      isAuthenticated,
     };
   },
 });
