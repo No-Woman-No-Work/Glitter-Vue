@@ -32,7 +32,8 @@
 							<input 
 							type="password" class="form-control" placeholder="🔒 Password" v-model="password"/>
 						</div>
-						
+						<div class="text-danger">{{ errorMessage }}</div>
+						<div class="text-center mt-2"></div>
 					</form>
 				</custom-card>
 			</div>
@@ -44,6 +45,7 @@
 <script>
 // import flitterApi from '@/api/flitterApi'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import flitterApi from "../api/flitterApi"
 import CustomCard from "../components/CustomCard.vue";
 import FooterSection from "@/components/FooterSection.vue";
@@ -75,7 +77,7 @@ export default {
 		const username = ref("");
 		const password = ref("");
 		const errorMessage = ref("");
-
+		const router = useRouter()
 
 		async function signup() {
 			const usernameRegex = /^[a-zA-Z0-9_]+$/;
@@ -97,11 +99,13 @@ export default {
 				});
 
 				// if everything´s fine, redirect to loginView
-				this.$router.push("/login"); 
+				
+				router.push("/login");
+				
+				 
 				
 			} catch (error) {
-				console.log('Error interno del servidor 500') //cambiar
-				// errorMessage.value = error.response.data.message;
+				errorMessage.value = error.response.data.message;
 			}
 		}
 
@@ -110,7 +114,7 @@ export default {
 				const emailResponse = await flitterApi.post('/auth/register', {
 					email: email
 				});
-				if (emailResponse.status === 500) {
+				if (emailResponse.status === 400) {
 					console.log('this email already exists')
 					return "This email already exists";
 				}
@@ -118,18 +122,18 @@ export default {
 				const usernameResponse = await flitterApi.post('/auth/register', {
 					username: username
 				});
-				if (usernameResponse.status === 500) {
+				if (usernameResponse.status === 400) {
 					console.log("This username already exists") 
 					return "This username already exists";
-
 				}
 
 				console.log('ok')
 				return "ok";
+
 			} catch (error) {
-				console.log('Something went wrong')
-				// errorMessage.value = error.response.data.message;
-				return "Something went wrong";
+				// console.log('Something went wrong')
+				errorMessage.value = error.response.data.message;
+				// return "Something went wrong";
 			}
 		}
 
