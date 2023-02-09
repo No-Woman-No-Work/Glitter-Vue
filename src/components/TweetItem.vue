@@ -12,25 +12,24 @@
               class="rounded-circle"
             />
             <div class="ms-3">
-              <p class="fw-bold mb-1">author <span class="d-flex justify-content-end">publishDate</span></p>
-              <p class="text-muted mb-0">text Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum natus, molestiae corrupti earum blanditiis minima ratione et laborum exercitationem tenetur veniam distinctio rerum, facilis quidem enim cumque. Odio, dignissimos provident.</p>
+              <p class="fw-bold mb-1">{{author}}<span class="d-flex justify-content-end">{{publishDate}}</span></p>
+              <p class="text-muted mb-0">{{text}}Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum natus, molestiae corrupti earum blanditiis minima ratione et laborum exercitationem tenetur veniam distinctio rerum, facilis quidem enim cumque. Odio, dignissimos provident.</p>
             </div>
           </div>
         </div>
       </div>
       <div class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
-        <a
-          class="btn btn-link m-0 text-reset"
-          href="#"
-          role="button"
-          data-ripple-color="primary"
-          >Message<i class="fas fa-envelope ms-2"></i></a>
-        <a
-          class="btn btn-link m-0 text-reset"
-          href="#"
-          role="button"
-          data-ripple-color="primary">Call<i class="fas fa-phone ms-2"></i>
-        </a>
+        //FOLLOW
+        <button 
+          v-for="btn in btns" 
+          :key="btn.txt" 
+          class="btn" 
+          :class="btn.class" 
+          @click.prevent="btn.action">
+          {{ btn.txt }}
+				</button>
+        //KUDOS
+        <p>{{ tweet.kudos.length }} kudos</p>
       </div>
     </div>
   </div>
@@ -41,13 +40,8 @@
 
 export default {
   name: 'TweetItem',
-  props: {
-    text: String,
-    author: String,
-    publishDate: Date,
-    // kudos: Number,
-  },
-};
+  props: ['text', 'author', 'publishDate', 'kudos']
+  };
 </script>
 
 <style scoped>
