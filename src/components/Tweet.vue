@@ -1,6 +1,5 @@
 <template>
   <div className="tweet">
-    <!-- TO DO/OR NOT, IMPLEMENT AVATAR <img :src="avatar" alt="user-avatar" /> -->
     <div>
       <p>{{ text }}</p>
       <div class="tweet-info">
@@ -19,7 +18,6 @@ export default {
   props: {
     text: String,
     author: String,
-    // avatar: String,
     publishDate: Date,
     // kudos: Number,
   },
