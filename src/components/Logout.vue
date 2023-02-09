@@ -7,7 +7,7 @@
 import { useRouter } from 'vue-router'
 export default {
 	setup() {
-            const router = useRouter()
+		const router = useRouter()
 
 		function handleLogout() {
 			const token = localStorage.getItem('access_token');
