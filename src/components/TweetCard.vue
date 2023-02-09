@@ -3,35 +3,47 @@
     <form @submit.prevent="createTweet">
       <textarea v-model="text" placeholder="Share your thoughts!"></textarea>
       <button type="button" class="postBtn" @click="createTweet">Post</button>
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
     </form>
   </div>
 </template>
-
 <script>
 import flitterApi from "../api/flitterApi"
 
 export default {
   setup() {
     const text = ref('');
+    const errorMessage = ref('');
 
     const createTweet = async () => {
-      const response = await flitterApi.post('/api/tweets', {
-        text: text.value,
-        publishDate: Date.now(),
-        author: req.jwtInfo.user_id,
-        kudos: []
-      });
+      if (text.value.length > 0 && text.value.length <= 256) {
+        const response = await flitterApi.post('/api/tweets', {
+          text: text.value,
+          publishDate: Date.now(),
+          author: req.jwtInfo.user_id,
+          kudos: []
+        });
 
-      if (response.status === 200) {
-        text.value = '';
-        console.log('Tweet created successfully');
+        if (response.status === 200) {
+          text.value = '';
+          errorMessage.value = '';
+          console.log('Tweet created successfully');
+        } else {
+          errorMessage.value = 'Failed to create tweet';
+          console.error('Failed to create tweet');
+        }
+      } else if (text.value.length === 0) {
+        errorMessage.value = 'Tweet must not be empty';
+        console.error('Tweet must not be empty');
       } else {
-        console.error('Failed to create tweet');
+        errorMessage.value = 'Tweet must be less than or equal to 256 characters';
+        console.error('Tweet must be less than or equal to 256 characters');
       }
     };
 
     return {
       text,
+      errorMessage,
       createTweet,
     };
   },

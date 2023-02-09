@@ -11,26 +11,19 @@
 			</div>
 			<div class="col-lg-6">
 
-				<custom-card 
-				:btns="btnArray" 
-				:link="linkArray" 
-				class="mx-auto custom-card"
-				>
+				<custom-card :btns="btnArray" :link="linkArray" class="mx-auto custom-card">
 					<h4 class="text-center">
 						Sign up
 					</h4>
 					<form @submit.prevent="signup">
 						<div class="mb-3 mt-2">
-							<input 
-							type="email" class="form-control" placeholder="✉️ E-mail" v-model="email" />
+							<input type="email" class="form-control" placeholder="✉️ E-mail" v-model="email" />
 						</div>
 						<div class="mb-3 mt-2">
-							<input 
-							type="username" class="form-control" placeholder="👤 Username" v-model="username"/>
+							<input type="username" class="form-control" placeholder="👤 Username" v-model="username" />
 						</div>
 						<div class="mb-3 mt-2">
-							<input 
-							type="password" class="form-control" placeholder="🔒 Password" v-model="password"/>
+							<input type="password" class="form-control" placeholder="🔒 Password" v-model="password" />
 						</div>
 						<div class="text-danger">{{ errorMessage }}</div>
 						<div class="text-center mt-2"></div>
@@ -99,11 +92,11 @@ export default {
 				});
 
 				// if everything´s fine, redirect to loginView
-				
+
 				router.push("/login");
-				
-				 
-				
+
+
+
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
 			}
@@ -123,7 +116,7 @@ export default {
 					username: username
 				});
 				if (usernameResponse.status === 400) {
-					console.log("This username already exists") 
+					console.log("This username already exists")
 					return "This username already exists";
 				}
 
