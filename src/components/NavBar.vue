@@ -4,9 +4,11 @@
       <router-link to="/" class="nav-link active" aria-current="page">
         <span class="material-icons">home</span>
       </router-link>
-      <form @submit.prevent="search">
-        <input type="text" placeholder="Search flits..." v-model="searchTerm" />
-        <button type="submit" onClick={search}>Go</button>
+      <form class="input-group" @submit.prevent="search">
+        <div class="form-outline">
+        <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" />
+        </div>
+        <button type="submit" class="btn btn-primary" onClick={search}>Go</button>
       </form>
     </div>
   </nav>
@@ -68,5 +70,12 @@ export default {
   border-radius: 50%;
   margin: 0.1em;
 }
+.input-group {
+  max-width: 20em;
+}
+.container {
+  max-width: 855px;
+}
 </style>
+
 

@@ -100,9 +100,7 @@ export default {
 
 				// if everything´s fine, redirect to loginView
 				
-				router.push("/login");
-				
-				 
+				router.push("/login"); 
 				
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
