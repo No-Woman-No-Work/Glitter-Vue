@@ -1,17 +1,12 @@
 <template>
   <div class="container">
     <SearchBar @searched="onSearch($event)" />
-    <!-- <ul>
-      <li v-for="tweet in tweets" :key="tweet._id">
+    <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <ul>
+      <li class="col" v-for="tweet in tweets" :key="tweet._id">
         {{ tweet.text }} by {{ tweet.author.username }} on {{ tweet.publishDate }}
       </li>
-    </ul> -->
-    <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
-      <div class="col" v-for="tweet in tweets" :key="tweet._id">
-        <TweetItem 
-        :tweet="tweet"
-         />
-      </div>
+    </ul>
     </div>
   </div>
   <FooterSection />
