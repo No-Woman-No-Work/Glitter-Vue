@@ -5,10 +5,10 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png" alt="profile image" style="width: 45px; height: 45px" class="rounded-circle"/>
         <div class="mb-4 ms-3">
           <div class="d-flex">
-            <p class="fw-bold mb-0 mr-2">{{ author }}author&nbsp;</p>
-            <p class="font-weight-bold text-secondary mb-2">&#8231;&nbsp;{{ publishdate }}publishdate</p>
+            <p class="fw-bold mb-0 mr-2">{{ tweet.author.username }}author&nbsp;</p>
+            <p class="font-weight-bold text-secondary mb-2">&#8231;&nbsp;{{ tweet.publishdate }}publishdate</p>
           </div>
-          <p class="mb-2">{{ text }}Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tenetur consequatur, dolorem impedit reprehenderit eaque magni officiis quaerat amet ullam autem expedita numquam natus quod. Obcaecati quasi pariatur expedita et.</p>
+          <p class="mb-2">{{ tweet.text }}Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tenetur consequatur, dolorem impedit reprehenderit eaque magni officiis quaerat amet ullam autem expedita numquam natus quod. Obcaecati quasi pariatur expedita et.</p>
         </div>
     </div>
     </div>
@@ -28,29 +28,15 @@
   </div>
   </div>
 </template>
-
 <script>
 
 export default {
   name: 'TweetItem',
-  props: ['text', 'author', 'publishDate', 'kudos', 'btns']
+  props: ['tweet', 'btns']
   };
 </script>
 
 <style scoped>
-/*
-.tweet {
-  margin: 5px auto;
-  min-width: 480px;
-  max-width: 640px;
-  min-height: 80px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  display: flex;
-  font-size: 1.1rem;
-  line-height: 18px;
-}
-*/
 .tweet {
   max-width: 50em;
 }
