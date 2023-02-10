@@ -2,28 +2,22 @@
   <div class="container">
     <SearchBar @searched="onSearch($event)" />
     <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
-    <ul>
-      <li class="col" v-for="tweet in tweets" :key="tweet._id">
-        {{ tweet.text }} by {{ tweet.author.username }} on {{ tweet.publishDate }}
-      </li>
-    </ul>
+      <TweetItem v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
     </div>
   </div>
   <FooterSection />
-</template>
+</template> 
 
 <script>
 import flitterApi from "../api/flitterApi";
 import { ref, onMounted } from "vue";
 import TweetItem from "../components/TweetItem.vue";
-import FooterSection from "@/components/FooterSection.vue"
 
 
 export default {
   name: 'PublicView',
   components: {
-    TweetItem,
-    FooterSection
+    TweetItem
   },
   setup() {
     const tweets = ref("");
