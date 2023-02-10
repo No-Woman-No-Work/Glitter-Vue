@@ -5,10 +5,10 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png" alt="profile image" style="width: 45px; height: 45px" class="rounded-circle"/>
         <div class="mb-4 ms-3">
           <div class="d-flex">
-            <p class="fw-bold mb-0 mr-2">{{ tweet.author.username }}author&nbsp;</p>
-            <p class="font-weight-bold text-secondary mb-2">&#8231;&nbsp;{{ tweet.publishdate }}publishdate</p>
+            <p class="fw-bold mb-0 mr-2">{{ author }}author&nbsp;</p>
+            <p class="font-weight-bold text-secondary mb-2">&#8231;&nbsp;{{ publishDate }}publishdate</p>
           </div>
-          <p class="mb-2">{{ tweet.text }}Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tenetur consequatur, dolorem impedit reprehenderit eaque magni officiis quaerat amet ullam autem expedita numquam natus quod. Obcaecati quasi pariatur expedita et.</p>
+          <p class="mb-2">{{ text }}Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tenetur consequatur, dolorem impedit reprehenderit eaque magni officiis quaerat amet ullam autem expedita numquam natus quod. Obcaecati quasi pariatur expedita et.</p>
         </div>
     </div>
     </div>
@@ -32,7 +32,7 @@
 
 export default {
   name: 'TweetItem',
-  props: ['tweet', 'btns']
+  props: ['text', 'author', 'publishDate', 'btns']
   };
 </script>
 
