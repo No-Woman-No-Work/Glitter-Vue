@@ -1,4 +1,37 @@
 <template>
+   <tweet-item :btns="btnArray" class="mx-auto tweet-item">
+   </tweet-item>
+</template>
+
+
+<script>
+import TweetItem from '@/components/TweetItem.vue'
+        export default {
+        name: "OldPublicView",
+        components: {
+            TweetItem,
+        },
+        
+        data() {
+            return {
+                btnArray: [
+                    {
+                        txt: 'Follow',
+                        class: 'fa-solid fa-plus',
+                    },
+                    {
+                        txt: 'Prueba',
+                        class: 'fa-regular fa-heart',
+                    },
+                ],
+            }
+        },
+	}
+</script>
+
+<!-- OLD PUBLIC VIEW
+    
+    <template>
    
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
@@ -200,5 +233,4 @@
    
 
 </style>
-
-
+-->

@@ -1,46 +1,39 @@
 <template>
-<div>
-  <div class="col-xl-6 mb-4">
-    <div class="card border border-white">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="d-flex align-items-center">
-            <img
-              src="https://sm.mashable.com/mashable_sea/photo/default/man-fakes-death-cat-q6u_2z9w.png"
-              alt="User avatar"
-              style="width: 50px; height: 50px"
-              class="rounded-circle"
-            />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">{{author}}<span class="d-flex justify-content-end">{{publishDate}}</span></p>
-              <p class="text-muted mb-0">{{text}}Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum natus, molestiae corrupti earum blanditiis minima ratione et laborum exercitationem tenetur veniam distinctio rerum, facilis quidem enim cumque. Odio, dignissimos provident.</p>
-            </div>
+ <div class="tweet list-group list-group-light ">
+    <div class="list-group-item d-flex justify-content-between align-items-center border border-white">
+      <div class="d-flex align-items-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png" alt="profile image" style="width: 45px; height: 45px" class="rounded-circle"/>
+        <div class="mb-4 ms-3">
+          <div class="d-flex">
+            <p class="fw-bold mb-0 mr-2">{{ author }}author&nbsp;</p>
+            <p class="font-weight-bold text-secondary mb-2">&#8231;&nbsp;{{ publishdate }}publishdate</p>
           </div>
+          <p class="mb-2">{{ text }}Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto tenetur consequatur, dolorem impedit reprehenderit eaque magni officiis quaerat amet ullam autem expedita numquam natus quod. Obcaecati quasi pariatur expedita et.</p>
         </div>
-      </div>
-      <div class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
-        //FOLLOW
-        <button 
-          v-for="btn in btns" 
-          :key="btn.txt" 
-          class="btn" 
-          :class="btn.class" 
-          @click.prevent="btn.action">
-          {{ btn.txt }}
-				</button>
-        //KUDOS
-        <p>{{ tweet.kudos.length }} kudos</p>
-      </div>
     </div>
+    </div>
+    <div>
+      <div
+        class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
+        <button 
+				v-for="btn in btns" 
+				:key="btn.txt" 
+				class="btn" 
+				:class="btn.class" 
+				@click.prevent="btn.action">
+				{{ btn.txt }}
+		    </button>
+      </div>
+    <hr class="my-4">
   </div>
-</div>
+  </div>
 </template>
 
 <script>
 
 export default {
   name: 'TweetItem',
-  props: ['text', 'author', 'publishDate', 'kudos']
+  props: ['text', 'author', 'publishDate', 'kudos', 'btns']
   };
 </script>
 
@@ -58,4 +51,7 @@ export default {
   line-height: 18px;
 }
 */
+.tweet {
+  max-width: 50em;
+}
 </style>

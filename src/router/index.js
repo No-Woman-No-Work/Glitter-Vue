@@ -40,7 +40,12 @@ const routes = [
   path: '/unsubscribe',
   name: 'unsubscribe',
   component: () => import(/* webpackChunkName: "unsubscribe" */ '../views/UnsubscribeView.vue')
-}
+},
+{
+  path: '/oldpublic',
+  name: 'oldpublic',
+  component: () => import(/* webpackChunkName: "public" */ '../views/OldPublicView.vue')
+},
 ]
 
 const router = createRouter({
