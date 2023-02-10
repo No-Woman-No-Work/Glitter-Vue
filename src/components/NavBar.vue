@@ -6,7 +6,7 @@
       </router-link>
       <form class="input-group" @submit.prevent="search">
         <div class="form-outline">
-        <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" />
+          <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" />
         </div>
         <button type="submit" class="btn btn-primary" onClick={search}>Go</button>
       </form>
@@ -18,13 +18,11 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import flitterApi from "../api/flitterApi";
-
 export default {
   name: 'NavBar',
   setup() {
     const searchTerm = ref('');
     const router = useRouter();
-
     // The function returns immediately if the value of searchTerm is falsy to prevent sending an empty search to the server.
     const search = async () => {
       if (!searchTerm.value) {
@@ -34,7 +32,6 @@ export default {
       try {
         const response = await flitterApi.get(`/tweets?search=${searchTerm.value}`);
         const data = response.data;
-
         if (data.length > 0) {
           router.push({
             // TO DO: create these views and routers
@@ -52,7 +49,6 @@ export default {
         console.error(error);
       }
     };
-
     return {
       searchTerm,
       search,
@@ -70,9 +66,11 @@ export default {
   border-radius: 50%;
   margin: 0.1em;
 }
+
 .input-group {
   max-width: 20em;
 }
+
 .container {
   max-width: 855px;
 }

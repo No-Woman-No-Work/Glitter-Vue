@@ -22,7 +22,7 @@ export default {
         const response = await flitterApi.post('/tweet/', {
           text: text.value,
           publishDate: Date.now(),
-          author: req.jwtInfo.user_id,
+          author: '',
           kudos: []
         });
 

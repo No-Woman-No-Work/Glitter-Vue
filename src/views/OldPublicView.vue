@@ -1,33 +1,60 @@
 <template>
-   <tweet-item :btns="btnArray" class="mx-auto tweet-item">
-   </tweet-item>
+    <tweet-item :btns="btnArray" @follow="followUser" class="mx-auto tweet-item">
+    </tweet-item>
 </template>
-
-
+ 
 <script>
 import TweetItem from '@/components/TweetItem.vue'
-        export default {
-        name: "OldPublicView",
-        components: {
-            TweetItem,
-        },
-        
-        data() {
-            return {
-                btnArray: [
-                    {
-                        txt: 'Follow',
-                        class: 'fa-solid fa-plus',
-                    },
-                    {
-                        txt: 'Kudos',
-                        class: 'fa-regular fa-thumbs-up',
-                    },
-                ],
+import { ref } from 'vue';
+import flitterApi from "../api/flitterApi"
+
+
+export default {
+    name: "OldPublicView",
+    components: {
+        TweetItem,
+    },
+
+    setup() {
+        const btnArray = ref([
+            {
+                txt: 'Follow',
+                class: `${btnArray.value[0].isSuccess ? 'btn-success' : ''} ${btnArray.value[0].isLoading ? 'btn-loading' : ''}`,
+                action: () => followUser(),
+                isLoading: false,
+                isSuccess: false,
+            },
+            {
+                txt: 'Kudos',
+                class: 'fa-regular fa-thumbs-up',
+            },
+        ])
+
+        const followUser = async () => {
+            btnArray.value[0].isLoading = true;
+            try {
+                await flitterApi.post(`/:userId/follow`);
+                btnArray.value[0].isLoading = false;
+                btnArray.value[0].isSuccess = true;
+            } catch (error) {
+                btnArray.value[0].isLoading = false;
+                console.error(error);
             }
-        },
-	}
+        };
+
+        return {
+            btnArray,
+            followUser,
+        }
+    },
+}
 </script>
+
+<style scoped>
+.btn-success {
+    background-color: rgb(112, 185, 112),
+}
+</style>
 
 <!-- OLD PUBLIC VIEW
     
