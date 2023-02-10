@@ -20,8 +20,8 @@ import TweetItem from '@/components/TweetItem.vue'
                         class: 'fa-solid fa-plus',
                     },
                     {
-                        txt: 'Prueba',
-                        class: 'fa-regular fa-heart',
+                        txt: 'Kudos',
+                        class: 'fa-regular fa-thumbs-up',
                     },
                 ],
             }
