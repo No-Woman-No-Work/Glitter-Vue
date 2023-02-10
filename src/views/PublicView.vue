@@ -41,48 +41,6 @@ export default {
 }
 </script>
 
-<template>
-  <div class="container">
-    <SearchBar @searched="onSearch($event)" />
-    <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
-      <div class="col" v-for="tweet in tweets" :key="tweet._id">
-        <TweetItem :tweet="tweet" />
-      </div>
-    </div>
-  </div>
-  <FooterSection />
-</template>
-
-<script>
-import flitterApi from "../api/flitterApi";
-import { ref, onMounted } from "vue";
-import TweetItem from "../components/TweetItem.vue";
-import FooterSection from "@/components/FooterSection.vue"
-
-
-export default {
-  name: 'PublicView',
-  components: {
-    TweetItem,
-    FooterSection
-  },
-  setup() {
-    const tweets = ref("");
-    const getTweets = async () => {
-      const response = await flitterApi.get("/tweet/");
-      tweets.value = response.data;
-    };
-
-    onMounted(() => {
-      getTweets();
-    });
-
-    return {
-      tweets,
-    };
-  },
-}
-</script>
 <!-- jajaja chatgpt al rescate: 
   necesitamos que en el script, una vez hecha la petición a la api, 
   poder acceder a las propiedades de cada tweet obtenido por la base de datos 
