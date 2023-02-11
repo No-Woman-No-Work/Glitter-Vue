@@ -3,7 +3,8 @@
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
         <TweetCard />
-        <TweetItem v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
+        <TweetItem v-for="tweet in tweets" :author="tweet.author.username" :publishDate="tweet.publishDate"
+          :text="tweet.text" :key="tweet._id" :tweet="tweet" />
       </div>
     </div>
   </div>
