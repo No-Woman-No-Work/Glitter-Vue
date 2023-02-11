@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container d-flex flex-column justify-content-center align-items-center">
     <SearchBar @searched="onSearch($event)" />
-    <div class="row row-cols-1 row-cols-md-2 g-4 mt-2">
+    <div class="mt-2">
       <TweetItem v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
     </div>
   </div>
