@@ -13,9 +13,9 @@
       </footer>
     </div>
   </div>
-</template> 
+</template>  -->
 
-<script>
+<!-- <script>
 import flitterApi from "../api/flitterApi";
 import { ref, onMounted } from "vue";
 import TweetItem from "../components/TweetItem.vue";

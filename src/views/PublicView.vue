@@ -22,7 +22,7 @@ import TweetItem from "../components/TweetItem.vue";
 
 
 export default {
-  name: 'PublicTestView',
+  name: 'PublicView',
   components: {
     TweetItem,
   },
