@@ -41,7 +41,7 @@ const routes = [
     path: "/private",
     name: "private",
     component: () =>
-      import(/* webpackChunkName: "private" */ "../views/AreaPrivada.vue"),
+      import(/* webpackChunkName: "private" */ "../views/PrivateView.vue"),
   },
   {
     path: "/unsubscribe",
