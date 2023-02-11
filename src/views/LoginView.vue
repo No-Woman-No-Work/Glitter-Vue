@@ -76,7 +76,7 @@ export default {
 					password: password.value,
 				});
 
-				localStorage.setItem("access_token", response.data.access_token);
+				localStorage.setItem("access_token", response.data.token);
 				router.push("/private"); 
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
