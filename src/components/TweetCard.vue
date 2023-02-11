@@ -1,47 +1,57 @@
 <template>
-  <div>
+  <div class="card">
+    <h3>Share something with our community 🐥</h3>
     <form @submit.prevent="createTweet">
-      <textarea v-model="text" placeholder="Share your thoughts!"></textarea>
+      <textarea v-model="text" id="textarea"
+        placeholder="Remember we hate KFC and messages that exceed 256 characters"></textarea>
       <button type="button" class="postBtn" @click="createTweet">Post</button>
       <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
     </form>
   </div>
 </template>
 
+
 <script>
 import flitterApi from "../api/flitterApi"
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+
 
 export default {
   setup() {
     const text = ref('');
     const errorMessage = ref('');
 
+
+    watch(text, (newValue) => {
+      errorMessage.value = newValue.length === 0 ? 'Glit must not be empty'
+        : newValue.length > 256 ? 'Glit must be less than or equal to 256 characters'
+          : '';
+    });
+
+
     const createTweet = async () => {
-      if (text.value.length > 0 && text.value.length <= 256) {
-        const response = await flitterApi.post('/tweets', {
+      if (errorMessage.value) return;
+
+
+      try {
+        const response = flitterApi.post('/tweets', {
           text: text.value,
           publishDate: Date.now(),
           author: '',
           kudos: []
         });
 
+
         if (response.status === 200) {
           text.value = '';
-          errorMessage.value = '';
-          console.log('Tweet created successfully');
-        } else {
-          errorMessage.value = 'Failed to create tweet';
-          console.error('Failed to create tweet');
+          console.log('Glit created successfully');
         }
-      } else if (text.value.length === 0) {
-        errorMessage.value = 'Tweet must not be empty';
-        console.error('Tweet must not be empty');
-      } else {
-        errorMessage.value = 'Tweet must be less than or equal to 256 characters';
-        console.error('Tweet must be less than or equal to 256 characters');
+      } catch (error) {
+        errorMessage.value = 'Failed to create glit';
+        console.error('Failed to create glit: ', error);
       }
     };
+
 
     return {
       text,
@@ -52,7 +62,19 @@ export default {
 };
 </script>
 
+
+
+
+
+
 <style scoped>
+.card {
+  margin-bottom: 16px;
+  padding: 20px;
+  background-color: antiquewhite;
+}
+
+
 textarea {
   flex-wrap: wrap;
   margin: auto;
@@ -60,13 +82,14 @@ textarea {
   height: 100px;
   padding: 12px 20px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid #111111;
   border-radius: 5px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   font-size: 16px;
   resize: none;
   margin-bottom: 10px;
 }
+
 
 .postBtn {
   background-color: #FFFFFF;
@@ -88,6 +111,7 @@ textarea {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
+
 
 .postBtn:hover {
   background-color: rgb(249, 250, 251);
