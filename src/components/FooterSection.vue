@@ -19,7 +19,7 @@ export default {
 
 <style>
 .footer {
-  position: sticky;
+  position:-webkit-sticky;
   bottom: 0;
   width: 100%;
   height: 0rem;

@@ -33,14 +33,14 @@ export default defineComponent({
       const authenticated = await guard();
 
       if (!authenticated) {
-        next('/home'); // nos dirige a x si el usuario no esta autenticado: home o login?
+        next('/login'); 
       } else {
         next();
       }
     });
 
     const isAuthenticated = () => {
-      router.push({ name: '' }); // nos dirige a x si el usuario esta autenticado: feed?
+      router.push({ name: 'private' }); // nos dirige a x si el usuario esta autenticado
     };
 
     return {
@@ -48,3 +48,23 @@ export default defineComponent({
     };
   },
 });
+
+
+
+// JAIME /* eslint-disable @typescript-eslint/no-explicit-any */
+// import { RouteLocation } from "vue-router";
+
+// const haveAuthGuard = (_to: RouteLocation, _from: RouteLocation, next: any) => {
+
+//   const token = localStorage.getItem("access_token");
+
+//   if (token) {
+//     // queremos navegar!
+//     next();
+//   } else {
+//     alert("No estás autenticado");
+//     next({ name: "login" });
+//   }
+// };
+
+// export default haveAuthGuard;
