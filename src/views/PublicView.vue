@@ -17,7 +17,7 @@ import TweetItem from "../components/TweetItem.vue";
 export default {
   name: 'PublicView',
   components: {
-    TweetItem
+    TweetItem,
   },
   setup() {
     const tweets = ref("");
