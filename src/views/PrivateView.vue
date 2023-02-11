@@ -23,7 +23,7 @@ export default {
   setup() {
     const tweets = ref("");
     const getTweets = async () => {
-      const response = await flitterApi.get("/tweets", {
+      const response = await flitterApi.get("/tweets/private", {
         params: {
           page: 1,
           limit: 7,
