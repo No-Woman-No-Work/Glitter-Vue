@@ -63,6 +63,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "public" */ "../views/TweetTest.vue"),
   },
+  {
+    path: "/public-test",
+    name: "publictests",
+    component: () =>
+      import(/* webpackChunkName: "public" */ "../views/PublicTestView.vue"),
+  },
 ];
 
 const router = createRouter({

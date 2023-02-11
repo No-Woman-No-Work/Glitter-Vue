@@ -20,6 +20,7 @@ export default {
   setup() {
     const text = ref('');
     const errorMessage = ref('');
+    const userId = ref('');
 
 
     watch(text, (newValue) => {
@@ -32,12 +33,11 @@ export default {
     const createTweet = async () => {
       if (errorMessage.value) return;
 
-
       try {
-        const response = flitterApi.post('/tweets', {
+        const response = await flitterApi.post('/tweets', {
           text: text.value,
           publishDate: Date.now(),
-          author: '',
+          author: userId.value,
           kudos: []
         });
 
@@ -57,6 +57,7 @@ export default {
       text,
       errorMessage,
       createTweet,
+      userId
     };
   },
 };
