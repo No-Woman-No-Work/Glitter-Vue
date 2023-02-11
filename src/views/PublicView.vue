@@ -5,6 +5,12 @@
       <div class="mt-2">
         <TweetItem v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
       </div>
+      <footer class="text-center">
+        <p class="mb-3">Don't miss what's happening! Users on Flitter are the first to know.</p>
+        <router-link router-link to="/signup" class="nav-link active mb-3" aria-current="page">
+          <button class="btn btn-secondary" type="button">Sign up now to see more</button>
+        </router-link>
+      </footer>
     </div>
 </div>
 </template> 
@@ -48,6 +54,12 @@ export default {
   .tweets-container {
     margin-top: 1em;
   }
+  .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0rem;
+}
 </style>
 
 <!-- jajaja chatgpt al rescate: 
