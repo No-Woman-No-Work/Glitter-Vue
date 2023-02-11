@@ -1,9 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-// import { isAuthenticated } from './authGuard'
-
-// import guard from './authGuard.js'
-// beforeEnter: [haveAuthGuard] --> should be used in those routes that require authentication
+// import { isAuthenticated, useAuthGuard} from './authGuard'
 
 const routes = [
   {
@@ -14,12 +11,14 @@ const routes = [
   {
     path: "/login",
     name: "login",
+    // beforeEnter: isAuthenticated,
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
   },
   {
     path: "/signup",
     name: "signup",
+    // beforeEnter: useAuthGuard,
     component: () =>
       import(/* webpackChunkName: "signup" */ "../views/SignupView.vue"),
   },
@@ -28,8 +27,7 @@ const routes = [
     name: "new-password",
     component: () =>
       import(
-        /* webpackChunkName: "new-password" */ "../views/PasswordView.vue"
-      ),
+        /* webpackChunkName: "new-password" */ "../views/PasswordView.vue"),
   },
   {
     path: "/public",
@@ -40,12 +38,14 @@ const routes = [
   {
     path: "/private",
     name: "private",
+    // beforeEnter: useAuthGuard,
     component: () =>
       import(/* webpackChunkName: "private" */ "../views/PrivateView.vue"),
   },
   {
     path: "/unsubscribe",
     name: "unsubscribe",
+    // beforeEnter: useAuthGuard,
     component: () =>
       import(
         /* webpackChunkName: "unsubscribe" */ "../views/UnsubscribeView.vue"
