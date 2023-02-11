@@ -12,7 +12,7 @@ const setAuthorizationHeader = (config) => {
   if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
   } else {
-      config.headers["Authorization"] = `Bearer ${''}`;
+      config.headers["Authorization"] = '';
   }
   return config;
 };
@@ -22,7 +22,7 @@ flitterApi.interceptors.request.use(setAuthorizationHeader);
 flitterApi.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response.status === 401) {
+    if (error.status === 401) {
       // handle unauthorized error
       router.push("/login")
     }

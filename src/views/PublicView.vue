@@ -5,7 +5,6 @@
       <TweetItem v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
     </div>
   </div>
-  <FooterSection />
 </template> 
 
 <script>
@@ -22,14 +21,14 @@ export default {
   setup() {
     const tweets = ref("");
     const getTweets = async () => {
-      const response = await flitterApi.get("/tweet", {
+      const response = await flitterApi.get("/tweets", {
         params: {
           page: 1,
           limit: 5,
           order: 'desc'
         }
       });
-      tweets.value = response.data;
+      tweets.value = response.data.docs;
     };
 
     onMounted(() => {
