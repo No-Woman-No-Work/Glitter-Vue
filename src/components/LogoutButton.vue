@@ -1,6 +1,8 @@
 <!-- COMPONENTE para inyectar en el botón de logout -->
 <template>
-	<button @click='handleLogout'>Logout</button>
+	<button @click='handleLogout'><span class="material-icons">
+logout
+</span>Logout</button>
 </template>
 
 <script>
@@ -23,5 +25,23 @@ export default {
 	},
 };
 </script>
+
+<style scoped>
+button {
+  color: white;
+  background-color: #A0C3D2;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+span.material-icons {
+  font-size: 1.4em;
+  margin-right: 0.4em;
+  vertical-align: middle;
+}
+</style>
 
 
