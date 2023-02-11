@@ -13,7 +13,7 @@ export default {
 			const token = localStorage.getItem('access_token');
 			if (token) {
 				localStorage.removeItem('access_token');
-				router.push('/home');
+				router.push('/');
 			}
 		}
 
