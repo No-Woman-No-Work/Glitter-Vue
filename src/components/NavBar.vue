@@ -10,6 +10,9 @@
         </div>
         <button type="submit" class="btn btn-primary" onClick={search}>Go</button>
       </form>
+      <template v-if="this.$route.name === 'private'">
+        <LogoutButton />
+      </template>
     </div>
   </nav>
 </template>
@@ -18,8 +21,13 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import flitterApi from "../api/flitterApi";
+import LogoutButton from "./LogoutButton.vue";
+
 export default {
   name: 'NavBar',
+  components: {
+    LogoutButton
+  },
   setup() {
     const searchTerm = ref('');
     const router = useRouter();
