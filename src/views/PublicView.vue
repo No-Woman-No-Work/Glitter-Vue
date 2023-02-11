@@ -1,10 +1,12 @@
 <template>
-  <div class="container d-flex flex-column justify-content-center align-items-center">
-    <SearchBar @searched="onSearch($event)" />
-    <div class="mt-2">
-      <TweetItem v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
+  <div class="tweets-container">
+    <div class="container d-flex flex-column justify-content-center align-items-center">
+      <SearchBar @searched="onSearch($event)" />
+      <div class="mt-2">
+        <TweetItem v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
+      </div>
     </div>
-  </div>
+</div>
 </template> 
 
 <script>
@@ -24,7 +26,7 @@ export default {
       const response = await flitterApi.get("/tweets", {
         params: {
           page: 1,
-          limit: 5,
+          limit: 7,
           order: 'desc'
         }
       });
@@ -41,6 +43,12 @@ export default {
   },
 }
 </script>
+
+<style>
+  .tweets-container {
+    margin-top: 1em;
+  }
+</style>
 
 <!-- jajaja chatgpt al rescate: 
   necesitamos que en el script, una vez hecha la petición a la api, 
