@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="tweets-container">
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <SearchBar @searched="onSearch($event)" />
@@ -61,4 +61,4 @@ export default {
   width: 100%;
   height: 0rem;
 }
-</style>
+</style> -->
