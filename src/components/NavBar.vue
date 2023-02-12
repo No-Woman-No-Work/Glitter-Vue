@@ -37,13 +37,18 @@
           <span><i class="fas fa-home fa-lg"></i></span>
         </router-link>
       </li>
+      <li class="nav-item me-3 me-lg-1 active" v-if="checkLogin(true)">
+        <router-link to="/private" class="nav-link" aria-current="page">
+          <span><i class="fa-solid fa-comments fa-lg"></i></span>
+        </router-link>
+      </li>
       <li class="nav-item me-3 me-lg-1 active">
         <router-link to="/public" class="nav-link" aria-current="page">
           <span><i class="fas fa-users fa-lg"></i></span>
         </router-link>
       </li>
       <li class="nav-item me-3 me-lg-1 active" v-if="checkLogin(true)">
-        <router-link to="/private" class="nav-link" aria-current="page">
+        <router-link to="/user-profile" class="nav-link" aria-current="page">
           <span><i class="fa-solid fa-user fa-lg"></i></span>
         </router-link>
       </li>
