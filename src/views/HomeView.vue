@@ -33,7 +33,7 @@
 				#FlitterFlock today and start flittering! #SpreadYourWings 🌪️</p>
 			<p class="lead">
 				<router-link to="/public">
-					<a class="btn btn-primary" href="#" role="button">Explore</a>
+					<button class="btn btn-primary custom-btn-explore" type="button">Explore</button>
 				</router-link>
 			</p>
 		</div>
@@ -86,6 +86,17 @@ img {
 .custom-btn {
 	display: block;
 	margin: 0 auto;
+	line-height: 28pt;
+	padding: 0 20px;
+	background: #ffa580;
+	letter-spacing: 2px;
+	transition: .2s all ease-in-out;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 1);
+	box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.custom-btn-explore {
 	line-height: 28pt;
 	padding: 0 20px;
 	background: #ffa580;

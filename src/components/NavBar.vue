@@ -18,7 +18,7 @@
         <div class="form-outline">
           <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" />
         </div>
-        <button type="submit" class="btn btn-primary" onClick={search}><i class="fas fa-search"></i></button>
+        <button type="submit" class="btn btn-primary btn-form" onClick={search}><i class="fas fa-search"></i></button>
       </form>
     </div>
     <!-- Final left elements -->
@@ -28,7 +28,7 @@
     <ul class="navbar-nav flex-row d-none d-md-flex">
     </ul>
     -->
-    
+
     <!-- Fin center elements -->
 
     <!-- Right elements -->
@@ -144,6 +144,21 @@ export default {
 }
 .container {
   max-width: 855px;
+}
+.btn-form {
+  line-height: 5pt;
+	padding: 0 20px;
+  background: #ffa580;
+	letter-spacing: 2px;
+	transition: .2s all ease-in-out;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+}
+input.form-control {
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  background: #f8f4e5;
 }
 </style>
 
