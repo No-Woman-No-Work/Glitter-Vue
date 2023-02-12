@@ -3,8 +3,16 @@
       <div class="container d-flex flex-column justify-content-center align-items-center">
         <div class="mt-2">
           <TweetCard />
-          <TweetItem :btns="btnArray" v-for="tweet in tweets" :author="tweet.author.username" :userId ="tweet.author._id.value" :publishDate="tweet.publishDate"
-            :text="tweet.text" :key="tweet._id" :tweet="tweet" @click="btn.action(userId)" />
+          <TweetItem 
+          :btns="btnArray" v-for="tweet in tweets" 
+          :key="tweet._id" 
+          :tweet="tweet" 
+          :author="tweet.author.username" 
+          :userId="tweet.author._id"
+          :publishDate="tweet.publishDate"
+          :text="tweet.text" 
+          @click.prevent="followUser(tweet.author._id)" />
+
         </div>
       </div>
     </div>

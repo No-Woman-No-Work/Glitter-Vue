@@ -11,18 +11,19 @@
                   class="rounded-circle img-fluid" style="width: 100px;" />
               </div>
               <h4 class="mb-2">{{ username }}</h4>
-              <p class="text-muted mb-4"><a href="#!">{{ activity }}</a></p>
+              <p class="text-muted mb-4">{{ email }} <span>|</span> <a href="#!">My activity {{ activity }}</a>
+              </p>
               <button type="button" class="btn btn-primary btn-rounded btn-lg">
                 {{ btn.text }}
               </button>
-              <div class="d-flex justify-content-center text-center mt-5 mb-2">
-                <div>
-                  <p class="mb-2 h5">8471</p>
-                  <p class="followers text-muted mb-0">Followers</p>
+              <div class="d-flex justify-content-between text-center mt-5 mb-2">
+                <div class="followers">
+                  <p class="mb-2 h5">{{ followers }}</p>
+                  <p class="text-muted mb-0">Followers</p>
                 </div>
-                <div>
-                  <p class="mb-2 h5">4751</p>
-                  <p class="following text-muted mb-0">Following</p>
+                <div class="following">
+                  <p class="mb-2 h5">{{ following }}</p>
+                  <p class="text-muted mb-0">Following</p>
                 </div>
               </div>
             </div>
@@ -37,17 +38,16 @@
 <script>
 export default {
   name: 'UserCard',
-  props: ['username', 'email', 'btn', 'following', 'followers'],
-  methods: {
-    unsubscribe() {
-      this.$emit('unsubscribe');
-    }
-  }
+  props: ['username', 'email', 'activity', 'btn', 'following', 'followers'],
 }
 </script>
 
 <style scoped>
 .followers {
-  margin-left: 30px;
+  margin-left: 80px;
+}
+
+.following {
+  margin-right: 80px;
 }
 </style>
