@@ -3,6 +3,7 @@
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <SearchBar @searched="onSearch($event)" />
       <div class="mt-2">
+      <div class="d-flex justify-content-end"><SortButton /></div>
         <TweetItem v-for="tweet in tweets" :key="tweet._id" :author="tweet.author.username" :publishDate="tweet.publishDate" :text="tweet.text" :tweet="tweet" :imagePath="tweet.imagePath" />
       </div>
       <footer class="text-center">
@@ -19,12 +20,14 @@
 import flitterApi from "../api/flitterApi";
 import { ref, onMounted } from "vue";
 import TweetItem from "../components/TweetItem.vue";
+import SortButton from "../components/SortButton.vue";
 
 
 export default {
   name: 'PublicView',
   components: {
     TweetItem,
+    SortButton
   },
   setup() {
     const tweets = ref([]);
