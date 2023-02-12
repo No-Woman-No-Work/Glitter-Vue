@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-// import { isAuthenticated, useAuthGuard} from './authGuard'
+import { useAuthGuard } from "./authGuard";
+// import { isAuthenticated } from "./authGuard";
 
 const routes = [
   {
@@ -27,7 +28,8 @@ const routes = [
     name: "new-password",
     component: () =>
       import(
-        /* webpackChunkName: "new-password" */ "../views/PasswordView.vue"),
+        /* webpackChunkName: "new-password" */ "../views/PasswordView.vue"
+      ),
   },
   {
     path: "/public",
@@ -38,14 +40,14 @@ const routes = [
   {
     path: "/private",
     name: "private",
-    // beforeEnter: useAuthGuard,
+    beforeEnter: useAuthGuard,
     component: () =>
       import(/* webpackChunkName: "private" */ "../views/PrivateView.vue"),
   },
   {
     path: "/unsubscribe",
     name: "unsubscribe",
-    // beforeEnter: useAuthGuard,
+    beforeEnter: useAuthGuard,
     component: () =>
       import(
         /* webpackChunkName: "unsubscribe" */ "../views/UnsubscribeView.vue"
@@ -58,10 +60,10 @@ const routes = [
       import(/* webpackChunkName: "public" */ "../views/OldPublicView.vue"),
   },
   {
-    path: "/tests",
-    name: "tests",
+    path: "/user-profile",
+    name: "profile",
     component: () =>
-      import(/* webpackChunkName: "public" */ "../views/TweetTest.vue"),
+      import(/* webpackChunkName: "public" */ "../views/UserProfileView.vue"),
   },
   // {
   //   path: "/public-test",

@@ -1,32 +1,65 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container justify-content-evenly d-flex align-items-center text-center">
-      <router-link to="/" class="nav-link active" aria-current="page">
-        <span class="material-icons">home</span>
-      </router-link>
-      <form class="input-group" @submit.prevent="search">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container container-fluid justify-content-between">
+    <!-- Left elements -->
+    <div class="d-flex">
+      <!-- Logo Flitter -->
+      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
+        <img
+          src="../assets/img/logo_navbar.svg"
+          height="35"
+          alt="Flitter Logo"
+          loading="lazy"
+          style="margin-top: 2px;"
+        />
+      </a>
+      <!-- Search -->
+      <form class="input-group w-auto my-auto d-none d-sm-flex" @submit.prevent="search">
         <div class="form-outline">
           <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" />
         </div>
-        <button type="submit" class="btn btn-primary" onClick={search}>Go</button>
+        <button type="submit" class="btn btn-primary" onClick={search}><i class="fas fa-search"></i></button>
       </form>
-      <template v-if="this.$route.name === 'private'">
-        <LogoutButton />
-      </template>
     </div>
-  </nav>
+    <!-- Final left elements -->
+
+    <!-- Center elements ¿¿¿???
+    <ul class="navbar-nav flex-row d-none d-md-flex">
+    
+    </ul>
+    -->
+    <!-- Fin center elements -->
+
+    <!-- Right elements -->
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item me-3 me-lg-1 active">
+        <router-link to="/" class="nav-link" aria-current="page">
+          <span><i class="fas fa-home fa-lg"></i></span>
+        </router-link>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <router-link to="/public" class="nav-link" aria-current="page">
+          <span><i class="fas fa-users fa-lg"></i></span>
+        </router-link>
+      </li>
+      <li v-if="isLogged === true" class="nav-item me-3 me-lg-1">
+        <router-link to="/public" class="nav-link" aria-current="page">
+          <span><i class="fas fa-users fa-lg"></i></span>
+        </router-link>
+      </li>
+    </ul>
+    <!-- Right elements -->
+  </div>
+</nav>
 </template>
- 
+
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import flitterApi from "../api/flitterApi";
-import LogoutButton from "./LogoutButton.vue";
-
 export default {
   name: 'NavBar',
   components: {
-    LogoutButton
   },
   setup() {
     const searchTerm = ref('');
@@ -74,11 +107,9 @@ export default {
   border-radius: 50%;
   margin: 0.1em;
 }
-
 .input-group {
   max-width: 20em;
 }
-
 .container {
   max-width: 855px;
 }
