@@ -11,6 +11,7 @@
 					{{ btn.txt }}
 				</button>
 
+
 				<router-link :to="link.route" v-for="link in link" :key="link.txt" class="link" :class="link.class">
 					{{ link.txt }}
 				</router-link>
@@ -19,6 +20,7 @@
 		</div>
 	</div>
 </template>
+
 
 <script>
 export default {
@@ -32,10 +34,28 @@ export default {
 }
 </script>
 
+
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
+
+
+body {
+	background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg) center center no-repeat;
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	margin: 0;
+	padding: 0;
+}
+
 .card {
-	border: none;
-	box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+	background: #f8f4e5;
+	padding: 50px 100px;
+	border: 2px solid rgba(0, 0, 0, 1);
+	box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
 }
 </style>
 
