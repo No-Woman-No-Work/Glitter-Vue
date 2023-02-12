@@ -32,18 +32,23 @@
 
     <!-- Right elements -->
     <ul class="navbar-nav flex-row">
-      <li class="nav-item me-3 me-lg-1 active">
+      <li class="nav-item me-3 me-lg-1 active" v-if="checkLogout(true)">
         <router-link to="/" class="nav-link" aria-current="page">
           <span><i class="fas fa-home fa-lg"></i></span>
         </router-link>
       </li>
-      <li class="nav-item me-3 me-lg-1">
+      <li class="nav-item me-3 me-lg-1 active">
         <router-link to="/public" class="nav-link" aria-current="page">
           <span><i class="fas fa-users fa-lg"></i></span>
         </router-link>
       </li>
-      <li class="nav-item me-3 me-lg-1" v-if="this.$route.name === 'private'">
-        <LogoutButton />
+      <li class="nav-item me-3 me-lg-1 active" v-if="checkLogin(true)">
+        <router-link to="/private" class="nav-link" aria-current="page">
+          <span><i class="fa-solid fa-user fa-lg"></i></span>
+        </router-link>
+      </li>
+      <li class="nav-item me-3 me-lg-1" v-if="checkLogin(true)">
+        <span><LogoutButton /></span>
       </li>
     </ul>
     <!-- Right elements -->
@@ -91,9 +96,29 @@ export default {
       }
     };
 
+    function checkLogin() {
+      const token = localStorage.getItem('access_token');
+      if (token) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    function checkLogout() {
+      const token = localStorage.getItem('access_token');
+      if (!token) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     return {
       searchTerm,
       search,
+      checkLogin,
+      checkLogout,
     };
   },
 };
