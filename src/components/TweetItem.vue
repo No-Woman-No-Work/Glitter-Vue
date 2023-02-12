@@ -6,7 +6,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png" alt="profile image" style="width: 45px; height: 45px" class="rounded-circle" />
             &nbsp;&nbsp;
             <p class="fw-bold mb-0">@{{ author }}</p>
-            <p class="text-secondary mb-0 ms-auto">{{ publishDate }}</p>
+            <p class="text-secondary mb-0 ms-auto">{{ formattedDate(publishDate) }}</p>
           </div>
           <p class="mb-2">{{ text }}</p>
           <div class="d-flex" v-if="imagePath">
@@ -39,9 +39,14 @@ export default {
     const followUser = () => {
       this.$emit('followUser');
     };
+    const formattedDate = date => {
+      const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      return (new Date(date)).toLocaleDateString('es-ES', options);
+    };
   
     return {
-      followUser
+      followUser,
+      formattedDate
     };
   }
 }
