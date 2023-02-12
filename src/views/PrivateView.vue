@@ -3,7 +3,13 @@
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
         <TweetCard />
-        <div class="d-flex justify-content-end"><SortButton /></div>
+
+        <!-- Search bar -->
+        <div class="search-bar d-flex justify-content-end">
+          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
+        </div>
+        <!-- Search bar -->
+
         <TweetItem v-for="tweet in tweets.docs" :author="tweet.author.username" :publishDate="tweet.publishDate"
           :text="tweet.text" :key="tweet._id" :tweet="tweet" :imagePath="tweet.imagePath" />
         
@@ -51,7 +57,7 @@ import flitterApi from "../api/flitterApi";
 import { ref, onMounted, watch } from "vue";
 import TweetItem from "../components/TweetItem.vue";
 import TweetCard from '@/components/TweetCard.vue'
-import SortButton from "../components/SortButton.vue";
+import Toggle from '@vueform/toggle'
 
 const defaultPage = 1
 const defaultLimit = 2
@@ -62,10 +68,11 @@ export default {
   components: {
     TweetItem,
     TweetCard,
-    SortButton
+    Toggle
   },
   setup() {
     const currentPage = ref(defaultPage);
+    const currentOrder = ref(defaultOrder);
     const tweets = ref("");
 
     const getTweets = async (page, limit, order) => {
@@ -77,22 +84,24 @@ export default {
         }
       });
       tweets.value = response.data;
-      console.log(tweets.value)
     };
 
     onMounted(() => {
-      getTweets(currentPage.value, defaultLimit, defaultOrder);
+      getTweets(currentPage.value, defaultLimit, currentOrder.value);
     });
 
-    watch(() => currentPage.value, (newValue, oldValue) => {
-      if (newValue !== oldValue) {
-        getTweets(currentPage.value, defaultLimit, defaultOrder);
-      }
+    watch(() => currentPage.value, () => {
+      getTweets(currentPage.value, defaultLimit, currentOrder.value);
+    })
+
+    watch(() => currentOrder.value, () => {
+      getTweets(currentPage.value, defaultLimit, currentOrder.value);
     })
 
     return {
       tweets,
-      currentPage
+      currentPage,
+      currentOrder
     };
   },
 }
@@ -168,5 +177,24 @@ export default {
   .paginator .back-button:active,
   .paginator .next-button:active {
     background-color: #e6e6e6;
+  }
+
+  .search-bar {
+    margin-bottom: 1em;
+  }
+
+  @import "@vueform/toggle/themes/default.css";
+
+  .toggle-blue {
+    --toggle-width: 7rem;
+    --toggle-height: 1.85rem;
+
+    --toggle-bg-on: #2980b9;
+    --toggle-border-on: #2980b9;
+    --toggle-bg-off: #2980b9;
+    --toggle-border-off: #2980b9;
+
+    --toggle-text-on: #ffffff;
+    --toggle-text-off: #ffffff;
   }
 </style>
