@@ -1,20 +1,18 @@
 <template>
   <div class="tweet list-group list-group-light ">
     <div class="list-group-item d-flex justify-content-between align-items-center border border-white">
-      <div class="d-flex align-items-center">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png" alt="profile image"
-          style="width: 45px; height: 45px" class="rounded-circle" />
-        <div class="mb-4 ms-3">
-          <div class="d-flex">
-            <p class="fw-bold mb-0 mr-2">@{{ author }}&nbsp;</p>
-            <p class="font-weight-bold text-secondary mb-2">&#8231;&nbsp;{{ publishDate }}</p>
+        <div class="ms-3 me-3 w-100">
+          <div class="d-flex align-items-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png" alt="profile image" style="width: 45px; height: 45px" class="rounded-circle" />
+            &nbsp;&nbsp;
+            <p class="fw-bold mb-0">@{{ author }}</p>
+            <p class="text-secondary mb-0 ms-auto">{{ publishDate }}</p>
           </div>
           <p class="mb-2">{{ text }}</p>
           <div class="d-flex" v-if="imagePath">
-            <img :src="'http://localhost:3000' + imagePath" />
+            <img class="w-100" :src="'http://localhost:3000' + imagePath" />
           </div>
         </div>
-      </div>
     </div>
     <div>
       <div class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
