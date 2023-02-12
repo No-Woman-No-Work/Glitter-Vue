@@ -158,7 +158,7 @@ h2 {
 
 	.custom-card {
 		margin: 0;
-		margin-top: 5.9git em;
+		margin-top: 5.9em;
 	}
 
 
