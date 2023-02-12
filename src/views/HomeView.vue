@@ -72,7 +72,7 @@ export default {
 
 
 img {
-	max-width: 500px;
+	width: 300px;
 	margin: 1em auto 0 auto;
 }
 
@@ -151,6 +151,7 @@ h2 {
 
 
 	img {
+		width: 400px;
 		margin: 1em;
 		margin-top: 6.9em;
 	}
@@ -163,10 +164,11 @@ h2 {
 
 
 	h2 {
-		color: #545454;
+		color: black;
 		margin: 0;
 		margin-top: 0.8em;
-		margin-left: 1.4em;
+		margin-left: 3em;
+		letter-spacing: 2px;
 	}
 
 
@@ -182,6 +184,9 @@ h2 {
 
 	.jumbotron {
 		margin: 5em auto;
+	}
+	.copy {
+		letter-spacing: 2px;
 	}
 }
 </style>
