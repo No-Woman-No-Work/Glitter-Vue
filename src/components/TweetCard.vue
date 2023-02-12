@@ -4,7 +4,9 @@
     <form @submit.prevent="createTweet">
       <textarea v-model="text" id="textarea" placeholder="Remember we hate KFC and messages that exceed 256 characters"
         maxlength="256"></textarea>
-      <input type="file" @change="onFileChange" />
+      <div class="mb-3">
+        <input class="form-control" id="formFile" type="file" @change="onFileChange" />
+      </div>
       <img v-if="imageUrl" :src="imageUrl" />
       <div class="button">
         <button type="button" class="postBtn" @click="createTweet">Post</button>
