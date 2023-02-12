@@ -24,10 +24,11 @@
     <!-- Final left elements -->
 
     <!-- Center elements ¿¿¿???
+
     <ul class="navbar-nav flex-row d-none d-md-flex">
-    
     </ul>
     -->
+    
     <!-- Fin center elements -->
 
     <!-- Right elements -->
@@ -52,8 +53,8 @@
           <span><i class="fa-solid fa-user fa-lg"></i></span>
         </router-link>
       </li>
-      <li class="nav-item me-3 me-lg-1" v-if="checkLogin(true)">
-        <span><LogoutButton /></span>
+      <li class="nav-item me-3 me-lg-1 active" v-if="checkLogin(true)">
+        <span><LogoutButton/></span>
       </li>
     </ul>
     <!-- Right elements -->

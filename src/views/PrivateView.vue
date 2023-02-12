@@ -1,5 +1,5 @@
 <template>
-  <div class="tweets-container">
+  <div class="tweets-container container-fluid">
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
         <TweetCard />

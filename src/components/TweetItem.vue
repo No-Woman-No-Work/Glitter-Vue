@@ -8,7 +8,7 @@
             <p class="fw-bold mb-0">@{{ author }}</p>
             <p class="text-secondary mb-0 ms-auto">{{ formattedDate(publishDate) }}</p>
           </div>
-          <p class="mb-2">{{ text }}</p>
+          <p class="mb-2 mt-2">{{ text }}</p>
           <div class="d-flex" v-if="imagePath">
             <img class="w-100" :src="'http://localhost:3000' + imagePath" />
           </div>
@@ -54,9 +54,14 @@ export default {
 
 <style scoped>
 .tweet {
-  max-width: 50em;
+  width: 30em;
 }
 .text-secondary {
   font-size: 13px;
 } 
+@media (min-width: 992px) {
+  .tweet {
+  width: 51em;
+}
+}
 </style>
