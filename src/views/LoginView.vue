@@ -3,8 +3,8 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="img-cont">
-					<img alt="Flitter logo" src="../assets/img/logo_flitter.svg" />
-					<h2 class="text-center text-lg-start">Welcome to Flitter</h2>
+					<img alt="Glitter logo" src="../assets/img/logo_flitter.svg" />
+					<h2 class="text-center text-lg-start">Welcome to Glitter</h2>
 				</div>
 			</div>
 			<div class="col-lg-6">

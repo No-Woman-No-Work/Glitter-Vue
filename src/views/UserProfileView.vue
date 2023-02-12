@@ -17,7 +17,9 @@ export default {
     const email = ref('');
     const following = ref('');
     const btn = ref({
-      text: 'Unsubscribe'
+      text: 'Unsubscribe',
+      class: 'btn btn-primary btn-rounded btn-lg',
+      route: "/unsubscribe"
     });
 
     const getUser = async () => {

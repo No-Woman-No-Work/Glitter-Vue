@@ -13,9 +13,11 @@
               <h4 class="mb-2">{{ username }}</h4>
               <p class="text-muted mb-4">{{ email }}
               </p>
-              <button type="button" class="btn btn-primary btn-rounded btn-lg">
-                {{ btn.text }}
-              </button>
+              <router-link to="/unsubscribe" class="nav-link active" aria-current="page">
+                <button type="button" class="custom-btn btn-primary btn-rounded btn-lg">
+                  {{ btn.text }}
+                </button>
+              </router-link>
               <div class="d-flex justify-content-center text-center mt-5 mb-2">
                 <div class="followers">
                   <p class="mb-2 h5">{{ following }}</p>
@@ -50,7 +52,8 @@ export default {
   box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
 }
 
-.btn {
+.custom-btn {
+  color: aliceblue;
   display: block;
   margin: 0 auto;
   line-height: 28pt;
@@ -59,6 +62,7 @@ export default {
   letter-spacing: 2px;
   transition: .2s all ease-in-out;
   outline: none;
+  border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 1);
   box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
