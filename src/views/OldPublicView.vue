@@ -139,7 +139,6 @@
     }
   </style>
 
-<!--
 <template>
     <tweet-item :btns="btnArray" @follow="followUser" class="mx-auto tweet-item">
     </tweet-item>
