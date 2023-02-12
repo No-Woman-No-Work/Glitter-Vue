@@ -53,7 +53,7 @@ body {
 
 .card {
 	background: #f8f4e5;
-	padding: 50px 100px;
+	padding: 70px 100px;
 	border: 2px solid rgba(0, 0, 0, 1);
 	box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
 }

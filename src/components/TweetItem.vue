@@ -1,6 +1,6 @@
 <template>
-  <div class="tweet list-group list-group-light ">
-    <div class="list-group-item d-flex justify-content-between align-items-center border border-white">
+  <div class="tweet list-group">
+    <div class="tweet-box card list-group-item d-flex justify-content-between align-items-center">
         <div class="ms-3 me-3 w-100">
           <div class="d-flex align-items-center">
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png" alt="profile image" style="width: 45px; height: 45px" class="rounded-circle" />
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div>
-      <div class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
+      <div class="card-footer p-2 d-flex justify-content-around">
         <button v-for="btn in btns" 
           :key="btn.txt" 
           class="btn" 
@@ -53,8 +53,10 @@ export default {
 </script>
 
 <style scoped>
-.tweet {
-  width: 30em;
+.tweet-box {
+  background: #f8f4e5;
+	border: 2px solid rgba(0, 0, 0, 1);
+	box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
 }
 .text-secondary {
   font-size: 13px;
