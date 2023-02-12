@@ -79,7 +79,7 @@ img {
 
 .custom-card {
 	max-width: 398px;
-	margin-top: 1.6em;
+	margin-top: 1.2em;
 }
 
 
@@ -158,7 +158,7 @@ h2 {
 
 	.custom-card {
 		margin: 0;
-		margin-top: 8.7em;
+		margin-top: 5.9git em;
 	}
 
 
