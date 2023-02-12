@@ -1,68 +1,68 @@
-<template>	
-  <div class="card">	
-    <h3>Share something with our community 🐥</h3>	
-    <form @submit.prevent="createTweet">	
-      <textarea v-model="text" id="textarea"	
-        placeholder="Remember we hate KFC and messages that exceed 256 characters"></textarea>	
-        <input type="file" @change="onFileChange"/>	
-        <img v-if="imageUrl" :src="imageUrl"/>	
-      <button type="button" class="postBtn" @click="createTweet">Post</button>	
-      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>	
-    </form>	
-  </div>	
+<template>
+  <div class="card">
+    <h3>Share something with our community 🐥</h3>
+    <form @submit.prevent="createTweet">
+      <textarea v-model="text" id="textarea" placeholder="Remember we hate KFC and messages that exceed 256 characters"
+        maxlength="256"></textarea>
+      <input type="file" @change="onFileChange" />
+      <img v-if="imageUrl" :src="imageUrl" />
+      <div class="button">
+        <button type="button" class="postBtn" @click="createTweet">Post</button>
+      </div>
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
+    </form>
+  </div>
 </template>	
-<script>	
-import flitterApi from "../api/flitterApi"	
-import { ref, watch } from 'vue';	
+<script>
+import flitterApi from "../api/flitterApi"
+import { ref } from 'vue';
 
 
-export default {	
-  setup() {	
-    const text = ref('');	
-    const errorMessage = ref('');	
-    const userId = ref('');	
-    const image = ref(null);	
-    
-    watch(text, (newValue) => {
-      errorMessage.value = newValue.length === 0 ? 'Glit must not be empty'
-        : newValue.length > 256 ? 'Glit must be less than or equal to 256 characters'
-          : '';
-    });
-    const onFileChange = (event) => {	
-      image.value = event.target.files[0];	
-    };	
-    const createTweet = async () => {	
-      if (errorMessage.value) return;	
-      const formData = new FormData();	
-      formData.append('text', text.value);	
-      formData.append('publishDate', Date.now());	
-      formData.append('author', userId.value);	
-      formData.append('image', image.value);	
-      try {	
-        const response = await flitterApi.post('/tweets', formData, {	
-          headers: {	
-            'Content-Type': 'multipart/form-data'	
-          }	
-        });	
-        if (response.status === 200) {	
-          text.value = '';	
-          image.value = null;	
-          console.log('Glit created successfully');	
-        }	
-      } catch (error) {	
-        errorMessage.value = 'Failed to create glit';	
-        console.error('Failed to create glit: ', error);	
-      }	
-    };	
-    return {	
-      text,	
-      errorMessage,	
-      createTweet,	
-      userId,	
-      onFileChange,	
-      image	
-    };	
-  },	
+export default {
+  setup() {
+    const text = ref('');
+    const errorMessage = ref('');
+    const userId = ref('');
+    const image = ref(null);
+
+
+    const onFileChange = (event) => {
+      image.value = event.target.files[0];
+    };
+    const createTweet = async () => {
+      if (errorMessage.value) return;
+      const formData = new FormData();
+      formData.append('text', text.value);
+      formData.append('publishDate', Date.now());
+      formData.append('author', userId.value);
+      formData.append('image', image.value);
+      try {
+        const response = await flitterApi.post('/tweets', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        if (response.status === 200) {
+          text.value = '';
+          image.value = null;
+          console.log('Glit created successfully');
+        } else if (response.status === 400) {
+          errorMessage.value = 'Glit cannot be empty!';
+        }
+      } catch (error) {
+        errorMessage.value = 'Failed to create glit. Remember: glits cannot be empty!';
+        console.error('Failed to create glit: ', error);
+      }
+    };
+    return {
+      text,
+      errorMessage,
+      createTweet,
+      userId,
+      onFileChange,
+      image
+    };
+  },
 };	
 </script>
 
@@ -93,6 +93,10 @@ textarea {
   margin-bottom: 10px;
 }
 
+.button {
+  display: flex;
+  justify-content: end;
+}
 
 .postBtn {
   background-color: #FFFFFF;
