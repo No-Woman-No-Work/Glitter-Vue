@@ -73,7 +73,6 @@ export default {
 				});
 
 				localStorage.setItem("access_token", response.data.token);
-				localStorage.setItem("user_id", response.data.user_id);
 				router.push("/private");
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
