@@ -56,4 +56,7 @@ export default {
 .tweet {
   max-width: 50em;
 }
+.text-secondary {
+  font-size: 13px;
+} 
 </style>
