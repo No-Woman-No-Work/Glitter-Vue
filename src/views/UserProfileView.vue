@@ -15,29 +15,29 @@ export default {
   setup() {
     const username = ref('');
     const email = ref('');
+    const following = ref('');
     const btn = ref({
       text: 'Unsubscribe'
     });
-    const following = ref('');
 
-    onMounted(async () => {
+    const getUser = async () => {
       const response = await flitterApi.get('/users');
-      if (response.data.error) {
-        console.error(response.data.error);
-      } else {
-        username.value = response.data.data.username;
-        email.value = response.data.data.email;
-        following.value = response.data.data.following;
-      }
-    });
+      const user = response.data.data;
+      username.value = user.username;
+      email.value = user.email;
+      following.value = user.following;
+    };
 
+    onMounted(() => {
+      getUser();
+    });
 
     return {
       username,
       email,
       btn,
       following,
-    }
+    };
   },
-}
+};
 </script>
