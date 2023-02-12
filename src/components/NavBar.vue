@@ -42,10 +42,8 @@
           <span><i class="fas fa-users fa-lg"></i></span>
         </router-link>
       </li>
-      <li v-if="isLogged === true" class="nav-item me-3 me-lg-1">
-        <router-link to="/public" class="nav-link" aria-current="page">
-          <span><i class="fas fa-users fa-lg"></i></span>
-        </router-link>
+      <li class="nav-item me-3 me-lg-1" v-if="this.$route.name === 'private'">
+        <LogoutButton />
       </li>
     </ul>
     <!-- Right elements -->
@@ -57,9 +55,11 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import flitterApi from "../api/flitterApi";
+import LogoutButton from "./LogoutButton.vue";
 export default {
   name: 'NavBar',
   components: {
+    LogoutButton,
   },
   setup() {
     const searchTerm = ref('');
@@ -90,6 +90,7 @@ export default {
         console.error(error);
       }
     };
+
     return {
       searchTerm,
       search,
