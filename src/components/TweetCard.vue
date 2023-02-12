@@ -1,71 +1,70 @@
-<template>
-  <div class="card">
-    <h3>Share something with our community 🐥</h3>
-    <form @submit.prevent="createTweet">
-      <textarea v-model="text" id="textarea"
-        placeholder="Remember we hate KFC and messages that exceed 256 characters"></textarea>
-      <button type="button" class="postBtn" @click="createTweet">Post</button>
-      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
-    </form>
-  </div>
-</template>
+<template>	
+  <div class="card">	
+    <h3>Share something with our community 🐥</h3>	
+    <form @submit.prevent="createTweet">	
+      <textarea v-model="text" id="textarea"	
+        placeholder="Remember we hate KFC and messages that exceed 256 characters"></textarea>	
+        <input type="file" @change="onFileChange"/>	
+        <img v-if="imageUrl" :src="imageUrl"/>	
+      <button type="button" class="postBtn" @click="createTweet">Post</button>	
+      <div v-if="errorMessage" class="error">{{ errorMessage }}</div>	
+    </form>	
+  </div>	
+</template>	
+<script>	
+import flitterApi from "../api/flitterApi"	
+import { ref, watch } from 'vue';	
 
 
-<script>
-import flitterApi from "../api/flitterApi"
-import { ref, watch } from 'vue';
-
-
-export default {
-  setup() {
-    const text = ref('');
-    const errorMessage = ref('');
-    const userId = ref('');
-
-
+export default {	
+  setup() {	
+    const text = ref('');	
+    const errorMessage = ref('');	
+    const userId = ref('');	
+    const image = ref(null);	
+    
     watch(text, (newValue) => {
       errorMessage.value = newValue.length === 0 ? 'Glit must not be empty'
         : newValue.length > 256 ? 'Glit must be less than or equal to 256 characters'
           : '';
     });
-
-
-    const createTweet = async () => {
-      if (errorMessage.value) return;
-
-      try {
-        const response = await flitterApi.post('/tweets', {
-          text: text.value,
-          publishDate: Date.now(),
-          author: userId.value,
-          kudos: []
-        });
-
-
-        if (response.status === 200) {
-          text.value = '';
-          console.log('Glit created successfully');
-        }
-      } catch (error) {
-        errorMessage.value = 'Failed to create glit';
-        console.error('Failed to create glit: ', error);
-      }
-    };
-
-
-    return {
-      text,
-      errorMessage,
-      createTweet,
-      userId
-    };
-  },
-};
+    const onFileChange = (event) => {	
+      image.value = event.target.files[0];	
+    };	
+    const createTweet = async () => {	
+      if (errorMessage.value) return;	
+      const formData = new FormData();	
+      formData.append('text', text.value);	
+      formData.append('publishDate', Date.now());	
+      formData.append('author', userId.value);	
+      formData.append('image', image.value);	
+      try {	
+        const response = await flitterApi.post('/tweets', formData, {	
+          headers: {	
+            'Content-Type': 'multipart/form-data'	
+          }	
+        });	
+        if (response.status === 200) {	
+          text.value = '';	
+          image.value = null;	
+          console.log('Glit created successfully');	
+        }	
+      } catch (error) {	
+        errorMessage.value = 'Failed to create glit';	
+        console.error('Failed to create glit: ', error);	
+      }	
+    };	
+    return {	
+      text,	
+      errorMessage,	
+      createTweet,	
+      userId,	
+      onFileChange,	
+      image	
+    };	
+  },	
+};	
 </script>
-
-
-
-
 
 
 <style scoped>
@@ -75,6 +74,9 @@ export default {
   background-color: antiquewhite;
 }
 
+.image {
+  max-width: 100%;
+}
 
 textarea {
   flex-wrap: wrap;
