@@ -2,6 +2,82 @@
     <div class="tweets-container">
       <div class="container d-flex flex-column justify-content-center align-items-center">
         <div class="mt-2">
+          <TweetCard />
+          <TweetItem :btns="btnArray" v-for="tweet in tweets" :author="tweet.author.username" :publishDate="tweet.publishDate"
+            :text="tweet.text" :key="tweet._id" :tweet="tweet" />
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  
+  <script>
+  import flitterApi from "../api/flitterApi";
+  import { ref, onMounted } from "vue";
+  import TweetItem from "../components/TweetItem.vue";
+  import TweetCard from '@/components/TweetCard.vue'
+  
+  
+  export default {
+    name: 'PublicView',
+    components: {
+      TweetItem,
+      TweetCard
+    },
+    setup() {
+      const tweets = ref("");
+      const getTweets = async () => {
+        const response = await flitterApi.get("/tweets/private", {
+          params: {
+            page: 1,
+            limit: 7,
+            order: 'desc'
+          }
+        });
+        tweets.value = response.data.docs;
+      };
+
+      const btnArray = ref([
+      {
+        txt: 'Follow',
+		class: 'btn-secondary',
+        action: () => followUser()
+      },
+    ]);
+
+    const followUser = async (userId) => {
+      try {
+        await flitterApi.post(`users/${userId}/follow`);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+      onMounted(() => {
+        getTweets();
+      });
+  
+      return {
+        tweets,
+        btnArray,
+      };
+    },
+  }
+  </script>
+  
+  
+  <style>
+  .tweets-container {
+    margin-top: 1em;
+  }
+  </style>
+
+
+<!--
+<template>
+    <div class="tweets-container">
+      <div class="container d-flex flex-column justify-content-center align-items-center">
+        <div class="mt-2">
           <TweetItem :btns="btnArray" v-for="tweet in tweets" :key="tweet._id" :tweet="tweet" />
         </div>
       </div>
@@ -21,9 +97,7 @@
   },
   setup() {
     const tweets = ref([
-
     ]);
-
     const btnArray = ref([
       {
         txt: 'Follow',
@@ -31,15 +105,13 @@
         action: () => followUser()
       },
     ]);
-
     const followUser = async (userId) => {
       try {
-        await flitterApi.post(`/${userId}/follow`);
+        await flitterApi.post(`users/${userId}/follow`);
       } catch (error) {
         console.error(error);
       }
     };
-
     const getTweets = async () => {
       const response = await flitterApi.get("/tweets", {
         params: {
@@ -50,11 +122,9 @@
       });
       tweets.value = response.data.docs;
     };
-
     onMounted(() => {
       getTweets();
     });
-
     return {
       tweets,
       btnArray,
@@ -70,7 +140,6 @@
   </style>
 
 <!--
-
 <template>
     <tweet-item :btns="btnArray" @follow="followUser" class="mx-auto tweet-item">
     </tweet-item>
@@ -80,14 +149,11 @@
 import TweetItem from '@/components/TweetItem.vue'
 import { ref } from 'vue';
 import flitterApi from "../api/flitterApi"
-
-
 export default {
     name: "OldPublicView",
     components: {
         TweetItem,
     },
-
     setup() {
         const btnArray = ref([
             {
@@ -102,7 +168,6 @@ export default {
                 class: 'fa-regular fa-thumbs-up',
             },
         ])
-
         const followUser = async () => {
             btnArray.value[0].isLoading = true;
             try {
@@ -114,7 +179,6 @@ export default {
                 console.error(error);
             }
         };
-
         return {
             btnArray,
             followUser,
@@ -122,15 +186,13 @@ export default {
     },
 }
 </script>
-
 <style scoped>
 .btn-success {
     background-color: rgb(112, 185, 112),
 }
 </style>
--->
 
-<!-- OLD PUBLIC VIEW
+OLD PUBLIC VIEW
     
     <template>
    
@@ -148,7 +210,6 @@ export default {
                 <div class="col">&nbsp;</div>
             </div>
         </div>
-
         <div class="col py-2">
             <div class="card">
                 <div class="card-body">
@@ -159,8 +220,6 @@ export default {
             </div>
         </div>
     </div>
-
-
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
             <div class="row h-50">
@@ -184,9 +243,7 @@ export default {
                 </div>
             </div>
         </div>
-
     </div>
-
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
             <div class="row h-50">
@@ -201,7 +258,6 @@ export default {
                 <div class="col">&nbsp;</div>
             </div>
         </div>
-
         <div class="col py-2">
             <div class="card">
                 <div class="card-body">
@@ -212,7 +268,6 @@ export default {
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
             <div class="row h-50">
@@ -227,7 +282,6 @@ export default {
                 <div class="col">&nbsp;</div>
             </div>
         </div>
-
         <div class="col py-2">
             <div class="card">
                 <div class="card-body">
@@ -238,7 +292,6 @@ export default {
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
             <div class="row h-50">
@@ -253,7 +306,6 @@ export default {
                 <div class="col">&nbsp;</div>
             </div>
         </div>
-
         <div class="col py-2">
             <div class="card">
                 <div class="card-body">
@@ -264,7 +316,6 @@ export default {
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
             <div class="row h-50">
@@ -279,7 +330,6 @@ export default {
                 <div class="col">&nbsp;</div>
             </div>
         </div>
-
         <div class="col py-2">
             <div class="card">
                 <div class="card-body">
@@ -290,7 +340,6 @@ export default {
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-auto text-center flex-column d-none d-sm-flex">
             <div class="row h-50">
@@ -305,7 +354,6 @@ export default {
                 <div class="col">&nbsp;</div>
             </div>
         </div>
-
         <div class="col py-2">
             <div class="card">
                 <div class="card-body">
@@ -316,22 +364,12 @@ export default {
             </div>
         </div>
     </div>
-
-
-
-
 </template>
-
-
 <script>
    
-
 </script>
-
-
 <style scooped>
     
    
-
 </style>
 -->
