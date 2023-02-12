@@ -10,6 +10,9 @@
             <p class="font-weight-bold text-secondary mb-2">&#8231;&nbsp;{{ publishDate }}</p>
           </div>
           <p class="mb-2">{{ text }}</p>
+          <div class="d-flex" v-if="imagePath">
+            <img :src="'http://localhost:3000' + imagePath" />
+          </div>
         </div>
       </div>
     </div>
@@ -31,7 +34,7 @@
 
 export default {
   name: 'TweetItem',
-  props: ['author', 'publishDate', 'text', 'btns'],
+  props: ['author', 'publishDate', 'text', 'imagePath', 'btns'],
   methods: {
     followUser() {
       this.$emit('followUser');

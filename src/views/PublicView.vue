@@ -3,7 +3,7 @@
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <SearchBar @searched="onSearch($event)" />
       <div class="mt-2">
-        <TweetItem v-for="tweet in tweets" :key="tweet._id" :author="tweet.author.username" :publishDate="tweet.publishDate" :text="tweet.text" :tweet="tweet" />
+        <TweetItem v-for="tweet in tweets" :key="tweet._id" :author="tweet.author.username" :publishDate="tweet.publishDate" :text="tweet.text" :tweet="tweet" :imagePath="tweet.imagePath" />
       </div>
       <footer class="text-center">
         <p class="mb-3">Don't miss what's happening! Users on Flitter are the first to know.</p>

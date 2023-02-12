@@ -4,7 +4,7 @@
       <div class="mt-2">
         <TweetCard />
         <TweetItem v-for="tweet in tweets" :author="tweet.author.username" :publishDate="tweet.publishDate"
-          :text="tweet.text" :key="tweet._id" :tweet="tweet" />
+          :text="tweet.text" :key="tweet._id" :tweet="tweet" :imagePath="tweet.imagePath" />
       </div>
     </div>
   </div>
