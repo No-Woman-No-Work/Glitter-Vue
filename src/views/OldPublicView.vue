@@ -3,8 +3,8 @@
       <div class="container d-flex flex-column justify-content-center align-items-center">
         <div class="mt-2">
           <TweetCard />
-          <TweetItem :btns="btnArray" v-for="tweet in tweets" :author="tweet.author.username" :publishDate="tweet.publishDate"
-            :text="tweet.text" :key="tweet._id" :tweet="tweet" />
+          <TweetItem :btns="btnArray" v-for="tweet in tweets" :author="tweet.author.username" v-model ="tweet.author._id" :publishDate="tweet.publishDate"
+            :text="tweet.text" :key="tweet._id" :tweet="tweet" @click="btn.action(Number(tweet.author._id))" />
         </div>
       </div>
     </div>
@@ -26,8 +26,10 @@
     },
     setup() {
       const tweets = ref("");
+      const authorId = ref("")
+
       const getTweets = async () => {
-        const response = await flitterApi.get("/tweets/private", {
+        const response = await flitterApi.get("/tweets", {
           params: {
             page: 1,
             limit: 7,
@@ -35,31 +37,34 @@
           }
         });
         tweets.value = response.data.docs;
+        console.log(tweets.value)
+        
       };
 
       const btnArray = ref([
       {
         txt: 'Follow',
 		class: 'btn-secondary',
-        action: () => followUser()
+        action: (authorId) => followUser(authorId)
       },
     ]);
 
-    const followUser = async (userId) => {
-      try {
-        await flitterApi.post(`users/${userId}/follow`);
-      } catch (error) {
-        console.error(error);
+    const followUser = async (authorId) => {
+        try {
+            await flitterApi.post(`/users/${authorId}/follow`);
+        } catch (error) {
+            console.error(error);
       }
     };
   
-      onMounted(() => {
+        onMounted(() => {
         getTweets();
       });
   
-      return {
-        tweets,
-        btnArray,
+        return {
+            tweets,
+            btnArray,
+            authorId
       };
     },
   }
@@ -70,8 +75,7 @@
   .tweets-container {
     margin-top: 1em;
   }
-  </style>
-
+  </style> 
 
 <!--
 <template>
