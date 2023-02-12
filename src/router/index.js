@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-// import { isAuthenticated, useAuthGuard} from './authGuard'
+import { useAuthGuard} from './authGuard'
+// import { isAuthenticated } from "./authGuard";
 
 const routes = [
   {
@@ -13,7 +14,8 @@ const routes = [
     name: "login",
     // beforeEnter: isAuthenticated,
     component: () =>
-      import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
+    import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
+    
   },
   {
     path: "/signup",
@@ -38,14 +40,14 @@ const routes = [
   {
     path: "/private",
     name: "private",
-    // beforeEnter: useAuthGuard,
+    beforeEnter: useAuthGuard,
     component: () =>
       import(/* webpackChunkName: "private" */ "../views/PrivateView.vue"),
   },
   {
     path: "/unsubscribe",
     name: "unsubscribe",
-    // beforeEnter: useAuthGuard,
+    beforeEnter: useAuthGuard,
     component: () =>
       import(
         /* webpackChunkName: "unsubscribe" */ "../views/UnsubscribeView.vue"

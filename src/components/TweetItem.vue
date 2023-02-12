@@ -28,15 +28,21 @@
     </div>
   </div>
 </template>
+
 <script>
+// import { ref } from 'vue';
 
 export default {
   name: 'TweetItem',
   props: ['author', 'publishDate', 'text', 'imagePath', 'btns'],
-  methods: {
-    followUser() {
+  setup() {
+    const followUser = () => {
       this.$emit('followUser');
-    }
+    };
+  
+    return {
+      followUser
+    };
   }
 }
 </script>
