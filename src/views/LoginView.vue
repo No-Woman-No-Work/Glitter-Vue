@@ -8,11 +8,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<custom-card 
-				:btns="btnArray" 
-				:link="linkArray" 
-				class="mx-auto custom-card"
-				>
+				<custom-card :btns="btnArray" :link="linkArray" class="mx-auto custom-card">
 					<h4 class="text-center">Sign in</h4>
 
 					<form @submit.prevent="login">
@@ -77,7 +73,8 @@ export default {
 				});
 
 				localStorage.setItem("access_token", response.data.token);
-				router.push("/private"); 
+				localStorage.setItem("user_id", response.data.user_id);
+				router.push("/private");
 			} catch (error) {
 				errorMessage.value = error.response.data.message;
 			}

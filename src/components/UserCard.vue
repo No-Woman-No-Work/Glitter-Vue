@@ -11,17 +11,13 @@
                   class="rounded-circle img-fluid" style="width: 100px;" />
               </div>
               <h4 class="mb-2">{{ username }}</h4>
-              <p class="text-muted mb-4">{{ email }} <span>|</span> <a href="#!">My activity {{ activity }}</a>
+              <p class="text-muted mb-4">{{ email }}
               </p>
               <button type="button" class="btn btn-primary btn-rounded btn-lg">
                 {{ btn.text }}
               </button>
-              <div class="d-flex justify-content-between text-center mt-5 mb-2">
+              <div class="d-flex justify-content-center text-center mt-5 mb-2">
                 <div class="followers">
-                  <p class="mb-2 h5">{{ followers }}</p>
-                  <p class="text-muted mb-0">Followers</p>
-                </div>
-                <div class="following">
                   <p class="mb-2 h5">{{ following }}</p>
                   <p class="text-muted mb-0">Following</p>
                 </div>
@@ -38,16 +34,6 @@
 <script>
 export default {
   name: 'UserCard',
-  props: ['username', 'email', 'activity', 'btn', 'following', 'followers'],
+  props: ['username', 'email', 'activity', 'btn', 'following'],
 }
 </script>
-
-<style scoped>
-.followers {
-  margin-left: 80px;
-}
-
-.following {
-  margin-right: 80px;
-}
-</style>

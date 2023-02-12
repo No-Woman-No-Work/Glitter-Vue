@@ -1,5 +1,5 @@
 <template>
-  <UserCard :username="username" :email="email" :btn="btn" :following="following" />
+  <UserCard :username="username" :email="email" :btn="btn" :following="following.length" />
 </template>
 
 <script>
@@ -21,12 +21,16 @@ export default {
     const following = ref('');
 
     onMounted(async () => {
-      const res = await flitterApi.get('users/:userId');
-      const user = await res.json();
-      username.value = user.username;
-      email.value = user.email;
-      following.value = user.following.length;
+      const response = await flitterApi.get('/users');
+      if (response.data.error) {
+        console.error(response.data.error);
+      } else {
+        username.value = response.data.data.username;
+        email.value = response.data.data.email;
+        following.value = response.data.data.following;
+      }
     });
+
 
     return {
       username,
