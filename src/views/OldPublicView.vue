@@ -74,8 +74,7 @@
   .tweets-container {
     margin-top: 1em;
   }
-  </style>
-
+  </style> 
 
 <!--
 <template>
