@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import { useAuthGuard} from './authGuard'
+import { useAuthGuard } from "./authGuard";
 // import { isAuthenticated } from "./authGuard";
 
 const routes = [
@@ -14,8 +14,7 @@ const routes = [
     name: "login",
     // beforeEnter: isAuthenticated,
     component: () =>
-    import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
-    
+      import(/* webpackChunkName: "login" */ "../views/LoginView.vue"),
   },
   {
     path: "/signup",
@@ -29,7 +28,8 @@ const routes = [
     name: "new-password",
     component: () =>
       import(
-        /* webpackChunkName: "new-password" */ "../views/PasswordView.vue"),
+        /* webpackChunkName: "new-password" */ "../views/PasswordView.vue"
+      ),
   },
   {
     path: "/public",
@@ -60,10 +60,10 @@ const routes = [
       import(/* webpackChunkName: "public" */ "../views/OldPublicView.vue"),
   },
   {
-    path: "/tests",
-    name: "tests",
+    path: "/user-profile",
+    name: "profile",
     component: () =>
-      import(/* webpackChunkName: "public" */ "../views/TweetTest.vue"),
+      import(/* webpackChunkName: "public" */ "../views/UserProfileView.vue"),
   },
   // {
   //   path: "/public-test",
