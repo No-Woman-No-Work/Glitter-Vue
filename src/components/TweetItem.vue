@@ -9,9 +9,11 @@
             <p class="fw-bold mb-0">@{{ author }}</p>
             <p class="text-secondary mb-0 ms-auto">{{ formattedDate(publishDate) }}</p>
           </div>
+          <div class="ms-2">
           <p class="mb-2 mt-2">{{ text }}</p>
+          </div>
           <div class="d-flex" v-if="imagePath">
-            <img class="w-100" :src="'http://localhost:3000' + imagePath" />
+            <img class="tweet-img" :src="'http://localhost:3000' + imagePath" />
           </div>
         </div>
     </div>
@@ -31,22 +33,23 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 //import { ref } from 'vue';
+=======
+
+>>>>>>> a5afb9259c7fe822c4b940a02b9c2a10bc0814a2
 
 export default {
   name: 'TweetItem',
   props: ['author', 'publishDate', 'text', 'imagePath', 'btns'],
   setup() {
-    // const followUser = () => {
-    //   this.$emit('followUser');
-    // };
+  
     const formattedDate = date => {
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
       return (new Date(date)).toLocaleDateString('es-ES', options);
     };
   
     return {
-      // followUser,
       formattedDate
     };
   }
@@ -62,9 +65,23 @@ export default {
 .text-secondary {
   font-size: 13px;
 } 
+.tweet-img {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+  }
 @media (min-width: 992px) {
   .tweet {
   width: 51em;
 }
+  .tweet-img {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
+  }
 }
 </style>

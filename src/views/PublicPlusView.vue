@@ -18,7 +18,9 @@
         :publishDate="tweet.publishDate" 
         :text="tweet.text" 
         :tweet="tweet"
-        @click.prevent="followUser(tweet)"
+        @follow="followUser(tweet)"
+        @unfollow="unfollowUser(tweet)"
+        @kudos="kudoTweet(tweet)"
         :imagePath="tweet.imagePath" />
 
       </div>
@@ -70,18 +72,46 @@ export default {
     const btnArray = ref([
       {
           txt: 'Follow',
-          class: 'btn-secondary',
+          class: 'follow',
           action: (tweet) => followUser(tweet)
-      }
+      },
+      {
+          txt: 'Unfollow',
+          class: 'unfollow',
+          action: (tweet) => unfollowUser(tweet)
+      },
+      {
+          txt: 'Kudos',
+          class: 'kudos',
+          action: (tweet) => kudoTweet(tweet)
+      },
     ])
 
     const followUser = async  (tweet) => {
       try {
-          console.log(tweet)
-          await flitterApi.post(`/users/${tweet.author._id}/follow`)
+        console.log(tweet)
+        await flitterApi.post(`/users/${tweet.author._id}/follow`)
       } catch (error) {
-          console.error(error)
+        console.error(error)
       }
+    }
+
+    const unfollowUser = async (tweet) => {
+      try {
+        await flitterApi.delete(`/users/${tweet.author._id}/unfollow`)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const kudoTweet = async (tweet) => {
+      try {
+        console.log(tweet)
+        await flitterApi.post(`/tweets/${tweet._id}/kudos`)
+      } catch (error) {
+        console.error(error)
+      }
+
     }
 
     onMounted(() => {
@@ -94,6 +124,8 @@ export default {
 
     return {
       followUser,
+      unfollowUser,
+      kudoTweet,
       tweets,
       currentPage,
       currentOrder,
