@@ -3,7 +3,8 @@
     <div class="tweet-box card list-group-item d-flex justify-content-between align-items-center">
         <div class="ms-3 me-3 w-100">
           <div class="d-flex align-items-center">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Avatar_cat.png" alt="profile image" style="width: 45px; height: 45px" class="rounded-circle" />
+            <img src="../assets/img/logo_navbar.svg
+            " alt="profile image" style="width: 45px; height: 45px" class="rounded-circle" />
             &nbsp;&nbsp;
             <p class="fw-bold mb-0">@{{ author }}</p>
             <p class="text-secondary mb-0 ms-auto">{{ formattedDate(publishDate) }}</p>
