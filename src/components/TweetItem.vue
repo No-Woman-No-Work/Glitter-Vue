@@ -66,6 +66,7 @@ export default {
     width: 100%;
     margin: 0 auto;
     display: block;
+    border-radius: 10px;
   }
 @media (min-width: 992px) {
   .tweet {
