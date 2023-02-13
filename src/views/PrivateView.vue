@@ -12,7 +12,7 @@
         </div>
         <!-- Search bar -->
 
-        <TweetItem v-for="tweet in tweets.docs" :author="tweet.author.username" :publishDate="tweet.publishDate"
+        <TweetItem v-for="tweet in tweets" :author="tweet.author.username" :publishDate="tweet.publishDate"
           :text="tweet.text" :key="tweet._id" :tweet="tweet" :imagePath="tweet.imagePath" />
         
           <!-- Paginator -->
@@ -61,8 +61,8 @@ import TweetItem from "../components/TweetItem.vue";
 import TweetCard from '@/components/TweetCard.vue'
 import Toggle from '@vueform/toggle'
 
-const defaultPage = 1
-const defaultLimit = 2
+const defaultPage = 2
+const defaultLimit = 3
 const defaultOrder = 'desc'
 
 export default {
@@ -70,22 +70,26 @@ export default {
   components: {
     TweetItem,
     TweetCard,
-    Toggle
-  },
-  setup() {
-    const currentPage = ref(defaultPage);
-    const currentOrder = ref(defaultOrder);
-    const tweets = ref("");
-
-    const getTweets = async (page, limit, order) => {
-      const response = await flitterApi.get("/tweets/private", {
-        params: {
-          page,
-          limit,
+    Toggle	
+  },	
+  props: [	
+    'currentSearch'	
+  ],	
+  setup(props) {	
+    const currentPage = ref(defaultPage);	
+    const currentOrder = ref(defaultOrder);	
+    const currentSearch = ref(props.currentSearch);	
+    const tweets = ref("");	
+    const getTweets = async (page, limit, order) => {	
+    const response = await flitterApi.get("/tweets/private", {	
+        params: {	
+          page,	
+          limit,	
           order
         }
       });
-      tweets.value = response.data;
+      tweets.value = response.data.docs;
+      console.table(response.data.docs);
     };
 
     onMounted(() => {
@@ -100,13 +104,23 @@ export default {
       getTweets(currentPage.value, defaultLimit, currentOrder.value);
     })
 
-    return {
-      tweets,
-      currentPage,
-      currentOrder
-    };
-  },
-}
+    watch(() => currentSearch.value, () => {	
+      // Isso e a única coisa que não funciona	
+      console.log(currentSearch.value);	
+      getTweets(currentPage.value, defaultLimit, currentOrder.value);	
+    })	
+    const updateSearch = async (search) => {	
+      currentSearch.value = search;	
+      console.log(currentSearch.value);	
+    };	
+    return {	
+      tweets,	
+      currentPage,	
+      currentOrder,	
+      updateSearch	
+    };	
+  },	
+}	
 </script>
 
 
@@ -129,10 +143,10 @@ letter-spacing: 2px;
     text-align: center;
   }
   .paginator .paginate-buttons {
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    background: #ffa580;;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: #ffa580;;
 	letter-spacing: 2px;
 	transition: .2s all ease-in-out;
 	outline: none;
@@ -173,22 +187,22 @@ letter-spacing: 2px;
     border-end-end-radius: 25px;
   }
   
-  .paginator .active-page {
-    background-color: #99e98e;;
-    color: f8f4e5;
-  }
-  
-  .paginator .active-page {
-    background-color: #99e98e;;
-    color: f8f4e5;
-  }
-  
-  .paginator .paginate-buttons:hover {
-    background-color: #f8f4e5;
-  }
-  
-  .paginator .active-page:hover {
-    background-color: #99e98e;;
+  .paginator .active-page {	
+    background-color: #2980b9;	
+    color: #fff;	
+  }	
+  	
+  .paginator .active-page {	
+    background-color: #2980b9;	
+    color: #fff;	
+  }	
+  	
+  .paginator .paginate-buttons:hover {	
+    background-color: #f5f5f5;	
+  }	
+  	
+  .paginator .active-page:hover {	
+    background-color: #388ac1;	
   }
   .paginator .back-button:active,
   .paginator .next-button:active {
