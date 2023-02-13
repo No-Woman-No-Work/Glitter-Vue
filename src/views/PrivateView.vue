@@ -1,7 +1,9 @@
 <template>
+
   <div class="tweets-container container-fluid">
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
+        <header>For You</header>
         <TweetCard />
 
         <!-- Search bar -->
@@ -109,6 +111,16 @@ export default {
 
 
 <style>
+header {
+text-shadow: 3px 3px #95a4ff;
+-webkit-text-stroke: 1px rgba(0, 0, 0);
+padding: 10px;
+font-size: 40px;
+font-weight: bold;
+color: #ffa580;
+letter-spacing: 2px;
+}
+
 .tweets-container {
   margin-top: 1em;
 }
