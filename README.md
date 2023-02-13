@@ -15,14 +15,8 @@ Ultima actualización: 01/02/2023
 - Goals
 - Background
 - Design and Architecture
-  - Solucion 1
-    - Frontend
-    - Backend
-  - Solucion 2
-    - Frontend
-    - Backend
-- Consideraciones
-- Métricas
+- Considerations
+
 
 ## Downloading
 Flitter actualmente está alojado en GitHub. El frontend del proyecto se puede encontrar en [este enlace](https://github.com/No-Woman-No-Work/flitter), y el backend en [este enlace](https://github.com/No-Woman-No-Work/v1-Flitter-Back-)
@@ -58,16 +52,17 @@ npm run lint
 Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## Objetivo
+## Goals
 Proyecto final del Bootcamp Mujeres en Tech.
 
 El objetivo de este proyecto es poner en práctica todos los conocimientos adquiridos, simulando una situación real: desarrollo de un proyecto utilizando iteraciones, tomando decisiones de arquitectura y con una fecha límite de entrega, por ello hemos tomado la decisión de desarrollar Flitter.
 
-_Flitter será una plataforma que permita la publicación de mini contenidos._
+_Flitter será una plataforma que permita la publicación de mini contenidos con los siguientes objetivos:_
 
-## Goals
+- Proporcionar una interfaz sencilla y amigable que facilite la navegación e interacción con la aplicación.
+
 - Ofrecer un proceso de registro en el sistema amigable, que permita realizar funciones como miembro de la plataforma indicando nombre de
-usuario, dirección de e-mail y contraseña de acceso.
+usuario, dirección de e-mail y contraseña de acceso, y garantizar la seguridad de los datos implementando mecanismos sólidos de autenticación y autorización.
 
 ![input](https://user-images.githubusercontent.com/50715363/215982356-72e9a497-cc91-4109-97d7-595d5b2a9f19.png)
 
@@ -97,20 +92,8 @@ En resumen, Flitter es una aplicación web potente y versátil, construida con l
 
 ![input](https://user-images.githubusercontent.com/50715363/218560841-5ae5c39a-f3d8-4b0e-aab0-e9fe8a2cf7b6.png)
 
-## Solution 1
-### Frontend
-_Frontend…_
-### Backend
-_Backend…_
+## Considerations
+- Escalabilidad: La aplicación debe ser escalable para manejar una creciente cantidad de usuarios y datos. Es importante considerar cómo se implementarán mecanismos de escalabilidad desde el principio.
 
-## Solution 2
-### Frontend
-_Frontend…_
-### Backend
-_Backend…_
+- Compatibilidad con diferentes navegadores y dispositivos: La aplicación debe ser compatible con una amplia gama de navegadores y dispositivos, incluyendo dispositivos móviles. Es importante considerar cómo se asegurará la compatibilidad a lo largo del desarrollo.
 
-## Consideraciones
-_Preocupaciones / trade-offs / tech debt_
-
-## Métricas
-_Que información necesitas para validar antes de lanzar este feature?_
