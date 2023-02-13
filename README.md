@@ -97,7 +97,6 @@ En resumen, Flitter es una aplicación web potente y versátil, construida con l
 
 ![input](https://user-images.githubusercontent.com/50715363/218560841-5ae5c39a-f3d8-4b0e-aab0-e9fe8a2cf7b6.png)
 
-_Cubre los cambios principales:_
 ## Solution 1
 ### Frontend
 _Frontend…_
