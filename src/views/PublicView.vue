@@ -11,7 +11,7 @@
       <footer class="text-center">
         <p class="mb-3">Don't miss what's happening! Users on Flitter are the first to know.</p>
         <router-link router-link to="/signup" class="nav-link active mb-3" aria-current="page">
-          <button class="btn btn-secondary" type="button">Sign up now to see more</button>
+          <button class="btn-see-more btn btn-secondary" type="button">Sign up now to see more</button>
         </router-link>
       </footer>
     </div>
@@ -68,6 +68,16 @@ export default {
 </script>
 
 <style>
+.btn-see-more {
+	line-height: 28pt;
+	padding: 0 20px;
+	background: #ffa580;
+	letter-spacing: 2px;
+	transition: .2s all ease-in-out;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 1);
+	box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+}
 .tweets-container {
   margin-top: 1em;
 }
