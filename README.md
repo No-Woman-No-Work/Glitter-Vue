@@ -89,34 +89,13 @@ usuario, dirección de e-mail y contraseña de acceso.
 Es un buen momento para crear una plataforma alternativa a Twitter debido a la situación que atraviesa dicha plataforma, y asimismo consideramos que se trata de un proyecto ideal para potenciar nuestros conocimientos tanto de backend, como de frontend, para cubrir las necesidades y aportar valor.
 
 ## Overview
-_Overview a alto nivel de tu propuesta_
+Flitter es una aplicación web desarrollada con un stack tecnológico de vanguardia. Se compone de un backend construido con Node.js, Express y MongoDB, y un frontend desarrollado con Javascript y el framework Vue 3.
 
-_Esta sección debería ser entendible por nuevos miembros de tu equipo que no están relacionados al proyecto_
+El frontend de Flitter está construido con Vue Composition API y estilado con Bootstrap. La conexión con el backend se realiza a través de Axios, y se ha utilizado Vuex como manejador de estados. Además, se han implementado adaptaciones (transpiladores) a motores más antiguos de Javascript, como Babel y Webpack, para asegurar la compatibilidad con todos los navegadores.
 
-_Pon detalles en la siguiente sección_
+El backend de Flitter utiliza Mongoose para conectarse a la base de datos noSQL MongoDB, y cuenta con un sistema de autenticación basado en Json Web Token y un sistema de mailing implementado con MailJet. Además, se han utilizado herramientas de pruebas internas de desarrollo, como Postman, para garantizar la calidad y estabilidad de la aplicación.
 
-// Hay que desarrollarlo pero la idea inicial es:
-
-//incluyo esto para que nos ayude a luego redactarlo (sil)
-
-STACK TECNOLÓGICO:
-Backend - API 
-Intérprete de Js = Nodejs
-Framework =  Express (express-generator)
-Base de datos noSQL = MongoDb
-Conexión api con base de datos = Mongoose 
-Sistema de autenticación = Json Web Token
-Sistema de mailing = MailJet
-Pruebas internas de desarrollo = Postman
-
-Frontend:
-Lenguaje = Javascript
-Framework = Vue 3 (vue-CLI)
-Estilo = Vue Composition API
-Framework CSS = Boostrap
-Conexión con backend = Axios
-Manejador de estados = Vuex
-Adaptación (transpiladores) a motores más antigüos de Js = Babel | WebPack
+En resumen, Flitter es una aplicación web potente y versátil, construida con las tecnologías más modernas y adaptada para funcionar en todos los dispositivos con diseño responsive.
 
 ## Detailed Design
 _Usa diagramas donde veas necesario_
