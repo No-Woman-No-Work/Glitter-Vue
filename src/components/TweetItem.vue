@@ -16,7 +16,7 @@
             <img class="tweet-img" :src="'http://localhost:3000' + imagePath" />
           </div>
           <div>
-            <p class="fw-bold mb-0">{{ kudos }} kudos</p>
+            <p class="fw-bold mb-0">{{ kudos }} {{ likeNname }}</p>
           </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
 
 export default {
   name: 'TweetItem',
-  props: ['author', 'publishDate', 'text', 'imagePath', 'btns', 'tweet', 'kudos'],
+  props: ['author', 'publishDate', 'text', 'imagePath', 'btns', 'tweet', 'kudos', 'likeName'],
   
   setup() {
     const formattedDate = date => {

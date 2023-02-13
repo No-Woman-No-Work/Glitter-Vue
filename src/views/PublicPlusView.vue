@@ -18,13 +18,14 @@
         :publishDate="tweet.publishDate" 
         :text="tweet.text" 
         :kudos="tweet.kudos"
+        :likeName="kudos"
         :tweet="tweet"
         :imagePath="tweet.imagePath" />
 
       </div>
 
       <footer class="text-center">
-        <p class="mb-3">Don't miss what's happening! Users on Flitter are the first to know.</p>
+        <p class="mb-3">Thank you for being part of this awesome community!.</p>
         <router-link router-link to="/signup" class="nav-link active mb-3" aria-current="page">
         </router-link>
       </footer>
