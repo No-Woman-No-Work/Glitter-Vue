@@ -9,10 +9,10 @@
       </template>
       <v-list>
         <v-list-item @click="sort('asc')">
-          <v-list-item-title>Ascending</v-list-item-title>
+          <v-list-item-title class="button-name">Ascending</v-list-item-title>
         </v-list-item>
         <v-list-item @click="sort('desc')">
-          <v-list-item-title>Descending</v-list-item-title>
+          <v-list-item-title class="button-name">Descending</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -62,7 +62,6 @@
   v-menu {
     color: white;
     background-color: #A0C3D2;
-    border-radius: 0.3em;
     padding: 0.3em;
     border: none;
     font-size: 0.9em;
@@ -71,6 +70,7 @@
     align-items: center;
     justify-content: center;
   }
+
  
   </style>
   

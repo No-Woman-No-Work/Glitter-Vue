@@ -120,8 +120,12 @@ export default {
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background-color: #ffffff;
-    border: none;
+    background: #ffa580;;
+	letter-spacing: 2px;
+	transition: .2s all ease-in-out;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 1);
+	box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
   }
   
   .paginator .back-button,
@@ -158,21 +162,21 @@ export default {
   }
   
   .paginator .active-page {
-    background-color: #2980b9;
-    color: #fff;
+    background-color: #99e98e;;
+    color: f8f4e5;
   }
   
   .paginator .active-page {
-    background-color: #2980b9;
-    color: #fff;
+    background-color: #99e98e;;
+    color: f8f4e5;
   }
   
   .paginator .paginate-buttons:hover {
-    background-color: #f5f5f5;
+    background-color: #f8f4e5;
   }
   
   .paginator .active-page:hover {
-    background-color: #388ac1;
+    background-color: #99e98e;;
   }
   .paginator .back-button:active,
   .paginator .next-button:active {
