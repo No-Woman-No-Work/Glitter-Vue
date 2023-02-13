@@ -47,7 +47,7 @@ usuario, dirección de e-mail y contraseña de acceso.
 
 ![input](https://user-images.githubusercontent.com/50715363/216117628-caad82ab-c973-4f93-89fa-94ebc7c9faa5.png)
 
-- Acceder a un listado de últimas publicaciones de manera rápida.
+- Acceder a un listado de últimas publicaciones de manera rápida, con dos vistas posibles: Pública y Privada. Esto dependerá de la opción de seguir a usuarios para acceder a sus publicaciones en un feed personalizado.
 
 ![input](https://user-images.githubusercontent.com/50715363/216122456-a706d9cc-5c74-4b36-ab57-6801f8742725.png)
 
@@ -83,7 +83,6 @@ Framework CSS = Boostrap
 Conexión con backend = Axios
 Manejador de estados = Vuex
 Adaptación (transpiladores) a motores más antigüos de Js = Babel | WebPack
-
 
 ## Detailed Design
 _Usa diagramas donde veas necesario_
