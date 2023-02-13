@@ -10,6 +10,7 @@ Status: [Draft]
 Ultima actualización: 01/02/2023
 
 ## Contenido
+- Downloading
 - Goals
 - Non-Goals
 - Background
@@ -27,6 +28,18 @@ Ultima actualización: 01/02/2023
 ## Links
 - [Un link](#)
 - [Otro link](#)
+
+## Downloading
+Flitter actualmente está alojado en GitHub. El proyecto se puede encontrar en [este enlace](https://github.com/No-Woman-No-Work/flitter). 
+
+Si deseas seguir el desarrollo de Flitter, puedes descargar el código fuente a través de Git:
+
+```git clone (https://github.com/No-Woman-No-Work/flitter)```
+
+o 
+
+``` git clone git@github.com:No-Woman-No-Work/flitter.git
+```
 
 ## Objetivo
 Proyecto final del Bootcamp Mujeres en Tech.
