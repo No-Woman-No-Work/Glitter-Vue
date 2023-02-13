@@ -74,6 +74,9 @@ export default {
   margin-bottom: 16px;
   padding: 20px;
   background-color: antiquewhite;
+  border: 2px solid rgba(0, 0, 0, 1);
+  box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
+  margin-bottom: 2em;
 }
 
 .image {
@@ -87,12 +90,18 @@ textarea {
   height: 100px;
   padding: 12px 20px;
   box-sizing: border-box;
-  border: 1px solid #111111;
+  border: 2px solid rgba(0, 0, 0, 1);
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color:  #f8f4e5;
   font-size: 16px;
   resize: none;
   margin-bottom: 10px;
+}
+
+input.form-control {
+	background: #f8f4e5;
+	border: 2px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
 
 .button {
