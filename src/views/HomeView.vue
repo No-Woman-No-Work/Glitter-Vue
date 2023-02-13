@@ -21,7 +21,7 @@
 					</router-link>
 					<router-link to="/signup" class="nav-link active" aria-current="page">
 						<div class="signup d-grid">
-							<button class="btn btn-secondary second-btn" type="button">Registrer</button>
+							<button class="btn btn-secondary second-btn" type="button">Sign Up</button>
 						</div>
 					</router-link>
 				</custom-card>
