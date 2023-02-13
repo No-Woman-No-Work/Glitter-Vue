@@ -225,10 +225,10 @@ Paginator
 .toggle-blue {
     --toggle-width: 7rem;
     --toggle-height: 1.85rem;
-    --toggle-bg-on: #2980b9;
-    --toggle-border-on: #2980b9;
-    --toggle-bg-off: #2980b9;
-    --toggle-border-off: #2980b9;
+    --toggle-bg-on: #95a4ff;
+    --toggle-border-on: #ffa580;
+    --toggle-bg-off: #95a4ff;
+    --toggle-border-off: #ffa580;
     --toggle-text-on: #ffffff;
     --toggle-text-off: #ffffff;
   }

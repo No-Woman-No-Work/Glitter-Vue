@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container container-fluid justify-content-between">
       <!-- Left elements -->
       <div class="d-flex">
@@ -147,17 +147,20 @@ export default {
 .btn-form {
   line-height: 5pt;
   padding: 0 20px;
-  background: #ffa580;
+  background: #95a4ff;
   letter-spacing: 2px;
   transition: .2s all ease-in-out;
   outline: none;
   border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #ffa580, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
 
 input.form-control {
   border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #ffa580, 3px 3px 1px 2px rgba(0, 0, 0, 1);
   background: #f8f4e5;
+}
+.navbar{
+  background-color: #95a4ff;
 }
 </style>

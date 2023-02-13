@@ -6,7 +6,7 @@
 
         
         <div class="search-bar d-flex justify-content-end">
-          <Toggle v-model="currentOrder" class="toggle" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
+          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
         </div>
         <TweetItem v-for="tweet in tweets" :key="tweet._id" :author="tweet.author.username" :publishDate="tweet.publishDate" :text="tweet.text" :tweet="tweet" :imagePath="tweet.imagePath" />
         </div>
@@ -147,22 +147,15 @@ letter-spacing: 2px;
 
 @import "@vueform/toggle/themes/default.css";
 
-  .toggle {
+.toggle-blue {
     --toggle-width: 7rem;
     --toggle-height: 1.85rem;
-
-    --toggle-bg-on: #ffa580;
-    --toggle-border-on: #000000;
-    --toggle-bg-off: #ffa580;
-    --toggle-border-off: #000000;
-
+    --toggle-bg-on: #95a4ff;
+    --toggle-border-on: #ffa580;
+    --toggle-bg-off: #95a4ff;
+    --toggle-border-off: #ffa580;
     --toggle-text-on: #ffffff;
     --toggle-text-off: #ffffff;
-
-    border: 1px solid rgba(0, 0, 0, 1);
-	  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
-    color: rgb(51, 51, 51);
-    font-size: 0.8rem
   }
   .paginator {
   text-align: center;
