@@ -21,7 +21,7 @@ Ultima actualización: 13/02/2023
 ## Downloading
 Flitter actualmente está alojado en GitHub. El frontend del proyecto se puede encontrar en [este enlace](https://github.com/No-Woman-No-Work/flitter), y el backend en [este enlace](https://github.com/No-Woman-No-Work/v1-Flitter-Back-)
 
-Si deseas seguir el desarrollo de Flitter, puedes descargar el código fuente a través de Git clone.
+Si deseas seguir el desarrollo del frontend de Flitter, puedes descargar el código fuente a través de Git clone.
 
 ```
 git clone + enlace del proyecto
@@ -51,6 +51,44 @@ npm run lint
 
 Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+Si deseas seguir el desarrollo del backend de Flitter, puedes descargar el código fuente a través de Git clone.
+
+```
+git clone + enlace del proyecto
+```
+
+Install mongoDB
+
+´´´
+brew tap mongodb/brew
+
+brew update
+
+brew install mongodb-community@6.0
+```
+
+
+Start mongoDB
+
+```
+brew services start mongodb/brew/mongodb-community
+```
+
+
+Create Express project
+
+```
+npm init
+
+npm install express mongoose
+```
+
+Start the server
+
+```
+node app.js
+
 
 ## Goals
 Proyecto final del Bootcamp Mujeres en Tech.
