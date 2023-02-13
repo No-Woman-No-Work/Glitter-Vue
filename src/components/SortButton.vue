@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <v-menu v-model="menu" :close-on-content-click="false">
       <template v-slot:activator="{ on }">
@@ -70,7 +70,6 @@
     align-items: center;
     justify-content: center;
   }
-
  
-  </style>
+  </style> -->
   

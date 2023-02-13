@@ -9,12 +9,12 @@
             style="margin-top: 2px;" />
         </a>
         <!-- Search -->
-        <form class="input-group w-auto my-auto d-none d-sm-flex" @submit.prevent="search">
-          <div class="form-outline">
-            <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" />
-          </div>
-          <button type="submit" class="btn btn-primary btn-form" onClick={search}><i class="fas fa-search"></i></button>
-        </form>
+	      <form class="input-group w-auto my-auto d-none d-sm-flex" @submit.prevent="search">	
+        <div class="form-outline">	
+          <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" @keyup="$emit('updateSearch',searchTerm)" />	
+        </div>	
+        <button type="submit" class="btn btn-primary btn-form" @click="$emit('updateSearch',searchTerm)"><i class="fas fa-search"></i></button>	
+      </form>
       </div>
       <!-- Final left elements -->
 
@@ -68,8 +68,11 @@ export default {
   components: {
     LogoutButton,
   },
-  setup() {
-    const searchTerm = ref('');
+  props: [	
+    'modelValue'	
+  ],	
+  setup(props) {	
+    const searchTerm = ref(props.modelValue);
     const router = useRouter();
     // The function returns immediately if the value of searchTerm is falsy to prevent sending an empty search to the server.
     const search = async () => {
