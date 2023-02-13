@@ -17,10 +17,8 @@
         :author="tweet.author.username" 
         :publishDate="tweet.publishDate" 
         :text="tweet.text" 
+        :kudos="tweet.kudos"
         :tweet="tweet"
-        @follow="followUser(tweet)"
-        @unfollow="unfollowUser(tweet)"
-        @kudos="kudoTweet(tweet)"
         :imagePath="tweet.imagePath" />
 
       </div>
@@ -41,7 +39,7 @@ import TweetItem from "../components/TweetItem.vue";
 import Toggle from '@vueform/toggle'
 
 const defaultPage = 1
-const defaultLimit = 7
+const defaultLimit = 10
 const defaultOrder = 'desc'
 
 export default {
@@ -50,9 +48,11 @@ export default {
     TweetItem,
     Toggle
   },
+
   setup() {
     const currentPage = ref(defaultPage)
     const tweets = ref([]);
+    const tweet = ref('')
     const currentOrder = ref(defaultOrder);
     
 
@@ -72,24 +72,30 @@ export default {
     const btnArray = ref([
       {
           txt: 'Follow',
-          class: 'follow',
-          action: (tweet) => followUser(tweet)
+          class: 'btn-secondary',
+          action: (tweet) => followUser(tweet),
       },
       {
           txt: 'Unfollow',
-          class: 'unfollow',
-          action: (tweet) => unfollowUser(tweet)
+          class: 'btn-secondary',
+          action: (tweet) => unfollowUser(tweet),
       },
       {
           txt: 'Kudos',
-          class: 'kudos',
-          action: (tweet) => kudoTweet(tweet)
+          class: 'btn-secondary',
+          action: (tweet) => kudo(tweet),
+      },
+      {
+          txt: 'DisKudos',
+          class: 'btn-secondary',
+          action: (tweet) => kudoDelete(tweet),
       },
     ])
 
     const followUser = async  (tweet) => {
+      console.log(tweet)
       try {
-        console.log(tweet)
+        
         await flitterApi.post(`/users/${tweet.author._id}/follow`)
       } catch (error) {
         console.error(error)
@@ -104,14 +110,22 @@ export default {
       }
     }
 
-    const kudoTweet = async (tweet) => {
+    const kudo = async (tweet) => {
       try {
         console.log(tweet)
         await flitterApi.post(`/tweets/${tweet._id}/kudos`)
       } catch (error) {
         console.error(error)
       }
+    }
 
+    const kudoDelete = async (tweet) => {
+      try {
+        console.log(tweet)
+        await flitterApi.delete(`/tweets/${tweet._id}/kudos`)
+      } catch (error) {
+        console.error(error)
+      }
     }
 
     onMounted(() => {
@@ -123,10 +137,8 @@ export default {
     })
 
     return {
-      followUser,
-      unfollowUser,
-      kudoTweet,
       tweets,
+      tweet,
       currentPage,
       currentOrder,
       btnArray
@@ -136,6 +148,7 @@ export default {
 </script>
 
 <style scoped>
+
 header {
 text-shadow: 3px 3px #95a4ff;
 -webkit-text-stroke: 1px rgba(0, 0, 0);

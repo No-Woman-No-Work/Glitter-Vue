@@ -13,6 +13,9 @@
           <div class="d-flex" v-if="imagePath">
             <img class="w-100" :src="'http://localhost:3000' + imagePath" />
           </div>
+          <div>
+            <p class="fw-bold mb-0">{{ kudos }} kudos </p>
+          </div>
         </div>
     </div>
     <div>
@@ -21,7 +24,7 @@
           :key="btn.txt" 
           class="btn" 
           :class="btn.behaviour" 
-          @click.prevent="btn.action">
+          @click.prevent="btn.action(tweet)">
           {{ btn.txt }}
         </button>
       </div>
@@ -35,16 +38,17 @@
 
 export default {
   name: 'TweetItem',
-  props: ['author', 'publishDate', 'text', 'imagePath', 'btns'],
-  setup() {
+  props: ['author', 'publishDate', 'text', 'imagePath', 'btns', 'tweet', 'kudos'],
   
+  setup() {
     const formattedDate = date => {
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
       return (new Date(date)).toLocaleDateString('es-ES', options);
     };
-  
+
     return {
-      formattedDate
+
+      formattedDate,
     };
   }
 }
