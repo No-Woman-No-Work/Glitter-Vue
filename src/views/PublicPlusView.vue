@@ -2,7 +2,7 @@
   <div class="tweets-container">
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
-        <header>Explore</header>
+        <header>Explore and make new friends!</header>
 
         <div class="search-bar d-flex justify-content-end">
           <Toggle v-model="currentOrder" class="toggle" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
