@@ -11,6 +11,7 @@ Ultima actualización: 01/02/2023
 
 ## Contenido
 - Downloading
+- Installation
 - Goals
 - Non-Goals
 - Background
@@ -39,6 +40,31 @@ Si deseas seguir el desarrollo de Flitter, puedes descargar el código fuente a 
 o 
 
 ```git clone git@github.com:No-Woman-No-Work/flitter.git```
+
+## Installation
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Objetivo
 Proyecto final del Bootcamp Mujeres en Tech.
