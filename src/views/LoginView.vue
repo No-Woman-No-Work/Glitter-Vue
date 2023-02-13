@@ -13,7 +13,7 @@
 
 					<form @submit.prevent="login">
 						<div class="mb-3 mt-2">
-							<input type="username" class="form-control" v-model="username" placeholder="✉️ Username" />
+							<input type="username" class="form-control" v-model="username" placeholder="👤 Username" />
 						</div>
 						<div class="mb-3 mt-2">
 							<input type="password" class="form-control" v-model="password" placeholder="🔒 Password" />

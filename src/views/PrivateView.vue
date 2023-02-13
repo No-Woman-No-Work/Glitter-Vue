@@ -60,11 +60,9 @@ import { ref, onMounted, watch } from "vue";
 import TweetItem from "../components/TweetItem.vue";
 import TweetCard from '@/components/TweetCard.vue'
 import Toggle from '@vueform/toggle'
-
 const defaultPage = 1
 const defaultLimit = 2
 const defaultOrder = 'desc'
-
 export default {
   name: 'PrivateView',
   components: {
@@ -76,7 +74,6 @@ export default {
     const currentPage = ref(defaultPage);
     const currentOrder = ref(defaultOrder);
     const tweets = ref("");
-
     const getTweets = async (page, limit, order) => {
       const response = await flitterApi.get("/tweets/private", {
         params: {
@@ -87,19 +84,15 @@ export default {
       });
       tweets.value = response.data;
     };
-
     onMounted(() => {
       getTweets(currentPage.value, defaultLimit, currentOrder.value);
     });
-
     watch(() => currentPage.value, () => {
       getTweets(currentPage.value, defaultLimit, currentOrder.value);
     })
-
     watch(() => currentOrder.value, () => {
       getTweets(currentPage.value, defaultLimit, currentOrder.value);
     })
-
     return {
       tweets,
       currentPage,
@@ -110,7 +103,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style socoped>
 header {
 text-shadow: 3px 3px #95a4ff;
 -webkit-text-stroke: 1px rgba(0, 0, 0);
@@ -120,11 +113,9 @@ font-weight: bold;
 color: #ffa580;
 letter-spacing: 2px;
 }
-
 .tweets-container {
   margin-top: 1em;
 }
-
 .paginator {
     text-align: center;
   }
@@ -161,13 +152,11 @@ letter-spacing: 2px;
   .paginator .next-button svg {
     transform: translateY(2px);
   }
-
   .paginator li:nth-child(2) > .paginate-buttons.number-buttons {
     border-start-start-radius: 25px;
     border-end-start-radius: 25px;
     transition: none;
   }
-
   .paginator li:nth-last-child(2) > .paginate-buttons.number-buttons {
     border-start-end-radius: 25px;
     border-end-end-radius: 25px;
@@ -194,22 +183,17 @@ letter-spacing: 2px;
   .paginator .next-button:active {
     background-color: #e6e6e6;
   }
-
   .search-bar {
     margin-bottom: 1em;
   }
-
   @import "@vueform/toggle/themes/default.css";
-
   .toggle-blue {
     --toggle-width: 7rem;
     --toggle-height: 1.85rem;
-
     --toggle-bg-on: #2980b9;
     --toggle-border-on: #2980b9;
     --toggle-bg-off: #2980b9;
     --toggle-border-off: #2980b9;
-
     --toggle-text-on: #ffffff;
     --toggle-text-off: #ffffff;
   }
