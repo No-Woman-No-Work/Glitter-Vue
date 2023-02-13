@@ -61,36 +61,27 @@ import TweetItem from "../components/TweetItem.vue";
 import TweetCard from '@/components/TweetCard.vue'
 import Toggle from '@vueform/toggle'
 
-const defaultPage = 2
-const defaultLimit = 3
+const defaultPage = 1
+const defaultLimit = 2
 const defaultOrder = 'desc'
+
 export default {
   name: 'PrivateView',
   components: {
     TweetItem,
     TweetCard,
-    Toggle	
-  },	
-  props: [	
-    'currentSearch'	
-  ],	
-  setup(props) {	
-    const currentPage = ref(defaultPage);	
-    const currentOrder = ref(defaultOrder);	
-    const currentSearch = ref(props.currentSearch);	
-    const tweets = ref("");	
-    const getTweets = async (page, limit, order) => {	
-    const response = await flitterApi.get("/tweets/private", {	
-        params: {	
-          page,	
-          limit,	
     Toggle
   },
-  setup() {
+  props: [
+    'currentSearch'
+  ],
+  setup(props) {
     const currentPage = ref(defaultPage);
     const currentOrder = ref(defaultOrder);
+    const currentSearch = ref(props.currentSearch);
     const tweets = ref("");
-    const getTweets = async (page, limit, order) => {
+
+  const getTweets = async (page, limit, order) => {
       const response = await flitterApi.get("/tweets/private", {
         params: {
           page,
@@ -98,6 +89,7 @@ export default {
           order
         }
       });
+
       tweets.value = response.data.docs;
       console.table(response.data.docs);
     };
