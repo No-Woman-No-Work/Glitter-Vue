@@ -16,7 +16,7 @@
             <img class="tweet-img" :src="'http://localhost:3000' + imagePath" />
           </div>
           <div>
-            <p class="fw-bold mb-0">{{ kudos }} kudos </p>
+            <p class="fw-bold mb-0">{{ kudos }} kudos</p>
           </div>
         </div>
     </div>
@@ -36,8 +36,6 @@
 </template>
 
 <script>
-//import { ref } from 'vue';
-
 
 export default {
   name: 'TweetItem',
