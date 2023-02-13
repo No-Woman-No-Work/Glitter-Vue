@@ -31,7 +31,9 @@ Flitter actualmente está alojado en GitHub. El frontend del proyecto se puede e
 
 Si deseas seguir el desarrollo de Flitter, puedes descargar el código fuente a través de Git clone.
 
-```git clone + enlace del proyecto```
+```
+git clone + enlace del proyecto
+```
 
 ## Installation
 
