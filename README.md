@@ -13,10 +13,8 @@ Ultima actualización: 01/02/2023
 - Downloading
 - Installation
 - Goals
-- Non-Goals
 - Background
-- Overview
-- Detailed Design
+- Design and Architecture
   - Solucion 1
     - Frontend
     - Backend
@@ -88,7 +86,7 @@ usuario, dirección de e-mail y contraseña de acceso.
 ## Background
 Es un buen momento para crear una plataforma alternativa a Twitter debido a la situación que atraviesa dicha plataforma, y asimismo consideramos que se trata de un proyecto ideal para potenciar nuestros conocimientos tanto de backend, como de frontend, para cubrir las necesidades y aportar valor.
 
-## Overview
+## Design and Architecture
 Flitter es una aplicación web desarrollada con un stack tecnológico de vanguardia. Se compone de un backend construido con Node.js, Express y MongoDB, y un frontend desarrollado con Javascript y el framework Vue 3.
 
 El frontend de Flitter está construido con Vue Composition API y estilado con Bootstrap. La conexión con el backend se realiza a través de Axios, y se ha utilizado Vuex como manejador de estados. Además, se han implementado adaptaciones (transpiladores) a motores más antiguos de Javascript, como Babel y Webpack, para asegurar la compatibilidad con todos los navegadores.
@@ -97,18 +95,7 @@ El backend de Flitter utiliza Mongoose para conectarse a la base de datos noSQL 
 
 En resumen, Flitter es una aplicación web potente y versátil, construida con las tecnologías más modernas y adaptada para funcionar en todos los dispositivos con diseño responsive.
 
-## Detailed Design
-_Usa diagramas donde veas necesario_
-
-_Herramientas como [Excalidraw](https://excalidraw.com) son buenos recursos para esto_
-
-_Cubre los cambios principales:_
-
- _- Cuales son las nuevas funciones que vas a escribir?_
- _- Porque necesitas nuevos componentes?_
- _- Hay código que puede ser reusable?_
-
-_No elabores minuciosamente la implementación._
+![input](https://user-images.githubusercontent.com/50715363/218560841-5ae5c39a-f3d8-4b0e-aab0-e9fe8a2cf7b6.png)
 
 ## Solution 1
 ### Frontend
