@@ -43,6 +43,9 @@ const defaultPage = 1
 const defaultLimit = 10
 const defaultOrder = 'desc'
 
+const likeName = 'kudos'
+// conseguir que salga kudos en string en el tweetitem {{}} 
+
 export default {
   name: 'PublicPlusView',
   components: {
@@ -142,7 +145,8 @@ export default {
       tweet,
       currentPage,
       currentOrder,
-      btnArray
+      btnArray,
+      likeName
     };
   },
 }
