@@ -3,7 +3,7 @@
     <h3>Share something with our community 🐥</h3>
     <form @submit.prevent="createTweet">
       <textarea v-model="text" id="textarea" placeholder="Remember we hate KFC and messages that exceed 256 characters"
-        maxlength="256"></textarea>
+        maxlength="256"></textarea> <span class="counter">{{ text.length }} / 256</span>
       <div class="mb-3">
         <input class="form-control" id="formFile" type="file" @change="onFileChange" />
       </div>
@@ -95,7 +95,6 @@ textarea {
   background-color:  #f8f4e5;
   font-size: 16px;
   resize: none;
-  margin-bottom: 10px;
 }
 
 input.form-control {
@@ -123,5 +122,11 @@ input.form-control {
 
 .postBtn:hover {
   background-color: rgb(249, 250, 251);
+}
+
+.counter {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 20px;
 }
 </style>
