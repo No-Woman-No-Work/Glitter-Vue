@@ -31,22 +31,19 @@
 </template>
 
 <script>
-// import { ref } from 'vue';
+
 
 export default {
   name: 'TweetItem',
   props: ['author', 'publishDate', 'text', 'imagePath', 'btns'],
   setup() {
-    // const followUser = () => {
-    //   this.$emit('followUser');
-    // };
+  
     const formattedDate = date => {
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
       return (new Date(date)).toLocaleDateString('es-ES', options);
     };
   
     return {
-      // followUser,
       formattedDate
     };
   }
