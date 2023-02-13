@@ -53,9 +53,23 @@ body {
 
 .card {
 	background: #f8f4e5;
-	padding: 70px 100px;
+	padding: 80px 100px;
 	border: 2px solid rgba(0, 0, 0, 1);
 	box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
+}
+.btn {
+	line-height: 28pt;
+	padding: 0 20px;
+	background:  #ffa580;
+	letter-spacing: 2px;
+	transition: .2s all ease-in-out;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 1);
+	box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+}
+.link {
+	letter-spacing: 2px;
+	color: #95a4ff;
 }
 </style>
 

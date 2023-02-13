@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6">
-				<custom-card :btns="btnArray" :link="linkArray" class="mx-auto custom-card">
+				<custom-card :btns="btnArray" :link="linkArray" class="card mx-auto custom-card">
 					<h4 class="text-center">Sign in</h4>
 
 					<form @submit.prevent="login">
@@ -47,7 +47,7 @@ export default {
 	setup() {
 		const linkArray = [
 			{
-				txt: "Forgot your password?",
+				txt: "Forgot password?",
 				class: "d-flex justify-content-end text-decoration-none",
 				route: "/new-password"
 			},
@@ -103,39 +103,48 @@ export default {
 }
 
 img {
-	max-width: 315px;
+	width: 300px;
 	margin: 1em auto 0 auto;
 }
 
 .custom-card {
 	max-width: 398px;
 	margin-top: 1.6em;
+	padding: 38px 80px;
 }
 
 h2 {
 	color: #545454;
 }
-
+input.form-control {
+	background: #f8f4e5;
+	border: 2px solid rgba(0, 0, 0, 1);
+}
+input {
+	letter-spacing: 2px;
+}
 @media (min-width: 992px) {
 	.home {
 		margin: 4em auto;
 	}
 
 	img {
+		width: 400px;
 		margin: 1em;
 		margin-top: 6.9em;
 	}
 
 	.custom-card {
 		margin: 0;
-		margin-top: 7.6em;
+		margin-top: 5.9em;
 	}
 
 	h2 {
-		color: #545454;
+		color: black;
 		margin: 0;
 		margin-top: 0.8em;
-		margin-left: 1.4em;
+		margin-left: 3em;
+		letter-spacing: 2px;
 	}
 }
 </style>

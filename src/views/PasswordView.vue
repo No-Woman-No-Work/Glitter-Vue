@@ -15,11 +15,9 @@
 						Forgot password
 					</h4>
 					<div class="change-pass">
-						<p>Change your password in three easy steps:</p>
 						<ol class="list-unstyled">
-							<li><span class="text-primary text-medium">1. </span>Enter your email address below.</li>
-							<li><span class="text-primary text-medium">2. </span>Our system will send you a temporary link.</li>
-							<li><span class="text-primary text-medium">3. </span>Use the link to reset your password.</li>
+							<li><span class="text">1. </span>Enter your email address below.</li>
+							<li><span class="text-medium">2. </span>Our system will send you a temporary link.</li>
 						</ol>
 					</div>
 					<form>
@@ -100,7 +98,7 @@ export default {
 }
 
 img {
-	max-width: 315px;
+	width: 300px;
 	margin: 1em auto 0 auto;
 }
 
@@ -116,16 +114,29 @@ h2 {
 .change-pass {
 	font-size: 13px;
 }
-
+.custom-card {
+	max-width: 398px;
+	margin-top: 1.6em;
+	padding: 48px 80px;
+}
+input.form-control {
+	background: #f8f4e5;
+	border: 2px solid rgba(0, 0, 0, 1);
+}
+input {
+	letter-spacing: 2px;
+}
 @media (min-width: 992px) {
 	.home {
 		margin: 4em auto;
 	}
 
 	img {
+		width: 400px;
 		margin: 1em;
 		margin-top: 6.9em;
 	}
+
 
 	.custom-card {
 		margin: 0;
@@ -133,10 +144,11 @@ h2 {
 	}
 
 	h2 {
-		color: #545454;
+		color: black;
 		margin: 0;
 		margin-top: 0.8em;
-		margin-left: 1.4em;
+		margin-left: 3em;
+		letter-spacing: 2px;
 	}
 }
 </style>
