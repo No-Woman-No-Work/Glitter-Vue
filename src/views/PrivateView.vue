@@ -60,21 +60,15 @@ import { ref, onMounted, watch } from "vue";
 import TweetItem from "../components/TweetItem.vue";
 import TweetCard from '@/components/TweetCard.vue'
 import Toggle from '@vueform/toggle'
-<<<<<<< HEAD
 
 const defaultPage = 2
 const defaultLimit = 3
-=======
-const defaultPage = 1
-const defaultLimit = 2
->>>>>>> a5afb9259c7fe822c4b940a02b9c2a10bc0814a2
 const defaultOrder = 'desc'
 export default {
   name: 'PrivateView',
   components: {
     TweetItem,
     TweetCard,
-<<<<<<< HEAD
     Toggle	
   },	
   props: [	
@@ -90,7 +84,6 @@ export default {
         params: {	
           page,	
           limit,	
-=======
     Toggle
   },
   setup() {
@@ -102,7 +95,6 @@ export default {
         params: {
           page,
           limit,
->>>>>>> a5afb9259c7fe822c4b940a02b9c2a10bc0814a2
           order
         }
       });
@@ -118,7 +110,6 @@ export default {
     watch(() => currentOrder.value, () => {
       getTweets(currentPage.value, defaultLimit, currentOrder.value);
     })
-<<<<<<< HEAD
 
     watch(() => currentSearch.value, () => {	
       // Isso e a única coisa que não funciona	
@@ -137,15 +128,6 @@ export default {
     };	
   },	
 }	
-=======
-    return {
-      tweets,
-      currentPage,
-      currentOrder
-    };
-  },
-}
->>>>>>> a5afb9259c7fe822c4b940a02b9c2a10bc0814a2
 </script>
 
 
@@ -160,10 +142,10 @@ color: #ffa580;
 letter-spacing: 2px;
 }
 .tweets-container {
-  margin-top: 1em;
+margin-top: 1em;
 }
 .paginator {
-    text-align: center;
+  text-align: center;
   }
   .paginator .paginate-buttons {
   width: 40px;
@@ -232,8 +214,8 @@ letter-spacing: 2px;
   .search-bar {
     margin-bottom: 1em;
   }
-  @import "@vueform/toggle/themes/default.css";
-  .toggle-blue {
+@import "@vueform/toggle/themes/default.css";
+.toggle-blue {
     --toggle-width: 7rem;
     --toggle-height: 1.85rem;
     --toggle-bg-on: #2980b9;

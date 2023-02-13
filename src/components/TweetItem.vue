@@ -33,11 +33,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 //import { ref } from 'vue';
-=======
 
->>>>>>> a5afb9259c7fe822c4b940a02b9c2a10bc0814a2
 
 export default {
   name: 'TweetItem',
