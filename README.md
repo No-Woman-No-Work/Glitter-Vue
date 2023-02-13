@@ -26,10 +26,6 @@ Ultima actualización: 01/02/2023
 - Consideraciones
 - Métricas
 
-## Links
-- [Un link](#)
-- [Otro link](#)
-
 ## Downloading
 Flitter actualmente está alojado en GitHub. El frontend del proyecto se puede encontrar en [este enlace](https://github.com/No-Woman-No-Work/flitter), y el backend en [este enlace](https://github.com/No-Woman-No-Work/v1-Flitter-Back-)
 
