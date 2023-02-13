@@ -110,7 +110,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 header {
 text-shadow: 3px 3px #95a4ff;
 -webkit-text-stroke: 1px rgba(0, 0, 0);

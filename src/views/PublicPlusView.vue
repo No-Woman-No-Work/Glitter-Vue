@@ -2,7 +2,8 @@
   <div class="tweets-container">
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
-        
+        <header>Explore</header>
+
         <div class="search-bar d-flex justify-content-end">
           <Toggle v-model="currentOrder" class="toggle" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
 
@@ -102,7 +103,17 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+header {
+text-shadow: 3px 3px #95a4ff;
+-webkit-text-stroke: 1px rgba(0, 0, 0);
+padding: 10px;
+font-size: 40px;
+font-weight: bold;
+color: #ffa580;
+letter-spacing: 2px;
+}
+
 .btn-see-more {
 line-height: 28pt;
 padding: 0 20px;

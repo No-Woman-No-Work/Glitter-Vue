@@ -1,4 +1,7 @@
 <template>
+<header>
+  Profile
+</header>
   <UserCard :username="username" :email="email" :btn="btn" :following="following.length" />
 </template>
 
@@ -43,3 +46,18 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+header {
+display: flex;
+justify-content: center;
+align-items: center;
+align-items: center;
+text-shadow: 3px 3px #95a4ff;
+-webkit-text-stroke: 1px rgba(0, 0, 0);
+padding: 20px;
+font-size: 40px;
+font-weight: bold;
+color: #ffa580;
+letter-spacing: 2px;
+}</style>

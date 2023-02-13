@@ -1,6 +1,6 @@
 <template>
   <section class="vh-50">
-    <div class="container py-5 h-100">
+    <div class="container py-3 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-12 col-xl-4">
 
@@ -42,7 +42,6 @@ export default {
 
 <style scoped>
 .card {
-  margin-top: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
