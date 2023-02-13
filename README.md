@@ -60,14 +60,17 @@ git clone + enlace del proyecto
 
 Install mongoDB
 
-´´´
+```
 brew tap mongodb/brew
-
-brew update
-
-brew install mongodb-community@6.0
 ```
 
+```
+brew update
+```
+
+```
+brew install mongodb-community@6.0
+```
 
 Start mongoDB
 
@@ -75,12 +78,13 @@ Start mongoDB
 brew services start mongodb/brew/mongodb-community
 ```
 
-
 Create Express project
 
 ```
 npm init
+```
 
+```
 npm install express mongoose
 ```
 
@@ -88,7 +92,7 @@ Start the server
 
 ```
 node app.js
-
+```
 
 ## Goals
 Proyecto final del Bootcamp Mujeres en Tech.
