@@ -32,9 +32,9 @@ Ultima actualización: 01/02/2023
 ## Downloading
 Flitter actualmente está alojado en GitHub. El frontend del proyecto se puede encontrar en [este enlace](https://github.com/No-Woman-No-Work/flitter), y el backend en [este enlace](https://github.com/No-Woman-No-Work/v1-Flitter-Back-)
 
-Si deseas seguir el desarrollo de Flitter, puedes descargar el código fuente a través de Git:
+Si deseas seguir el desarrollo de Flitter, puedes descargar el código fuente a través de Git según el método que utilices:
 
-```git clone https://github.com/No-Woman-No-Work/flitter)```
+```git clone https://github.com/No-Woman-No-Work/flitter```
 
 o 
 
