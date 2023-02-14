@@ -9,7 +9,13 @@
         <!-- Search bar -->
         <div class="search-bar d-flex justify-content-end">
           {{ modelValue }}
-          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
+          <Toggle 
+          v-model="currentOrder" 
+          class="toggle-blue" 
+          :falseValue="'desc'" 
+          :trueValue="'asc'" 
+          :offLabel="'Descending'" 
+          :onLabel="'Ascending'" />
         </div>
         <!-- Search bar -->
 
@@ -28,7 +34,10 @@
         
           <!-- Paginator -->
           <div class="paginator">
-            <vue-awesome-paginate :total-items="tweets.totalDocs" :items-per-page="tweets.limit" v-model="currentPage">
+            <vue-awesome-paginate 
+            :total-items="tweets.length" 
+            :items-per-page="tweets.limit" 
+            v-model="currentPage">
               <template #prev-button>
                   <span>
                   <svg
@@ -72,6 +81,7 @@ import TweetItem from "../components/TweetItem.vue";
 import TweetCard from '@/components/TweetCard.vue'
 import Toggle from '@vueform/toggle'
 
+
 const defaultPage = 1
 const defaultLimit = 2
 const defaultOrder = 'desc'
@@ -91,7 +101,8 @@ export default {
     const currentPage = ref(defaultPage);
     const currentOrder = ref(defaultOrder);
     const currentSearch = ref(props.modelValue);
-    const tweets = ref("");
+    const tweets = ref([]);
+    const tweet = ref('')
 
     const likeName = 'kudos'
 
@@ -157,14 +168,6 @@ export default {
       }
     }
 
-
-
-
-
-
-
-
-
     onMounted(() => {
       getTweets(currentPage.value, defaultLimit, currentOrder.value);
     });
@@ -181,12 +184,13 @@ export default {
     })	
 
     return {	
-      tweets,	
+      tweets,
+      tweet,	
       currentPage,	
       currentOrder,
       currentSearch,
-      likeName,
-      btnArray
+      btnArray,
+      likeName
     };	
   },	
 }	

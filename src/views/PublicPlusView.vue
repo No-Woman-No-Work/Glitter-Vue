@@ -5,7 +5,13 @@
         <header>Explore and make new friends!</header>
 
         <div class="search-bar d-flex justify-content-end">
-          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
+          <Toggle 
+          v-model="currentOrder" 
+          class="toggle-blue" 
+          :falseValue="'desc'" 
+          :trueValue="'asc'" 
+          :offLabel="'Descending'" 
+          :onLabel="'Ascending'" />
 
         </div>
 
@@ -25,10 +31,13 @@
       </div>
 
                 <!-- Paginator -->
-                <div class="paginator">
-            <vue-awesome-paginate :total-items="tweets.totalDocs" :items-per-page="tweets.limit" v-model="currentPage">
-              <template #prev-button>
-                  <span>
+        <div class="paginator">
+          <vue-awesome-paginate 
+          :total-items="tweets.length" 
+          :items-per-page="tweets.limit" 
+          v-model="currentPage">
+            <template #prev-button>
+                <span>
                   <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="black"
@@ -36,13 +45,13 @@
                       height="12"
                       viewBox="0 0 24 24"
                   >
-                      <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
+                  <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
                   </svg>
-                  </span>
+                </span>
               </template>
 
-              <template #next-button>
-                  <span>
+            <template #next-button>
+                <span>
                   <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="black"
@@ -52,7 +61,7 @@
                   >
                       <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
                   </svg>
-                  </span>
+                </span>
               </template>
             </vue-awesome-paginate>
           </div>
@@ -87,14 +96,12 @@ export default {
   
   setup() {
     const currentPage = ref(defaultPage)
+    const currentOrder = ref(defaultOrder);
     const tweets = ref([]);
     const tweet = ref('')
-    const currentOrder = ref(defaultOrder);
 
     const likeName = 'kudos'
    
-    
-
     const getTweets = async (page, limit, order) => {
       const response = await flitterApi.get("/tweets", {
         params: {

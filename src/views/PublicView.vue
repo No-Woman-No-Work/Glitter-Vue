@@ -5,7 +5,13 @@
         <header>Explore</header>
 
         <div class="search-bar d-flex justify-content-end">
-          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
+          <Toggle 
+          v-model="currentOrder" 
+          class="toggle-blue" 
+          :falseValue="'desc'" 
+          :trueValue="'asc'" 
+          :offLabel="'Descending'" 
+          :onLabel="'Ascending'" />
         </div>
         
         <TweetItem 
@@ -28,7 +34,10 @@
 
             <!-- Paginator -->
             <div class="paginator">
-            <vue-awesome-paginate :total-items="tweets.totalDocs" :items-per-page="tweets.limit" v-model="currentPage">
+            <vue-awesome-paginate 
+            :total-items="tweets.length" 
+            :items-per-page="tweets.limit" 
+            v-model="currentPage">
               <template #prev-button>
                   <span>
                   <svg
@@ -86,8 +95,9 @@ export default {
   },
   setup() {
     const currentPage = ref(defaultPage)
-    const tweets = ref([]);
     const currentOrder = ref(defaultOrder);
+    const tweets = ref([]);
+    const tweet =  ref('')
 
     const likeName = 'kudos'
 
@@ -116,6 +126,7 @@ export default {
 
     return {
       tweets,
+      tweet,
       currentPage,
       currentOrder,
       likeName
