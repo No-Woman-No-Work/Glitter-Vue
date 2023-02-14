@@ -5,7 +5,7 @@
         <header>Explore and make new friends!</header>
 
         <div class="search-bar d-flex justify-content-end">
-          <Toggle v-model="currentOrder" class="toggle" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
+          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
 
         </div>
 
@@ -17,16 +17,15 @@
         :author="tweet.author.username" 
         :publishDate="tweet.publishDate" 
         :text="tweet.text" 
+        :kudos="tweet.kudos"
+        :likeName="kudos"
         :tweet="tweet"
-        @follow="followUser(tweet)"
-        @unfollow="unfollowUser(tweet)"
-        @kudos="kudoTweet(tweet)"
         :imagePath="tweet.imagePath" />
 
       </div>
 
       <footer class="text-center">
-        <p class="mb-3">Don't miss what's happening! Users on Flitter are the first to know.</p>
+        <p class="mb-3">Thank you for being part of this awesome community!.</p>
         <router-link router-link to="/signup" class="nav-link active mb-3" aria-current="page">
         </router-link>
       </footer>
@@ -41,8 +40,11 @@ import TweetItem from "../components/TweetItem.vue";
 import Toggle from '@vueform/toggle'
 
 const defaultPage = 1
-const defaultLimit = 7
+const defaultLimit = 10
 const defaultOrder = 'desc'
+
+const likeName = 'kudos'
+// conseguir que salga kudos en string en el tweetitem {{}} 
 
 export default {
   name: 'PublicPlusView',
@@ -50,9 +52,11 @@ export default {
     TweetItem,
     Toggle
   },
+
   setup() {
     const currentPage = ref(defaultPage)
     const tweets = ref([]);
+    const tweet = ref('')
     const currentOrder = ref(defaultOrder);
     
 
@@ -72,24 +76,30 @@ export default {
     const btnArray = ref([
       {
           txt: 'Follow',
-          class: 'follow',
-          action: (tweet) => followUser(tweet)
+          class: 'btn-secondary',
+          action: (tweet) => followUser(tweet),
       },
       {
           txt: 'Unfollow',
-          class: 'unfollow',
-          action: (tweet) => unfollowUser(tweet)
+          class: 'btn-secondary',
+          action: (tweet) => unfollowUser(tweet),
       },
       {
           txt: 'Kudos',
-          class: 'kudos',
-          action: (tweet) => kudoTweet(tweet)
+          class: 'btn-secondary',
+          action: (tweet) => kudo(tweet),
+      },
+      {
+          txt: 'DisKudos',
+          class: 'btn-secondary',
+          action: (tweet) => kudoDelete(tweet),
       },
     ])
 
     const followUser = async  (tweet) => {
+      console.log(tweet)
       try {
-        console.log(tweet)
+        
         await flitterApi.post(`/users/${tweet.author._id}/follow`)
       } catch (error) {
         console.error(error)
@@ -104,14 +114,22 @@ export default {
       }
     }
 
-    const kudoTweet = async (tweet) => {
+    const kudo = async (tweet) => {
       try {
         console.log(tweet)
         await flitterApi.post(`/tweets/${tweet._id}/kudos`)
       } catch (error) {
         console.error(error)
       }
+    }
 
+    const kudoDelete = async (tweet) => {
+      try {
+        console.log(tweet)
+        await flitterApi.delete(`/tweets/${tweet._id}/kudos`)
+      } catch (error) {
+        console.error(error)
+      }
     }
 
     onMounted(() => {
@@ -123,19 +141,19 @@ export default {
     })
 
     return {
-      followUser,
-      unfollowUser,
-      kudoTweet,
       tweets,
+      tweet,
       currentPage,
       currentOrder,
-      btnArray
+      btnArray,
+      likeName
     };
   },
 }
 </script>
 
 <style scoped>
+
 header {
 text-shadow: 3px 3px #95a4ff;
 -webkit-text-stroke: 1px rgba(0, 0, 0);
@@ -177,21 +195,16 @@ margin-bottom: 1em
 
 @import "@vueform/toggle/themes/default.css";
 
-.toggle {
+.toggle-blue {
+
   --toggle-width: 7rem;
   --toggle-height: 1.85rem;
-
-  --toggle-bg-on: #ffa580;
-  --toggle-border-on: #000000;
-  --toggle-bg-off: #ffa580;
-  --toggle-border-off: #000000;
-
+  --toggle-bg-on: #95a4ff;
+  --toggle-border-on: #ffa580;
+  --toggle-bg-off: #95a4ff;
+  --toggle-border-off: #ffa580;
   --toggle-text-on: #ffffff;
   --toggle-text-off: #ffffff;
 
-  border: 1px solid rgba(0, 0, 0, 1);
-  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
-  color: rgb(51, 51, 51);
-  font-size: 0.8rem
 }
 </style>
