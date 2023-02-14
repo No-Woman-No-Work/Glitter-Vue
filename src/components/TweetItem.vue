@@ -21,12 +21,13 @@
         </div>
     </div>
     <div>
-      <div class="card-footer p-2 d-flex justify-content-around">
+      <div class="card-footer p-4 d-flex justify-content-end">
         <button v-for="btn in btns" 
           :key="btn.txt" 
           class="btn" 
           :class="btn.behaviour" 
           @click.prevent="btn.action(tweet)">
+          <span v-html="btn.icon"></span>
           {{ btn.txt }}
         </button>
       </div>
@@ -82,5 +83,17 @@ export default {
     display: block;
     border-radius: 10px;
   }
+}
+
+.btn{
+  line-height: 5pt;
+  padding: 5px 10px;
+  margin: 5px;
+  background: #95a4ff;
+  letter-spacing: 1px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #ffa580, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
 </style>

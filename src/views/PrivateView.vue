@@ -113,16 +113,19 @@ export default {
           txt: 'Unfollow',
           class: 'btn-secondary',
           action: (tweet) => unfollowUser(tweet),
+          icon: '<i class="fa-solid fa-user-minus"></i>'
       },
       {
           txt: 'Kudos',
           class: 'btn-secondary',
           action: (tweet) => kudo(tweet),
+          icon: '<i class="fa-solid fa-heart"></i>'
       },
       {
           txt: 'DisKudos',
           class: 'btn-secondary',
           action: (tweet) => kudoDelete(tweet),
+          icon:'<i class="fa-solid fa-hand-middle-finger"></i>'
       },
     ])
 
