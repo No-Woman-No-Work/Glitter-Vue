@@ -129,7 +129,22 @@ export default {
           class: 'btn-secondary',
           action: (tweet) => kudoDelete(tweet),
       },
+      {
+          txt: 'Delete',
+          class: 'btn-secondary',
+          action: (tweet) => deleteTweet(tweet),
+      },
     ])
+
+    const deleteTweet = async (tweet) => {
+      try {
+        await flitterApi.delete(`/tweets/${tweet._id}`)
+        getTweets(currentPage.value, defaultLimit, currentOrder.value)
+      } catch(error) {
+        console.error(error)
+      }
+    }
+    
 
     const followUser = async  (tweet) => {
       console.log(tweet)
