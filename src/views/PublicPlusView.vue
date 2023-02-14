@@ -188,7 +188,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 header {
 text-shadow: 3px 3px #95a4ff;
@@ -219,7 +219,6 @@ margin-top: 1em;
 Paginator
 
 */
-
 
 .paginator {
   text-align: center;
