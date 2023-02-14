@@ -78,7 +78,7 @@ _Flitter is a micro-content platform created with the following objectives:_
 ![input](https://user-images.githubusercontent.com/50715363/216122456-a706d9cc-5c74-4b36-ab57-6801f8742725.png)
 
 ## Background
-It is a good time to create an alternative platform to Twitter given the situation that Twitter is going through. We believe that this is an ideal project to boost our backend and frontend skills to meet the needs and provide value.
+Given the situation that Twitter is going throught, it is a good time to create an alternative platform to Twitter. We believe that this is an ideal project to boost our backend and frontend skills, meet this current need and provide value.
 
 ## Design and Architecture
 Flitter is a web application developed with a cutting-edge technology stack. It consists of a backend built with Node.js, Express, and MongoDB, and a frontend developed with Javascript and the Vue 3 framework.
