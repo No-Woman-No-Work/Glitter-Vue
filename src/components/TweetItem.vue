@@ -16,7 +16,7 @@
             <img class="tweet-img" :src="'http://localhost:3000' + imagePath" />
           </div>
           <div>
-            <p class="fw-bold mb-0">{{ kudos }} {{ likeNname }}</p>
+            <p class="fw-bold mb-0">{{ kudos }} {{ likeName }}</p>
           </div>
         </div>
     </div>

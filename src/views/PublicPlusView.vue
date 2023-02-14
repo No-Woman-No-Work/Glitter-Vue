@@ -18,7 +18,7 @@
         :publishDate="tweet.publishDate" 
         :text="tweet.text" 
         :kudos="tweet.kudos"
-        :likeName="kudos"
+        :likeName="likeName"
         :tweet="tweet"
         :imagePath="tweet.imagePath" />
 
@@ -77,8 +77,6 @@ const defaultPage = 1
 const defaultLimit = 10
 const defaultOrder = 'desc'
 
-const likeName = 'kudos'
-// conseguir que salga kudos en string en el tweetitem {{}} 
 
 export default {
   name: 'PublicPlusView',
@@ -86,12 +84,15 @@ export default {
     TweetItem,
     Toggle
   },
-
+  
   setup() {
     const currentPage = ref(defaultPage)
     const tweets = ref([]);
     const tweet = ref('')
     const currentOrder = ref(defaultOrder);
+
+    const likeName = 'kudos'
+   
     
 
     const getTweets = async (page, limit, order) => {
