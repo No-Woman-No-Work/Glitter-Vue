@@ -8,7 +8,8 @@
 <script>
 import NavBar from "@/components/NavBar.vue"
 import { ref } from "vue";
-// import { whatch } from "vue"
+// import { whatch } from "vue";
+
 
 export default {
   name: "App",
@@ -17,9 +18,7 @@ export default {
   },
   setup(props, context) {
     const navBarSearch = ref('');
-    // sil borrar:
-    // 
-    // hasta aquí 
+
     // You can also use watchEffect to listen for changes on parentProp
     // watch(() => navBarSearch.value, () => {
     //   console.log(`navBarSearch has changed to: ${navBarSearch.value}`);
