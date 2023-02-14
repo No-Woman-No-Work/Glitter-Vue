@@ -17,12 +17,14 @@ export default {
 }
 </script>
 
+
 <style>
 .footer {
+  margin-top: 9.8vh;
   position: -webkit-sticky;
   bottom: 0;
   width: 100%;
-  height: 7rem;
+  height: 7.2rem;
   border: 1px solid rgba(0, 0, 0, 1);
   background-color: #a0acf8;
 }
