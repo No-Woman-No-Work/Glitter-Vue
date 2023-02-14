@@ -28,7 +28,7 @@
           :class="btn.behaviour" 
           @click.prevent="btn.action(tweet)">
           <span v-html="btn.icon"></span>
-          {{ btn.txt }}
+          <span class="btn-text">{{ btn.txt }}</span>
         </button>
       </div>
       <hr class="my-4">
@@ -85,15 +85,30 @@ export default {
   }
 }
 
-.btn{
+.btn {
   line-height: 5pt;
   padding: 5px 10px;
   margin: 5px;
   background: #95a4ff;
   letter-spacing: 1px;
-  transition: .2s all ease-in-out;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   outline: none;
   border: 1px solid rgba(0, 0, 0, 1);
   box-shadow: 3px 3px 1px 1px #ffa580, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
+
+.btn:hover {
+  transform: translateY(-5px);
+}
+
+.btn-text {
+  display: none;
+  margin-left: 5px;
+}
+
+.btn:hover .btn-text {
+  display: inline;
+  transition: transform 0.3s ease-in-out;
+}
+
 </style>

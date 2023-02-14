@@ -162,5 +162,6 @@ input.form-control {
 }
 .navbar{
   background-color: #95a4ff;
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 </style>
