@@ -1,28 +1,40 @@
 <template>
   <div>
     <NavBar v-model="navBarSearch" @updateSearch="updateSearch" />
-    <router-view :currentSearch="navBarSearch"/>
+    <router-view v-model="navBarSearch"/>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue"
+import { ref, watch } from "vue";
+
 export default {
   name: "App",
   components: {
     NavBar,
   },
-  data: function() {
-    return {
-      navBarSearch: "hola test search"
-    };
-  },
-  methods: {
-      updateSearch(navBarSearch) {
-        console.log('navBarSearch updated: ' + navBarSearch)
-        this.navBarSearch = navBarSearch;
+  setup(props, context) {
+    const navBarSearch = ref('');
+
+    // You can also use watchEffect to listen for changes on parentProp
+    // watch(() => navBarSearch.value, () => {
+    //   console.log(`navBarSearch has changed to: ${navBarSearch.value}`);
+    // }, {
+    //   deep: true,
+    // });
+
+    const updateSearch = (newSearch) => {
+        console.log('navBarSearch updated: ' + newSearch)
+        navBarSearch.value = newSearch;
+        context.emit('update:modelValue', navBarSearch.value)
       }
-    }
+
+    return {
+      navBarSearch,
+      updateSearch
+    };
+  }
 }
 </script>
 

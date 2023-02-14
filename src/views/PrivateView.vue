@@ -8,6 +8,7 @@
 
         <!-- Search bar -->
         <div class="search-bar d-flex justify-content-end">
+          {{ modelValue }}
           <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
         </div>
         <!-- Search bar -->
@@ -73,12 +74,13 @@ export default {
     Toggle
   },
   props: [
-    'currentSearch'
+    'modelValue'
   ],
   setup(props) {
+    console.log(props.modelValue)
     const currentPage = ref(defaultPage);
     const currentOrder = ref(defaultOrder);
-    const currentSearch = ref(props.currentSearch);
+    const currentSearch = ref(props.modelValue);
     const tweets = ref("");
 
   const getTweets = async (page, limit, order) => {
@@ -102,21 +104,16 @@ export default {
     watch(() => currentOrder.value, () => {
       getTweets(currentPage.value, defaultLimit, currentOrder.value);
     })
-
     watch(() => currentSearch.value, () => {	
       // Isso e a única coisa que não funciona	
-      console.log(currentSearch.value);	
+      console.log('AQUIIIIII ======> ' + currentSearch.value);	
       getTweets(currentPage.value, defaultLimit, currentOrder.value);	
     })	
-    const updateSearch = async (search) => {	
-      currentSearch.value = search;	
-      console.log(currentSearch.value);	
-    };	
+
     return {	
       tweets,	
       currentPage,	
-      currentOrder,	
-      updateSearch	
+      currentOrder
     };	
   },	
 }	
