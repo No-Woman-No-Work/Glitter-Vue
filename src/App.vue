@@ -1,15 +1,17 @@
 <template>
   <div>
+
     <NavBar v-model="navBarSearch" @updateSearch="updateSearch" />
     <router-view v-model="navBarSearch"/>
+
   </div>
 </template>
 
 <script>
+
 import NavBar from "@/components/NavBar.vue"
 import { ref } from "vue";
 // import { whatch } from "vue";
-
 
 export default {
   name: "App",

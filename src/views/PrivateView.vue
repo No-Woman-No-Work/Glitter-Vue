@@ -93,9 +93,11 @@ export default {
     TweetCard,
     Toggle
   },
+
   props: [
     'modelValue'
   ],
+
   setup(props) {
     console.log(props.modelValue)
     const currentPage = ref(defaultPage);
@@ -118,7 +120,7 @@ export default {
 
       tweets.value = response.data.docs;
       totalTweets.value = response.data.followedAuthorsTotalTweets
-      console.log(totalTweets.value)
+      console.log(`${totalTweets.value} Tweets de seguidos.`)
       console.table(response.data.docs);
     };
 

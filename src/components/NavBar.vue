@@ -1,27 +1,47 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light">
+
     <div class="container container-fluid justify-content-between">
+
       <!-- Left elements -->
       <div class="d-flex">
+
         <!-- Logo Flitter -->
         <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
           <img src="../assets/img/logo_navbar.svg" height="35" alt="Flitter Logo" loading="lazy"
             style="margin-top: 2px;" />
         </a>
+
         <!-- Search -->
-	      <form class="input-group w-auto my-auto d-none d-sm-flex" @submit.prevent="search">	
-        <div class="form-outline">	
-          <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" @keyup="$emit('updateSearch',searchTerm)" />	
-        </div>	
-        <button type="submit" class="btn btn-primary btn-form" @click="$emit('updateSearch',searchTerm)"><i class="fas fa-search"></i></button>	
+	      <form 
+        class="input-group w-auto my-auto d-none d-sm-flex" 
+        @submit.prevent="search">	
+
+          <div class="form-outline">	
+
+            <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Search flits..." 
+            v-model="searchTerm"
+            @keyup="$emit('updateSearch',searchTerm)" />
+
+          </div>	
+
+          <button 
+          type="submit" 
+          class="btn btn-primary btn-form" 
+          @click="$emit('updateSearch',searchTerm)">
+          <i class="fas fa-search"></i></button>	
+
       </form>
+
       </div>
       <!-- Final left elements -->
 
       <!-- Center elements ¿¿¿???
-    <ul class="navbar-nav flex-row d-none d-md-flex">
-    </ul>
-    -->
+      <ul class="navbar-nav flex-row d-none d-md-flex"></ul>
+      -->
 
       <!-- Fin center elements -->
 
@@ -55,7 +75,9 @@
       </ul>
       <!-- Right elements -->
     </div>
+
   </nav>
+
 </template>
 
 <script>
@@ -63,6 +85,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import flitterApi from "../api/flitterApi";
 import LogoutButton from "./LogoutButton.vue";
+
 export default {
   name: 'NavBar',
   components: {
@@ -70,11 +93,14 @@ export default {
   },
   props: [	
     'modelValue'	
-  ],	
+  ],
+  
+  
   setup(props) {	
     const searchTerm = ref(props.modelValue);
     const router = useRouter();
     // The function returns immediately if the value of searchTerm is falsy to prevent sending an empty search to the server.
+
     const search = async () => {
       if (!searchTerm.value) {
         return;
@@ -100,6 +126,8 @@ export default {
         console.error(error);
       }
     };
+
+
     function checkLogin() {
       const token = localStorage.getItem('access_token');
       if (token) {
@@ -108,6 +136,8 @@ export default {
         return false;
       }
     }
+
+
     function checkLogout() {
       const token = localStorage.getItem('access_token');
       if (!token) {
@@ -116,6 +146,8 @@ export default {
         return false;
       }
     }
+
+    
     return {
       searchTerm,
       search,
