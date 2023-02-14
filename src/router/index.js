@@ -67,12 +67,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "profile" */ "../views/UserProfileView.vue"),
   },
-  // {
-  //   path: "/public-test",
-  //   name: "publictests",
-  //   component: () =>
-  //     import(/* webpackChunkName: "public" */ "../views/PublicTestView.vue"),
-  // },
+  {
+    path: "/prueba-searchbar",
+    name: "prueba-searchbar",
+    component: () =>
+      import(/* webpackChunkName: "prueba" */ "../views/SilPruebaSearchbar.vue"),
+  },
 ];
 
 const router = createRouter({
