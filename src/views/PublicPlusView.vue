@@ -137,6 +137,7 @@ export default {
           txt: 'Delete',
           class: 'btn-secondary',
           action: (tweet) => deleteTweet(tweet),
+          icon: '<i class="fa-solid fa-x"></i>'
       },
     ])
 
