@@ -4,16 +4,28 @@
       <div class="mt-2">
         <header>Explore</header>
 
-        
         <div class="search-bar d-flex justify-content-end">
           <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'" :offLabel="'Descending'" :onLabel="'Ascending'" />
         </div>
-        <TweetItem v-for="tweet in tweets" :key="tweet._id" :author="tweet.author.username" :publishDate="tweet.publishDate" :text="tweet.text" :tweet="tweet" :imagePath="tweet.imagePath" />
+        
+        <TweetItem 
+        v-for="tweet in tweets" 
+        :key="tweet._id" 
+        :author="tweet.author.username" 
+        :publishDate="tweet.publishDate" 
+        :text="tweet.text" :tweet="tweet"
+        :kudos="tweet.kudos"
+        :likeName="likeName" 
+        :imagePath="tweet.imagePath" />
+
         </div>
+
       <footer class="text-center">
         <p class="mb-3">Don't miss what's happening! Users on Flitter are the first to know.</p>
+
         <router-link router-link to="/signup" class="nav-link active mb-3" aria-current="page">
           <button class="btn-see-more btn btn-secondary" type="button">Sign up now to see more</button>
+
             <!-- Paginator -->
             <div class="paginator">
             <vue-awesome-paginate :total-items="tweets.totalDocs" :items-per-page="tweets.limit" v-model="currentPage">
@@ -47,8 +59,11 @@
             </vue-awesome-paginate>
           </div>
           <!-- Paginator -->
+
         </router-link>
+
       </footer>
+
     </div>
   </div>
 </template> 
@@ -73,6 +88,8 @@ export default {
     const currentPage = ref(defaultPage)
     const tweets = ref([]);
     const currentOrder = ref(defaultOrder);
+
+    const likeName = 'kudos'
 
     const getTweets = async (page, limit, order) => {
       const response = await flitterApi.get("/tweets", {
@@ -100,7 +117,8 @@ export default {
     return {
       tweets,
       currentPage,
-      currentOrder
+      currentOrder,
+      likeName
     };
   },
 }
