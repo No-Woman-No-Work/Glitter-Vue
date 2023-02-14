@@ -113,7 +113,8 @@ export default {
     return {	
       tweets,	
       currentPage,	
-      currentOrder
+      currentOrder,
+      currentSearch
     };	
   },	
 }	
