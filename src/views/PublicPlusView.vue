@@ -33,7 +33,7 @@
                 <!-- Paginator -->
         <div class="paginator">
           <vue-awesome-paginate 
-          :total-items="tweets.length" 
+          :total-items= "totalTweets"
           :items-per-page="tweets.limit" 
           v-model="currentPage">
             <template #prev-button>
@@ -99,7 +99,8 @@ export default {
     const currentOrder = ref(defaultOrder);
     const tweets = ref([]);
     const tweet = ref('')
-
+    let totalTweets = ref(0)
+    
     const likeName = 'kudos'
    
     const getTweets = async (page, limit, order) => {
@@ -111,7 +112,9 @@ export default {
         }
       });
       tweets.value = response.data.docs;
-      console.log(tweets.value)
+      totalTweets.value = response.data.totalTweets
+      console.log(totalTweets.value)
+      console.table(tweets.value)
     };
 
     
@@ -159,7 +162,7 @@ export default {
     
 
     const followUser = async  (tweet) => {
-      console.log(tweet)
+      console.table(tweet)
       try {
         
         await flitterApi.post(`/users/${tweet.author._id}/follow`)
@@ -210,6 +213,7 @@ export default {
     return {
       tweets,
       tweet,
+      totalTweets,
       currentPage,
       currentOrder,
       btnArray,

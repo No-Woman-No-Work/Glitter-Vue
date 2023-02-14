@@ -35,7 +35,7 @@
           <!-- Paginator -->
           <div class="paginator">
             <vue-awesome-paginate 
-            :total-items="tweets.length" 
+            :total-items="totalTweets" 
             :items-per-page="tweets.limit" 
             v-model="currentPage">
               <template #prev-button>
@@ -83,7 +83,7 @@ import Toggle from '@vueform/toggle'
 
 
 const defaultPage = 1
-const defaultLimit = 2
+const defaultLimit = 10
 const defaultOrder = 'desc'
 
 export default {
@@ -103,6 +103,7 @@ export default {
     const currentSearch = ref(props.modelValue);
     const tweets = ref([]);
     const tweet = ref('')
+    let totalTweets = ref(0)
 
     const likeName = 'kudos'
 
@@ -116,6 +117,8 @@ export default {
       });
 
       tweets.value = response.data.docs;
+      totalTweets.value = response.data.followedAuthorsTotalTweets
+      console.log(totalTweets.value)
       console.table(response.data.docs);
     };
 
@@ -185,7 +188,8 @@ export default {
 
     return {	
       tweets,
-      tweet,	
+      tweet,
+      totalTweets,	
       currentPage,	
       currentOrder,
       currentSearch,
