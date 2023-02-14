@@ -13,8 +13,18 @@
         </div>
         <!-- Search bar -->
 
-        <TweetItem v-for="tweet in tweets" :author="tweet.author.username" :publishDate="tweet.publishDate"
-          :text="tweet.text" :key="tweet._id" :tweet="tweet" :imagePath="tweet.imagePath" />
+        <TweetItem 
+        v-for="tweet in tweets" 
+        :key="tweet._id" 
+        :btns="btnArray"
+        :userId= "tweet.author._id"
+        :author="tweet.author.username" 
+        :publishDate="tweet.publishDate"
+        :text="tweet.text"
+        :kudos="tweet.kudos"
+        :likeName="likeName" 
+        :tweet="tweet" 
+        :imagePath="tweet.imagePath" />
         
           <!-- Paginator -->
           <div class="paginator">
@@ -83,7 +93,9 @@ export default {
     const currentSearch = ref(props.modelValue);
     const tweets = ref("");
 
-  const getTweets = async (page, limit, order) => {
+    const likeName = 'kudos'
+
+    const getTweets = async (page, limit, order) => {
       const response = await flitterApi.get("/tweets/private", {
         params: {
           page,
@@ -95,6 +107,59 @@ export default {
       tweets.value = response.data.docs;
       console.table(response.data.docs);
     };
+
+    const btnArray = ref([
+      {
+          txt: 'Unfollow',
+          class: 'btn-secondary',
+          action: (tweet) => unfollowUser(tweet),
+      },
+      {
+          txt: 'Kudos',
+          class: 'btn-secondary',
+          action: (tweet) => kudo(tweet),
+      },
+      {
+          txt: 'DisKudos',
+          class: 'btn-secondary',
+          action: (tweet) => kudoDelete(tweet),
+      },
+    ])
+
+    const unfollowUser = async (tweet) => {
+      try {
+        await flitterApi.delete(`/users/${tweet.author._id}/unfollow`)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const kudo = async (tweet) => {
+      try {
+        console.log(tweet)
+        await flitterApi.post(`/tweets/${tweet._id}/kudos`)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const kudoDelete = async (tweet) => {
+      try {
+        console.log(tweet)
+        await flitterApi.delete(`/tweets/${tweet._id}/kudos`)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+
+
+
+
+
+
+
+
     onMounted(() => {
       getTweets(currentPage.value, defaultLimit, currentOrder.value);
     });
@@ -114,7 +179,9 @@ export default {
       tweets,	
       currentPage,	
       currentOrder,
-      currentSearch
+      currentSearch,
+      likeName,
+      btnArray
     };	
   },	
 }	
