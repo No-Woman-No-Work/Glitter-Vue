@@ -152,16 +152,19 @@ export default {
     const kudo = async (tweet) => {
       try {
         console.log(tweet)
-        await flitterApi.post(`/tweets/${tweet._id}/kudos`)
+        const response = await flitterApi.post(`/tweets/${tweet._id}/kudos`)
+        tweet.kudos = response.data.kudosSize
       } catch (error) {
         console.error(error)
       }
+      
     }
 
     const kudoDelete = async (tweet) => {
       try {
         console.log(tweet)
-        await flitterApi.delete(`/tweets/${tweet._id}/kudos`)
+        const response = await flitterApi.delete(`/tweets/${tweet._id}/kudos`)
+        tweet.kudos = response.data.kudosSize
       } catch (error) {
         console.error(error)
       }
