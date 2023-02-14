@@ -12,6 +12,8 @@
 <script>
 import flitterApi from "../api/flitterApi"
 import TweetItem from "../components/TweetItem.vue";
+import { useRouter } from 'vue-router'
+
 
 export default {
   name: 'UnsubscribeView',
@@ -19,6 +21,7 @@ export default {
     TweetItem
   },
   setup() {
+    const router = useRouter()
     const author = "Glitter"
     const publishDate = new Date()
     const text = "Nooo :(. Are you sure you want to leave us? We'll miss you!"
@@ -27,11 +30,15 @@ export default {
       try {
         const response = await flitterApi.delete("/users", { headers: { authorization: `Bearer ${localStorage.getItem("jwtToken")}` } });
         console.log(response.data);
+        window.alert("It was beautiful while it lasted 😢");
+        setTimeout(() => {
+          router.push("/");
+        }, 2000);
       } catch (error) {
         console.error(error);
+        window.alert("There was an error while unsubscribing, please try again later");
       }
     };
-    // FALTA: comprobar que funciona, gestión de errores y redirigir a la página de inicio
 
     return {
       author,
