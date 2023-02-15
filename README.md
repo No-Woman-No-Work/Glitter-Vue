@@ -7,7 +7,7 @@ Author(s): Andrea Ares Fernandez, Emma Alonso McCoy, Nelanyi Ruiz Contreras, Sil
 
 Status: [Draft]
 
-Last update: 14/02/2023
+Last update: 15/02/2023
 
 ## Content
 - Downloading
