@@ -5,12 +5,24 @@
         <header>Explore</header>
 
         <div class="search-bar d-flex justify-content-end">
-          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'"
-            :offLabel="'Descending'" :onLabel="'Ascending'" />
+          <Toggle 
+          v-model="currentOrder" 
+          class="toggle-blue" 
+          :falseValue="'desc'" 
+          :trueValue="'asc'"
+          :offLabel="'Descending'" 
+          :onLabel="'Ascending'" />
         </div>
 
-        <GlitItem v-for="glit in glits" :key="glit._id" :author="glit.author.username" :publishDate="glit.publishDate"
-          :text="glit.text" :glit="glit" :kudos="glit.kudos" :likeName="likeName" :imagePath="glit.imagePath" />
+        <GlitItem v-for="glit in glits" 
+        :key="glit._id" 
+        :author="glit.author.username" 
+        :publishDate="glit.publishDate"
+        :text="glit.text" 
+        :glit="glit" 
+        :kudos="glit.kudos" 
+        :likeName="likeName" 
+        :imagePath="glit.imagePath" />
 
       </div>
 
@@ -22,7 +34,12 @@
 
           <!-- Paginator -->
           <div class="paginator">
-            <vue-awesome-paginate :total-items="glits.length" :items-per-page="glits.limit" v-model="currentPage">
+
+            <vue-awesome-paginate 
+            :total-items="glits.length" 
+            :items-per-page="glits.limit" 
+            v-model="currentPage">
+
               <template #prev-button>
                 <span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="black" width="12" height="12" viewBox="0 0 24 24">
@@ -38,7 +55,9 @@
                   </svg>
                 </span>
               </template>
+
             </vue-awesome-paginate>
+            
           </div>
           <!-- Paginator -->
 

@@ -17,13 +17,20 @@
 
           <div class="form-outline">
 
-            <input type="text" class="form-control" placeholder="Search glits..." v-model="searchTerm"
-              @keyup="$emit('updateSearch', searchTerm)" />
+            <input 
+            type="text" 
+            class="form-control" 
+            placeholder="Search glits..." 
+            v-model="searchTerm"
+            @keyup="$emit('updateSearch', searchTerm)" />
 
           </div>
 
-          <button type="submit" class="btn btn-primary btn-form" @click="$emit('updateSearch', searchTerm)">
-            <i class="fas fa-search"></i></button>
+          <button 
+          type="submit" 
+          class="btn btn-primary btn-form" 
+          @click="$emit('updateSearch', searchTerm)">
+          <i class="fas fa-search"></i></button>
 
         </form>
 
@@ -92,7 +99,7 @@ export default {
       }
       try {
         const response = await glitterApi.get(`/glits?search=${searchTerm.value}`);
-        const data = response.data;
+        const data = response.data.docs;
         if (data.length > 0) {
           router.push({
             name: 'search-results',

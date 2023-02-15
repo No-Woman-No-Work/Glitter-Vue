@@ -71,13 +71,7 @@ const routes = [
     path: "/landing-page",
     name: "landing",
     component: () =>
-      import(/* webpackChunkName: "profile" */ "../views/LandingPageView.vue"),
-  },
-  {
-    path: "/prueba-searchbar",
-    name: "prueba-searchbar",
-    component: () =>
-      import(/* webpackChunkName: "prueba" */ "../views/SilPruebaSearchbar.vue"),
+      import(/* webpackChunkName: "landing" */ "../views/LandingPageView.vue"),
   },
 ];
 

@@ -4,23 +4,41 @@
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
         <header>For You</header>
+
+        <!-- Write a Glit -->
         <GlitCard />
 
         <!-- Search bar -->
         <div class="search-bar d-flex justify-content-end">
           {{ modelValue }}
-          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'"
-            :offLabel="'Descending'" :onLabel="'Ascending'" />
+          <Toggle 
+          v-model="currentOrder" 
+          class="toggle-blue" 
+          :falseValue="'desc'" 
+          :trueValue="'asc'"
+          :offLabel="'Descending'" 
+          :onLabel="'Ascending'" />
         </div>
         <!-- Search bar -->
 
-        <GlitItem v-for="glit in glits" :key="glit._id" :btns="btnArray" :userId="glit.author._id"
-          :author="glit.author.username" :publishDate="glit.publishDate" :text="glit.text" :kudos="glit.kudos"
-          :likeName="likeName" :glit="glit" :imagePath="glit.imagePath" />
+        <GlitItem v-for="glit in glits"
+        :key="glit._id" :btns="btnArray" 
+        :userId="glit.author._id"
+        :author="glit.author.username" 
+        :publishDate="glit.publishDate" 
+        :text="glit.text" :kudos="glit.kudos"
+        :likeName="likeName" 
+        :glit="glit" 
+        :imagePath="glit.imagePath" />
 
         <!-- Paginator -->
         <div class="paginator">
-          <vue-awesome-paginate :total-items="totalGlits" :items-per-page="glits.limit" v-model="currentPage">
+
+          <vue-awesome-paginate 
+          :total-items="totalGlits" 
+          :items-per-page="glits.limit" 
+          v-model="currentPage">
+
             <template #prev-button>
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="black" width="12" height="12" viewBox="0 0 24 24">
@@ -36,7 +54,9 @@
                 </svg>
               </span>
             </template>
+
           </vue-awesome-paginate>
+
         </div>
         <!-- Paginator -->
       </div>
@@ -70,10 +90,11 @@ export default {
   ],
 
   setup(props) {
+
     console.log(props.modelValue)
     const currentPage = ref(defaultPage);
     const currentOrder = ref(defaultOrder);
-    const currentSearch = ref(props.modelValue);
+    const currentSearch = ref(props.modelValue); // value updated in app.vue
     const glits = ref([]);
     const glit = ref('')
     let totalGlits = ref(0)

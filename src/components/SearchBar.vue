@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
       <form 
         class="input-group w-auto my-auto d-none d-sm-flex" 
         @submit.prevent="search">	
@@ -80,4 +80,4 @@ input.form-control {
   background: #f8f4e5;
 }
 
-</style>
+</style> -->

@@ -1,8 +1,12 @@
 <template>
   <div>
 
-    <NavBar v-model="navBarSearch" @updateSearch="updateSearch" />
-    <router-view v-model="navBarSearch" />
+    <NavBar 
+    v-model="navBarSearch" 
+    @updateSearch="updateSearch" />
+    
+    <router-view 
+    v-model="navBarSearch" />
 
   </div>
 </template>
@@ -18,6 +22,8 @@ export default {
   components: {
     NavBar,
   },
+  props: ['modelValue'],
+
   setup(props, context) {
     const navBarSearch = ref('');
 
@@ -25,6 +31,7 @@ export default {
       console.log('navBarSearch updated: ' + newSearch)
       navBarSearch.value = newSearch;
       context.emit('update:modelValue', navBarSearch.value)
+      console.log(props.modelValue)
     }
 
     return {

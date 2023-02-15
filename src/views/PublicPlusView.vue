@@ -6,14 +6,27 @@
 
 
         <div class="search-bar d-flex justify-content-end">
-          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'"
-            :offLabel="'Descending'" :onLabel="'Ascending'" />
+          <Toggle 
+          v-model="currentOrder" 
+          class="toggle-blue" 
+          :falseValue="'desc'" 
+          :trueValue="'asc'"
+          :offLabel="'Descending'" 
+          :onLabel="'Ascending'" />
 
         </div>
 
-        <GlitItem v-for="glit in glits" :key="glit._id" :btns="btnArray" :userId="glit.author._id"
-          :author="glit.author.username" :publishDate="glit.publishDate" :text="glit.text" :kudos="glit.kudos"
-          :likeName="likeName" :glit="glit" :imagePath="glit.imagePath" />
+        <GlitItem v-for="glit in glits" 
+        :key="glit._id" 
+        :btns="btnArray" 
+        :userId="glit.author._id"
+        :author="glit.author.username" 
+        :publishDate="glit.publishDate" 
+        :text="glit.text" 
+        :kudos="glit.kudos"
+        :likeName="likeName" 
+        :glit="glit" 
+        :imagePath="glit.imagePath" />
 
       </div>
 
@@ -184,9 +197,9 @@ export default {
     })
 
     return {
-      glits: glits,
-      glit: glit,
-      totalGlits: totalGlits,
+      glits,
+      glit,
+      totalGlits,
       currentPage,
       currentOrder,
       btnArray,
