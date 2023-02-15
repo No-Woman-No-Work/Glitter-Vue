@@ -1,32 +1,28 @@
 <template>
-  <div class="tweet list-group">
-    <div class="tweet-box card list-group-item d-flex justify-content-between align-items-center">
-        <div class="ms-3 me-3 w-100">
-          <div class="d-flex align-items-center">
-            <img src="../assets/img/logo_navbar.svg
+  <div class="glit list-group">
+    <div class="glit-box card list-group-item d-flex justify-content-between align-items-center">
+      <div class="ms-3 me-3 w-100">
+        <div class="d-flex align-items-center">
+          <img src="../assets/img/logo_navbar.svg
             " alt="profile image" style="width: 45px; height: 45px" class="rounded-circle" />
-            &nbsp;&nbsp;
-            <p class="fw-bold mb-0">@{{ author }}</p>
-            <p class="text-secondary mb-0 ms-auto">{{ formattedDate(publishDate) }}</p>
-          </div>
-          <div class="ms-2">
-          <p class="mb-2 mt-2">{{ text }}</p>
-          </div>
-          <div class="d-flex" v-if="imagePath">
-            <img class="tweet-img" :src="'http://localhost:3000' + imagePath" />
-          </div>
-          <div>
-            <p class="fw-bold mb-0">{{ kudos }} {{ likeName }}</p>
-          </div>
+          &nbsp;&nbsp;
+          <p class="fw-bold mb-0">@{{ author }}</p>
+          <p class="text-secondary mb-0 ms-auto">{{ formattedDate(publishDate) }}</p>
         </div>
+        <div class="ms-2">
+          <p class="mb-2 mt-2">{{ text }}</p>
+        </div>
+        <div class="d-flex" v-if="imagePath">
+          <img class="glit-img" :src="'http://localhost:3000' + imagePath" />
+        </div>
+        <div>
+          <p class="fw-bold mb-0">{{ kudos }} {{ likeName }}</p>
+        </div>
+      </div>
     </div>
     <div>
       <div class="card-footer p-4 d-flex justify-content-end">
-        <button v-for="btn in btns" 
-          :key="btn.txt" 
-          class="btn" 
-          :class="btn.behaviour" 
-          @click.prevent="btn.action(tweet)">
+        <button v-for="btn in btns" :key="btn.txt" class="btn" :class="btn.behaviour" @click.prevent="btn.action(glit)">
           <span v-html="btn.icon"></span>
           <span class="btn-text">{{ btn.txt }}</span>
         </button>
@@ -39,9 +35,9 @@
 <script>
 
 export default {
-  name: 'TweetItem',
-  props: ['author', 'publishDate', 'text', 'imagePath', 'btns', 'tweet', 'kudos', 'likeName'],
-  
+  name: 'GlitItem',
+  props: ['author', 'publishDate', 'text', 'imagePath', 'btns', 'glit', 'kudos', 'likeName'],
+
   setup() {
     const formattedDate = date => {
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
@@ -57,26 +53,30 @@ export default {
 </script>
 
 <style scoped>
-.tweet-box {
+.glit-box {
   background: #f8f4e5;
-	border: 2px solid rgba(0, 0, 0, 1);
-	box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
+  border: 2px solid rgba(0, 0, 0, 1);
+  box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
 }
+
 .text-secondary {
   font-size: 13px;
-} 
-.tweet-img {
-    max-width: 300px;
-    width: 100%;
-    margin: 0 auto;
-    display: block;
-    border-radius: 10px;
-  }
-@media (min-width: 992px) {
-  .tweet {
-  width: 51em;
 }
-  .tweet-img {
+
+.glit-img {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  border-radius: 10px;
+}
+
+@media (min-width: 992px) {
+  .glit {
+    width: 51em;
+  }
+
+  .glit-img {
     max-width: 400px;
     width: 100%;
     margin: 0 auto;
@@ -110,5 +110,4 @@ export default {
   display: inline;
   transition: transform 0.3s ease-in-out;
 }
-
 </style>

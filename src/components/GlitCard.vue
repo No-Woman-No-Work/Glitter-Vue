@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h3>Share something with our community 🐥</h3>
-    <form @submit.prevent="createTweet">
+    <form @submit.prevent="createGlit">
       <textarea v-model="text" id="textarea" placeholder="Remember we hate KFC and messages that exceed 256 characters"
         maxlength="256"></textarea> <span class="counter">{{ text.length }} / 256</span>
       <div class="mb-3">
@@ -9,14 +9,14 @@
       </div>
       <img v-if="imageUrl" :src="imageUrl" />
       <div class="button">
-        <button type="button" class="card postBtn text-white" @click="createTweet">Post</button>
+        <button type="button" class="card postBtn text-white" @click="createGlit">Post</button>
       </div>
       <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
     </form>
   </div>
 </template>	
 <script>
-import flitterApi from "../api/flitterApi"
+import glitterApi from "../api/glitterApi"
 import { ref } from 'vue';
 
 
@@ -31,7 +31,7 @@ export default {
     const onFileChange = (event) => {
       image.value = event.target.files[0];
     };
-    const createTweet = async () => {
+    const createGlit = async () => {
       if (errorMessage.value) return;
       const formData = new FormData();
       formData.append('text', text.value);
@@ -39,7 +39,7 @@ export default {
       formData.append('author', userId.value);
       formData.append('image', image.value);
       try {
-        const response = await flitterApi.post('/tweets', formData, {
+        const response = await glitterApi.post('/glits', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -59,7 +59,7 @@ export default {
     return {
       text,
       errorMessage,
-      createTweet,
+      createGlit,
       userId,
       onFileChange,
       image
@@ -92,14 +92,14 @@ textarea {
   box-sizing: border-box;
   border: 2px solid rgba(0, 0, 0, 1);
   border-radius: 5px;
-  background-color:  #f8f4e5;
+  background-color: #f8f4e5;
   font-size: 16px;
   resize: none;
 }
 
 input.form-control {
-	background: #f8f4e5;
-	border: 2px solid rgba(0, 0, 0, 1);
+  background: #f8f4e5;
+  border: 2px solid rgba(0, 0, 0, 1);
   box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
 
@@ -110,13 +110,13 @@ input.form-control {
 
 .postBtn {
   line-height: 28pt;
-	padding: 0 20px;
-	background: #ffa580;
-	letter-spacing: 2px;
-	transition: .2s all ease-in-out;
-	outline: none;
-	border: 1px solid rgba(0, 0, 0, 1);
-	box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
 
 

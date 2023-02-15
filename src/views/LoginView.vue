@@ -3,8 +3,10 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="img-cont">
-					<img alt="Glitter logo" src="../assets/img/logo_flitter.svg" />
-					<h2 class="text-center text-lg-start">Welcome to Glitter</h2>
+					<img src="../assets/img/logo_navbar.svg" height="200" alt="Glitter Logo">
+					<h2 class="text-center text-lg-start" style="margin-right: 30px;">
+						Welcome to Glitter!
+					</h2>
 				</div>
 			</div>
 			<div class="col-lg-6">
@@ -30,11 +32,9 @@
 </template>
 
 <script>
-//RECORDATORIO: para llamar a la api, import flitterApi from ../api/flitterApi 
-// en vez de importar axios, y usar axios.post(...) se usa flitterApi.post(...)
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import flitterApi from "../api/flitterApi"
+import glitterApi from "../api/glitterApi"
 import CustomCard from "../components/CustomCard.vue";
 import FooterSection from "@/components/FooterSection.vue";
 
@@ -67,7 +67,7 @@ export default {
 
 		async function login() {
 			try {
-				const response = await flitterApi.post("/auth/login", {
+				const response = await glitterApi.post("/auth/login", {
 					username: username.value,
 					password: password.value,
 				});
@@ -114,15 +114,26 @@ img {
 }
 
 h2 {
-	color: #545454;
+	font-size: 40px;
+	font-family: 'Poppins', sans-serif;
+	text-transform: lowercase;
+	font-weight: 600;
+	text-align: center;
+	color: black;
+	margin-top: 0.8em;
+	margin-left: 3em;
+	letter-spacing: 2px;
 }
+
 input.form-control {
 	background: #f8f4e5;
 	border: 2px solid rgba(0, 0, 0, 1);
 }
+
 input {
 	letter-spacing: 2px;
 }
+
 @media (min-width: 992px) {
 	.home {
 		margin: 4em auto;
@@ -139,12 +150,5 @@ input {
 		margin-top: 5.9em;
 	}
 
-	h2 {
-		color: black;
-		margin: 0;
-		margin-top: 0.8em;
-		margin-left: 3em;
-		letter-spacing: 2px;
-	}
 }
 </style>

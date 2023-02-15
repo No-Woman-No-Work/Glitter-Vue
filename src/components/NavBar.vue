@@ -1,29 +1,34 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light">
+
     <div class="container container-fluid justify-content-between">
+
       <!-- Left elements -->
       <div class="d-flex">
-        <!-- Logo Flitter -->
-        <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="#">
-          <img src="../assets/img/logo_navbar.svg" height="35" alt="Flitter Logo" loading="lazy"
+
+        <!-- Glitter logo -->
+        <router-link to="/landing-page" class="navbar-brand me-2 mb-1 d-flex align-items-center">
+          <img src="../assets/img/logo_navbar.svg" height="35" alt="Glitter Logo" loading="lazy"
             style="margin-top: 2px;" />
-        </a>
+        </router-link>
+
         <!-- Search -->
-	      <form class="input-group w-auto my-auto d-none d-sm-flex" @submit.prevent="search">	
-        <div class="form-outline">	
-          <input type="text" class="form-control" placeholder="Search flits..." v-model="searchTerm" @keyup="$emit('updateSearch',searchTerm)" />	
-        </div>	
-        <button type="submit" class="btn btn-primary btn-form" @click="$emit('updateSearch',searchTerm)"><i class="fas fa-search"></i></button>	
-      </form>
+        <form class="input-group w-auto my-auto d-none d-sm-flex" @submit.prevent="search">
+
+          <div class="form-outline">
+
+            <input type="text" class="form-control" placeholder="Search glits..." v-model="searchTerm"
+              @keyup="$emit('updateSearch', searchTerm)" />
+
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-form" @click="$emit('updateSearch', searchTerm)">
+            <i class="fas fa-search"></i></button>
+
+        </form>
+
       </div>
-      <!-- Final left elements -->
-
-      <!-- Center elements ¿¿¿???
-    <ul class="navbar-nav flex-row d-none d-md-flex">
-    </ul>
-    -->
-
-      <!-- Fin center elements -->
+      <!-- End left elements -->
 
       <!-- Right elements -->
       <ul class="navbar-nav flex-row">
@@ -55,37 +60,41 @@
       </ul>
       <!-- Right elements -->
     </div>
+
   </nav>
+
 </template>
 
 <script>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import flitterApi from "../api/flitterApi";
+import glitterApi from "../api/glitterApi";
 import LogoutButton from "./LogoutButton.vue";
+
 export default {
   name: 'NavBar',
   components: {
     LogoutButton,
   },
-  props: [	
-    'modelValue'	
-  ],	
-  setup(props) {	
+  props: [
+    'modelValue'
+  ],
+
+
+  setup(props) {
     const searchTerm = ref(props.modelValue);
     const router = useRouter();
     // The function returns immediately if the value of searchTerm is falsy to prevent sending an empty search to the server.
+
     const search = async () => {
       if (!searchTerm.value) {
         return;
       }
-      // TODO: add endpoint
       try {
-        const response = await flitterApi.get(`/tweets?search=${searchTerm.value}`);
+        const response = await glitterApi.get(`/glits?search=${searchTerm.value}`);
         const data = response.data;
         if (data.length > 0) {
           router.push({
-            // TO DO: create these views and routers
             name: 'search-results',
             params: {
               searchTerm: searchTerm.value,
@@ -100,6 +109,8 @@ export default {
         console.error(error);
       }
     };
+
+
     function checkLogin() {
       const token = localStorage.getItem('access_token');
       if (token) {
@@ -108,6 +119,8 @@ export default {
         return false;
       }
     }
+
+
     function checkLogout() {
       const token = localStorage.getItem('access_token');
       if (!token) {
@@ -116,6 +129,8 @@ export default {
         return false;
       }
     }
+
+
     return {
       searchTerm,
       search,
@@ -160,7 +175,8 @@ input.form-control {
   box-shadow: 3px 3px 1px 1px #ffa580, 3px 3px 1px 2px rgba(0, 0, 0, 1);
   background: #f8f4e5;
 }
-.navbar{
+
+.navbar {
   background-color: #95a4ff;
   border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
