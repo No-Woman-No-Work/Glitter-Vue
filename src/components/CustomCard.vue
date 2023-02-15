@@ -2,8 +2,8 @@
 	<div class="card">
 		<div class="card-body">
 			<h5 v-if="title" class="card-title">{{ title }}</h5>
-			<p v-if="parrafo" class="card-text">
-				{{ parrafo }}
+			<p v-if="text" class="card-text">
+				{{ text }}
 			</p>
 			<slot></slot>
 			<div class="d-grid gap-2">
@@ -25,7 +25,7 @@
 <script>
 export default {
 	name: 'CustomCard',
-	props: ['title', 'parrafo', 'btns', 'link', 'error'],
+	props: ['title', 'text', 'btns', 'link', 'error'],
 	methods: {
 		resetPassword() {
 			this.$emit('reset-password');
@@ -57,16 +57,18 @@ body {
 	border: 2px solid rgba(0, 0, 0, 1);
 	box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0, 0, 0, 1);
 }
+
 .btn {
 	line-height: 28pt;
 	padding: 0 20px;
-	background:  #ffa580;
+	background: #ffa580;
 	letter-spacing: 2px;
 	transition: .2s all ease-in-out;
 	outline: none;
 	border: 1px solid rgba(0, 0, 0, 1);
 	box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
+
 .link {
 	letter-spacing: 2px;
 	color: #95a4ff;

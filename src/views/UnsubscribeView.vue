@@ -2,7 +2,7 @@
   <div class="message-container">
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
-        <TweetItem class="message" :author="author" :publishDate="publishDate" :text="text" />
+        <GlitItem class="message" :author="author" :publishDate="publishDate" :text="text" />
       </div>
       <div><button class="unsubscribeButton" @click="unsubscribe">Yes, it's time to leave the nest...</button></div>
     </div>
@@ -10,15 +10,15 @@
 </template> 
 
 <script>
-import flitterApi from "../api/flitterApi"
-import TweetItem from "../components/TweetItem.vue";
+import glitterApi from "../api/glitterApi"
+import GlitItem from "../components/GlitItem.vue";
 import { useRouter } from 'vue-router'
 
 
 export default {
   name: 'UnsubscribeView',
   components: {
-    TweetItem
+    GlitItem
   },
   setup() {
     const router = useRouter()
@@ -28,7 +28,7 @@ export default {
 
     const unsubscribe = async () => {
       try {
-        const response = await flitterApi.delete("/users", { headers: { authorization: `Bearer ${localStorage.getItem("jwtToken")}` } });
+        const response = await glitterApi.delete("/users", { headers: { authorization: `Bearer ${localStorage.getItem("jwtToken")}` } });
         console.log(response.data);
         window.alert("It was beautiful while it lasted 😢");
         setTimeout(() => {

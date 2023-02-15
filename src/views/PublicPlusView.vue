@@ -1,72 +1,43 @@
 <template>
-  <div class="tweets-container">
+  <div class="glits-container">
     <div class="container d-flex flex-column justify-content-center align-items-center">
       <div class="mt-2">
         <header>Explore and make new friends!</header>
 
 
         <div class="search-bar d-flex justify-content-end">
-          <Toggle 
-          v-model="currentOrder" 
-          class="toggle-blue" 
-          :falseValue="'desc'" 
-          :trueValue="'asc'" 
-          :offLabel="'Descending'" 
-          :onLabel="'Ascending'" />
+          <Toggle v-model="currentOrder" class="toggle-blue" :falseValue="'desc'" :trueValue="'asc'"
+            :offLabel="'Descending'" :onLabel="'Ascending'" />
 
         </div>
 
-        <TweetItem 
-        v-for="tweet in tweets" 
-        :key="tweet._id" 
-        :btns="btnArray"
-        :userId= "tweet.author._id"
-        :author="tweet.author.username" 
-        :publishDate="tweet.publishDate" 
-        :text="tweet.text" 
-        :kudos="tweet.kudos"
-        :likeName="likeName"
-        :tweet="tweet"
-        :imagePath="tweet.imagePath" />
+        <GlitItem v-for="glit in glits" :key="glit._id" :btns="btnArray" :userId="glit.author._id"
+          :author="glit.author.username" :publishDate="glit.publishDate" :text="glit.text" :kudos="glit.kudos"
+          :likeName="likeName" :glit="glit" :imagePath="glit.imagePath" />
 
       </div>
 
-                <!-- Paginator -->
-        <div class="paginator">
-          <vue-awesome-paginate 
-          :total-items= "totalTweets"
-          :items-per-page="tweets.limit" 
-          v-model="currentPage">
-            <template #prev-button>
-                <span>
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="black"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                  >
-                  <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
-                  </svg>
-                </span>
-              </template>
+      <!-- Paginator -->
+      <div class="paginator">
+        <vue-awesome-paginate :total-items="totalGlits" :items-per-page="glits.limit" v-model="currentPage">
+          <template #prev-button>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="black" width="12" height="12" viewBox="0 0 24 24">
+                <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
+              </svg>
+            </span>
+          </template>
 
-            <template #next-button>
-                <span>
-                  <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="black"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                  >
-                      <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
-                  </svg>
-                </span>
-              </template>
-            </vue-awesome-paginate>
-          </div>
-          <!-- Paginator -->
+          <template #next-button>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="black" width="12" height="12" viewBox="0 0 24 24">
+                <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z" />
+              </svg>
+            </span>
+          </template>
+        </vue-awesome-paginate>
+      </div>
+      <!-- Paginator -->
 
       <footer class="text-center">
         <p class="mb-3">Thank you for being part of this awesome community!.</p>
@@ -78,9 +49,9 @@
 </template> 
 
 <script>
-import flitterApi from "../api/flitterApi";
+import glitterApi from "../api/glitterApi";
 import { ref, onMounted, watch } from "vue";
-import TweetItem from "../components/TweetItem.vue";
+import GlitItem from "../components/GlitItem.vue";
 import Toggle from '@vueform/toggle'
 
 
@@ -92,133 +63,130 @@ const defaultOrder = 'desc'
 export default {
   name: 'PublicPlusView',
   components: {
-    TweetItem,
-    Toggle,
-    
+    GlitItem: GlitItem,
+    Toggle
   },
-  
+
   setup() {
     const currentPage = ref(defaultPage)
     const currentOrder = ref(defaultOrder);
-    const tweets = ref([]);
-    const tweet = ref('')
-   
-    let totalTweets = ref(0)
-    
+    const glits = ref([]);
+    const glit = ref('')
+    let totalGlits = ref(0)
+
     const likeName = 'kudos'
 
-   
-    const getTweets = async (page, limit, order) => {
-      const response = await flitterApi.get("/tweets", {
+    const getGlits = async (page, limit, order) => {
+      const response = await glitterApi.get("/glits", {
         params: {
           page,
           limit,
           order
         }
       });
-      tweets.value = response.data.docs;
-      totalTweets.value = response.data.totalTweets
-      console.log(totalTweets.value)
-      console.table(tweets.value)
+      glits.value = response.data.docs;
+      totalGlits.value = response.data.totalGlits
+      console.log(totalGlits.value)
+      console.table(glits.value)
     };
 
-    
+
     const btnArray = ref([
       {
-          txt: 'Follow',
-          class: 'btn-secondary',
-          action: (tweet) => followUser(tweet),
-          icon: '<i class="fa-solid fa-user-plus"></i>'
+        txt: 'Follow',
+        class: 'btn-secondary',
+        action: (glit) => followUser(glit),
+        icon: '<i class="fa-solid fa-user-plus"></i>'
       },
       {
-          txt: 'Unfollow',
-          class: 'btn-secondary',
-          action: (tweet) => unfollowUser(tweet),
-          icon: '<i class="fa-solid fa-user-minus"></i>'
+        txt: 'Unfollow',
+        class: 'btn-secondary',
+        action: (glit) => unfollowUser(glit),
+        icon: '<i class="fa-solid fa-user-minus"></i>'
       },
       {
-          txt: 'Kudos',
-          class: 'btn-secondary',
-          action: (tweet) => kudo(tweet),
-          icon: '<i class="fa-solid fa-heart"></i>'
+        txt: 'Kudos',
+        class: 'btn-secondary',
+        action: (glit) => kudo(glit),
+        icon: '<i class="fa-solid fa-heart"></i>'
       },
       {
-          txt: 'DisKudos',
-          class: 'btn-secondary',
-          action: (tweet) => kudoDelete(tweet),
-          icon:'<i class="fa-solid fa-hand-middle-finger"></i>'
+        txt: 'DisKudos',
+        class: 'btn-secondary',
+        action: (glit) => kudoDelete(glit),
+        icon: '<i class="fa-solid fa-hand-middle-finger"></i>'
       },
       {
-          txt: 'Delete',
-          class: 'btn-secondary',
-          action: (tweet) => deleteTweet(tweet),
-          icon: '<i class="fa-solid fa-x"></i>'
+        txt: 'Delete',
+        class: 'btn-secondary',
+        action: (glit) => deleteGlit(glit),
+        icon: '<i class="fa-solid fa-x"></i>'
       },
     ])
 
-    const deleteTweet = async (tweet) => {
+    const deleteGlit = async (glit) => {
       try {
-        await flitterApi.delete(`/tweets/${tweet._id}`)
-        getTweets(currentPage.value, defaultLimit, currentOrder.value)
-      } catch(error) {
-        console.error(error)
-      }
-    }
-    
-
-    const followUser = async  (tweet) => {
-      console.table(tweet)
-      try {
-        
-        await flitterApi.post(`/users/${tweet.author._id}/follow`)
+        await glitterApi.delete(`/glits/${glit._id}`)
+        getGlits(currentPage.value, defaultLimit, currentOrder.value)
       } catch (error) {
         console.error(error)
       }
     }
 
-    const unfollowUser = async (tweet) => {
+
+    const followUser = async (glit) => {
+      console.table(glit)
       try {
-        await flitterApi.delete(`/users/${tweet.author._id}/unfollow`)
+
+        await glitterApi.post(`/users/${glit.author._id}/follow`)
       } catch (error) {
         console.error(error)
       }
     }
 
-    const kudo = async (tweet) => {
+    const unfollowUser = async (glit) => {
       try {
-        console.log(tweet)
-        const response = await flitterApi.post(`/tweets/${tweet._id}/kudos`)
-        tweet.kudos = response.data.kudosSize
+        await glitterApi.delete(`/users/${glit.author._id}/unfollow`)
       } catch (error) {
         console.error(error)
       }
-      
     }
 
-    const kudoDelete = async (tweet) => {
+    const kudo = async (glit) => {
       try {
-        console.log(tweet)
-        const response = await flitterApi.delete(`/tweets/${tweet._id}/kudos`)
-        tweet.kudos = response.data.kudosSize
+        console.log(glit)
+        const response = await glitterApi.post(`/glits/${glit._id}/kudos`)
+        glit.kudos = response.data.kudosSize
+      } catch (error) {
+        console.error(error)
+      }
+
+    }
+
+    const kudoDelete = async (glit) => {
+      try {
+        console.log(glit)
+        const response = await glitterApi.delete(`/glits/${glit._id}/kudos`)
+        glit.kudos = response.data.kudosSize
       } catch (error) {
         console.error(error)
       }
     }
 
     onMounted(() => {
-      getTweets(currentPage.value, defaultLimit, currentOrder.value);
+      getGlits(currentPage.value, defaultLimit, currentOrder.value);
     });
     watch(() => currentPage.value, () => {
-      getTweets(currentPage.value, defaultLimit, currentOrder.value);
+      getGlits(currentPage.value, defaultLimit, currentOrder.value);
     })
     watch(() => currentOrder.value, () => {
-      getTweets(currentPage.value, defaultLimit, currentOrder.value);
+      getGlits(currentPage.value, defaultLimit, currentOrder.value);
     })
 
     return {
-      tweets,
-      tweet,
-      totalTweets,
+      glits: glits,
+      glit: glit,
+      totalGlits: totalGlits,
       currentPage,
       currentOrder,
       btnArray,
@@ -229,29 +197,29 @@ export default {
 </script>
 
 <style>
-
 header {
-text-shadow: 3px 3px #95a4ff;
--webkit-text-stroke: 1px rgba(0, 0, 0);
-padding: 10px;
-font-size: 40px;
-font-weight: bold;
-color: #ffa580;
-letter-spacing: 2px;
+  text-shadow: 3px 3px #95a4ff;
+  -webkit-text-stroke: 1px rgba(0, 0, 0);
+  padding: 10px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #ffa580;
+  letter-spacing: 2px;
 }
 
 .btn-see-more {
-line-height: 28pt;
-padding: 0 20px;
-background: #ffa580;
-letter-spacing: 2px;
-transition: .2s all ease-in-out;
-outline: none;
-border: 1px solid rgba(0, 0, 0, 1);
-box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  line-height: 28pt;
+  padding: 0 20px;
+  background: #ffa580;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
-.tweets-container {
-margin-top: 1em;
+
+.glits-container {
+  margin-top: 1em;
 }
 
 /* 
@@ -262,17 +230,19 @@ Paginator
 
 .paginator {
   text-align: center;
-  }
+}
+
 .paginator .paginate-buttons {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  background: #ffa580;;
-letter-spacing: 2px;
-transition: .2s all ease-in-out;
-outline: none;
-border: 1px solid rgba(0, 0, 0, 1);
-box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
+  background: #ffa580;
+  ;
+  letter-spacing: 2px;
+  transition: .2s all ease-in-out;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 1);
+  box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
 
 .paginator .back-button,
@@ -285,6 +255,7 @@ box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
   border-start-start-radius: 25px;
   border-end-start-radius: 25px;
 }
+
 .paginator .last-button {
   border-start-end-radius: 25px;
   border-end-end-radius: 25px;
@@ -293,26 +264,31 @@ box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 .paginator .back-button svg {
   transform: rotate(180deg) translateY(-2px);
 }
+
 .paginator .next-button svg {
   transform: translateY(2px);
 }
-.paginator li:nth-child(2) > .paginate-buttons.number-buttons {
+
+.paginator li:nth-child(2)>.paginate-buttons.number-buttons {
   border-start-start-radius: 25px;
   border-end-start-radius: 25px;
   transition: none;
 }
-.paginator li:nth-last-child(2) > .paginate-buttons.number-buttons {
+
+.paginator li:nth-last-child(2)>.paginate-buttons.number-buttons {
   border-start-end-radius: 25px;
   border-end-end-radius: 25px;
 }
 
 .paginator .active-page {
-  background-color: #99e98e;;
+  background-color: #99e98e;
+  ;
   color: f8f4e5;
 }
 
 .paginator .active-page {
-  background-color: #99e98e;;
+  background-color: #99e98e;
+  ;
   color: f8f4e5;
 }
 
@@ -321,8 +297,10 @@ box-shadow: 3px 3px 1px 1px #95a4ff, 3px 3px 1px 2px rgba(0, 0, 0, 1);
 }
 
 .paginator .active-page:hover {
-  background-color: #99e98e;;
+  background-color: #99e98e;
+  ;
 }
+
 .paginator .back-button:active,
 .paginator .next-button:active {
   background-color: #e6e6e6;
@@ -335,14 +313,14 @@ Paginator
 */
 
 .footer {
-position: absolute;
-bottom: 0;
-width: 100%;
-height: 0rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0rem;
 }
 
-.search-bar{
-margin-bottom: 1em
+.search-bar {
+  margin-bottom: 1em
 }
 
 @import "@vueform/toggle/themes/default.css";
@@ -359,7 +337,4 @@ margin-bottom: 1em
   --toggle-text-off: #ffffff;
 
 }
-
-
-
 </style>

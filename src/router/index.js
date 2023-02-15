@@ -68,6 +68,13 @@ const routes = [
       import(/* webpackChunkName: "profile" */ "../views/UserProfileView.vue"),
   },
   {
+    path: "/landing-page",
+    name: "landing",
+    beforeEnter: useAuthGuard,
+    component: () =>
+      import(/* webpackChunkName: "profile" */ "../views/LandingPageView.vue"),
+  },
+  {
     path: "/prueba-searchbar",
     name: "prueba-searchbar",
     component: () =>
@@ -81,3 +88,4 @@ const router = createRouter({
 });
 
 export default router;
+

@@ -3,9 +3,9 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="img-cont">
-					<img alt="Flitter logo" src="../assets/img/logo_flitter.svg" />
-					<h2 class="text-center text-lg-start">
-						Welcome to Flitter
+					<img src="../assets/img/logo_navbar.svg" height="200" alt="Glitter Logo">
+					<h2 class="text-center text-lg-start" style="margin-right: 30px;">
+						Welcome to Glitter!
 					</h2>
 				</div>
 			</div>
@@ -36,10 +36,9 @@
 </template>
 
 <script>
-// import flitterApi from '@/api/flitterApi'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import flitterApi from "../api/flitterApi"
+import glitterApi from "../api/glitterApi"
 import CustomCard from "../components/CustomCard.vue";
 import FooterSection from "@/components/FooterSection.vue";
 
@@ -85,7 +84,7 @@ export default {
 					errorMessage.value = result;
 					return;
 				}
-				await flitterApi.post("/auth/register", {
+				await glitterApi.post("/auth/register", {
 					email: email.value,
 					username: username.value,
 					password: password.value,
@@ -104,7 +103,7 @@ export default {
 
 		async function checkEmailAndUsername(email, username) {
 			try {
-				const emailResponse = await flitterApi.post('/auth/register', {
+				const emailResponse = await glitterApi.post('/auth/register', {
 					email: email
 				});
 				if (emailResponse.status === 400) {
@@ -112,7 +111,7 @@ export default {
 					return "This email already exists";
 				}
 
-				const usernameResponse = await flitterApi.post('/auth/register', {
+				const usernameResponse = await glitterApi.post('/auth/register', {
 					username: username
 				});
 				if (usernameResponse.status === 400) {
@@ -166,12 +165,22 @@ img {
 }
 
 h2 {
-	color: #545454;
+	font-size: 40px;
+	font-family: 'Poppins', sans-serif;
+	text-transform: lowercase;
+	font-weight: 600;
+	text-align: center;
+	color: black;
+	margin-top: 0.8em;
+	margin-left: 3em;
+	letter-spacing: 2px;
 }
+
 input.form-control {
 	background: #f8f4e5;
 	border: 2px solid rgba(0, 0, 0, 1);
 }
+
 input {
 	letter-spacing: 2px;
 }
@@ -192,13 +201,5 @@ input {
 		margin-top: 6.2em;
 	}
 
-	
-	h2 {
-		color: black;
-		margin: 0;
-		margin-top: 0.8em;
-		margin-left: 3em;
-		letter-spacing: 2px;
-	}
 }
 </style>

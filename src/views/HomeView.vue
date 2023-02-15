@@ -3,9 +3,9 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="img-cont">
-					<img alt="Flitter logo" src="../assets/img/logo_flitter.svg" />
-					<h2 class="text-center text-lg-start">
-						Welcome to Flitter
+					<img src="../assets/img/logo_navbar.svg" height="200" alt="Glitter Logo">
+					<h2 class="text-center text-lg-start" style="margin-right: 30px;">
+						Welcome to Glitter!
 					</h2>
 				</div>
 			</div>
@@ -30,7 +30,7 @@
 		<div class="jumbotron">
 			<hr class="my-4">
 			<p class="copy">Connect with friends, make new ones, and soar to new heights. 🛫 Don't be left behind, join the
-				#FlitterFlock today and start flittering! #SpreadYourWings 🌪️</p>
+				#GlitterFlock today and start glittering! #SpreadYourWings 🌪️</p>
 			<p class="lead">
 				<router-link to="/public">
 					<button class="btn btn-primary custom-btn-explore" type="button">Explore</button>
@@ -59,11 +59,24 @@ export default {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 .home {
 	max-width: 895px;
 	margin: auto;
 }
 
+h2 {
+	font-size: 40px;
+	font-family: 'Poppins', sans-serif;
+	text-transform: lowercase;
+	font-weight: 600;
+	text-align: center;
+	color: black;
+	margin-top: 0.8em;
+	margin-left: 3em;
+	letter-spacing: 2px;
+}
 
 .img-cont {
 	display: flex;
@@ -122,9 +135,6 @@ img {
 }
 
 
-h2 {
-	color: #545454;
-}
 
 
 .signup {
@@ -163,15 +173,6 @@ h2 {
 	}
 
 
-	h2 {
-		color: black;
-		margin: 0;
-		margin-top: 0.8em;
-		margin-left: 3em;
-		letter-spacing: 2px;
-	}
-
-
 	h4 {
 		margin-bottom: 1.5em;
 	}
@@ -185,6 +186,7 @@ h2 {
 	.jumbotron {
 		margin: 5em auto;
 	}
+
 	.copy {
 		letter-spacing: 2px;
 	}

@@ -1,10 +1,10 @@
 <template>
-  <footer class="footer">
+  <footer class="footer bg-light">
     <section class="d-flex
         justify-content-center justify-content-lg-between
         p-2">
     </section>
-    <div class="text-center p-2">
+    <div class="text text-center p-2 bg-light">
       <p>© 2023 Copyright:</p>
       <p>No-Woman-No-API</p>
     </div>
@@ -20,12 +20,13 @@ export default {
 
 <style>
 .footer {
-  margin-top: 9.8vh;
-  position: -webkit-sticky;
+  position: absolute;
   bottom: 0;
   width: 100%;
-  height: 7.2rem;
+  height: 0rem;
+}
+
+.text {
   border: 1px solid rgba(0, 0, 0, 1);
-  background-color: #a0acf8;
 }
 </style>
