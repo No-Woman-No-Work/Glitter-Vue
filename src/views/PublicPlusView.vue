@@ -4,6 +4,7 @@
       <div class="mt-2">
         <header>Explore and make new friends!</header>
 
+
         <div class="search-bar d-flex justify-content-end">
           <Toggle 
           v-model="currentOrder" 
@@ -82,6 +83,7 @@ import { ref, onMounted, watch } from "vue";
 import TweetItem from "../components/TweetItem.vue";
 import Toggle from '@vueform/toggle'
 
+
 const defaultPage = 1
 const defaultLimit = 10
 const defaultOrder = 'desc'
@@ -91,7 +93,8 @@ export default {
   name: 'PublicPlusView',
   components: {
     TweetItem,
-    Toggle
+    Toggle,
+    
   },
   
   setup() {
@@ -99,9 +102,11 @@ export default {
     const currentOrder = ref(defaultOrder);
     const tweets = ref([]);
     const tweet = ref('')
+   
     let totalTweets = ref(0)
     
     const likeName = 'kudos'
+
    
     const getTweets = async (page, limit, order) => {
       const response = await flitterApi.get("/tweets", {
