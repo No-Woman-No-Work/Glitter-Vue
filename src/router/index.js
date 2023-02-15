@@ -70,7 +70,6 @@ const routes = [
   {
     path: "/landing-page",
     name: "landing",
-    beforeEnter: useAuthGuard,
     component: () =>
       import(/* webpackChunkName: "profile" */ "../views/LandingPageView.vue"),
   },

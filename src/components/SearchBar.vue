@@ -8,7 +8,7 @@
             <input 
             type="text" 
             class="form-control" 
-            placeholder="Search flits..." 
+            placeholder="Search glits..." 
             v-model="searchTerm"
             @keyup="$emit('updateSearch',searchTerm)" />
 
@@ -33,7 +33,7 @@ export default {
             const searchTerm = ref('')
 
             const search = async () => {
-                  const results = await flitterApi.get(`/tweets/search?q=${searchTerm.value}`)
+                  const results = await glitterApi.get(`/glits/search?q=${searchTerm.value}`)
                   emit('uptateResults', results.data.docs)
             }
             return { 
