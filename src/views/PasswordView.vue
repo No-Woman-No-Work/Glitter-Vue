@@ -3,9 +3,9 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="img-cont">
-					<img alt="Flitter logo" src="../assets/img/logo_flitter.svg" />
-					<h2 class="text-center text-lg-start">
-						Welcome to Flitter
+					<img src="../assets/img/logo_navbar.svg" height="200" alt="Glitter Logo">
+					<h2 class="text-center text-lg-start" style="margin-right: 30px;">
+						Welcome to Glitter!
 					</h2>
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 </template>
     
 <script>
-import flitterApi from "../api/flitterApi"
+import glitterApi from "../api/glitterApi"
 import { ref } from 'vue'
 import CustomCard from '../components/CustomCard.vue'
 import FooterSection from "@/components/FooterSection.vue"
@@ -65,7 +65,7 @@ export default {
 			}
 
 			try {
-				const response = await flitterApi.sendEmail(email.value);
+				const response = await glitterApi.sendEmail(email.value);
 				if (response.error) {
 					error.value = "This email isn't attached to any existent account";
 					return;
@@ -87,6 +87,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 .home {
 	max-width: 895px;
 	margin: auto;
@@ -107,25 +109,38 @@ img {
 	margin-top: 1.6em;
 }
 
+
 h2 {
-	color: #545454;
+	font-size: 40px;
+	font-family: 'Poppins', sans-serif;
+	text-transform: lowercase;
+	font-weight: 600;
+	text-align: center;
+	color: black;
+	margin-top: 0.8em;
+	margin-left: 3em;
+	letter-spacing: 2px;
 }
 
 .change-pass {
 	font-size: 13px;
 }
+
 .custom-card {
 	max-width: 398px;
 	margin-top: 1.6em;
 	padding: 48px 80px;
 }
+
 input.form-control {
 	background: #f8f4e5;
 	border: 2px solid rgba(0, 0, 0, 1);
 }
+
 input {
 	letter-spacing: 2px;
 }
+
 @media (min-width: 992px) {
 	.home {
 		margin: 4em auto;
@@ -143,12 +158,5 @@ input {
 		margin-top: 6.2em;
 	}
 
-	h2 {
-		color: black;
-		margin: 0;
-		margin-top: 0.8em;
-		margin-left: 3em;
-		letter-spacing: 2px;
-	}
 }
 </style>

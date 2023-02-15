@@ -1,4 +1,3 @@
-<!-- COMPONENTE para inyectar en el botón de logout -->
 <template>
 	<button type="button" class="btn" @click='handleLogout'><i class="fa-solid fa-right-from-bracket fa-xl"></i>
 	</button>

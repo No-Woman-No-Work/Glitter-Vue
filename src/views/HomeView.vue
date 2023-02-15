@@ -72,6 +72,10 @@ h2 {
 	text-transform: lowercase;
 	font-weight: 600;
 	text-align: center;
+	color: black;
+	margin-top: 0.8em;
+	margin-left: 3em;
+	letter-spacing: 2px;
 }
 
 .img-cont {
@@ -131,9 +135,6 @@ img {
 }
 
 
-h2 {
-	color: #545454;
-}
 
 
 .signup {
@@ -169,15 +170,6 @@ h2 {
 	.custom-card {
 		margin: 0;
 		margin-top: 5.9em;
-	}
-
-
-	h2 {
-		color: black;
-		margin: 0;
-		margin-top: 0.8em;
-		margin-left: 3em;
-		letter-spacing: 2px;
 	}
 
 

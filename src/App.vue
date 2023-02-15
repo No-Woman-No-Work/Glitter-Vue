@@ -2,7 +2,7 @@
   <div>
 
     <NavBar v-model="navBarSearch" @updateSearch="updateSearch" />
-    <router-view v-model="navBarSearch"/>
+    <router-view v-model="navBarSearch" />
 
   </div>
 </template>
@@ -21,18 +21,11 @@ export default {
   setup(props, context) {
     const navBarSearch = ref('');
 
-    // You can also use watchEffect to listen for changes on parentProp
-    // watch(() => navBarSearch.value, () => {
-    //   console.log(`navBarSearch has changed to: ${navBarSearch.value}`);
-    // }, {
-    //   deep: true,
-    // });
-
     const updateSearch = (newSearch) => {
-        console.log('navBarSearch updated: ' + newSearch)
-        navBarSearch.value = newSearch;
-        context.emit('update:modelValue', navBarSearch.value)
-      }
+      console.log('navBarSearch updated: ' + newSearch)
+      navBarSearch.value = newSearch;
+      context.emit('update:modelValue', navBarSearch.value)
+    }
 
     return {
       navBarSearch,
